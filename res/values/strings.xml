@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Cave Flo</string>
+    <string name="horaire"><b>Horaires d\'ouverture:</b>\nLundi : 11h à 20h\nMardi à vendredi : 11h à 21h\nSamedi : 10h30 à 20h</string>
+    <string name="address"><b>Adresse:</b>\n3 allée de Bray,\n35510 CESSON-SÉVIGNÉ</string>
+    <string name="tel">Tél. 02.90.78.02.25</string>
+    <string name="blank"></string>
+    <string name="buttonRefresh">Rafraîchir la cave</string>
+
+</resources>
