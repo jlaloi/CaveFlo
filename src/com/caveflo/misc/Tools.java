@@ -1,4 +1,4 @@
-package com.caveflo.fragment.misc;
+package com.caveflo.misc;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

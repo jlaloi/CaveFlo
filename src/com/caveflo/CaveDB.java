@@ -10,7 +10,7 @@ import android.app.Activity;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.caveflo.fragment.misc.Tools;
+import com.caveflo.misc.Tools;
 
 public class CaveDB {
 	public static final String caveDir = "Caveflo/";
