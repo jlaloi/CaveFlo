@@ -1,11 +1,11 @@
 package com.caveflo.fragment.misc;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -15,6 +15,8 @@ import java.util.List;
 import android.os.StrictMode;
 
 public class Tools {
+	
+	public static final String userAgent = "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3)";
 	
 	static{
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -58,36 +60,30 @@ public class Tools {
 		}
 	}
 
-	public static void download(String adress, File file) {
-		FileOutputStream fileOutput = null;
-		InputStream inputStream = null;
+	public static void downloadFile(String url, File file) {
+		BufferedInputStream in = null;
+		FileOutputStream fout = null;
 		try {
-			URL url = new URL(adress);
-			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-			urlConnection.setRequestMethod("GET");
-			urlConnection.setDoOutput(true);
-			urlConnection.connect();
-			fileOutput = new FileOutputStream(file);
-			inputStream = urlConnection.getInputStream();
-			byte[] buffer = new byte[1024];
-			int bufferLength = 0;
-			while ((bufferLength = inputStream.read(buffer)) > 0) {
-				fileOutput.write(buffer, 0, bufferLength);
+			HttpURLConnection urlc = (HttpURLConnection) new URL(url.replace(" ", "%20")).openConnection();
+			urlc.setRequestProperty("User-Agent", userAgent);
+			urlc.connect();
+			in = new BufferedInputStream(urlc.getInputStream());
+			fout = new FileOutputStream(file);
+			byte data[] = new byte[1024];
+			int count;
+			while ((count = in.read(data, 0, 1024)) != -1) {
+				fout.write(data, 0, count);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (fileOutput != null) {
-					fileOutput.close();
-				}
+				in.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			try {
-				if (inputStream != null) {
-					inputStream.close();
-				}
+				fout.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

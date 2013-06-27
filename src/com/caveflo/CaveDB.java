@@ -16,7 +16,7 @@ public class CaveDB {
 	public static final String caveDir = "Caveflo/";
 	public static final String caveFileName = caveDir + "caveflo.ext";
 	public static final String caveUserFileName = caveDir + "cavefloUser.ext";
-	public static final String dlCaveFile = "http://XXXX/caveflodb.csv";
+	public static final String dlCaveFile = "https://github.com/jlaloi/CaveFlo/raw/master/caveflodb.csv";
 	public static final String fileSep = ";";
 	private File caveFile, caveUserFile;
 	private Activity activity;
@@ -39,7 +39,7 @@ public class CaveDB {
 
 	public void update() {
 		Toast.makeText(activity, "Rafraîchissement de la liste de la cave",Toast.LENGTH_SHORT).show();
-		Tools.download(dlCaveFile, caveFile);
+		Tools.downloadFile(dlCaveFile, caveFile);
 		Toast.makeText(activity, "Cave à jour!", Toast.LENGTH_SHORT).show();
 	}
 	
@@ -49,7 +49,7 @@ public class CaveDB {
 	}
 
 	public List<Biere> readDb() {
-		if (db == null) {
+		if (db == null || db.size() == 0) {
 			loadUserCave();
 			db = new ArrayList<Biere>();
 			shouldUpdate();
