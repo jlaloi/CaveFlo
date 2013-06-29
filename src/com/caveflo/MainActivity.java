@@ -7,13 +7,14 @@ import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.Toast;
 
+import com.caveflo.fragment.BeerCreatePopup;
 import com.caveflo.misc.Factory;
 
 public class MainActivity extends Activity implements TabListener {
@@ -54,13 +55,8 @@ public class MainActivity extends Activity implements TabListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_add_beer:
-			Toast.makeText(MainActivity.this, "Add", Toast.LENGTH_SHORT).show();
-			return true;
-		case R.id.menu_search_beer:
-			Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
-			return true;
-		case R.id.menu_preferences:
-			Toast.makeText(MainActivity.this, "Menu", Toast.LENGTH_SHORT).show();
+			FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
+			BeerCreatePopup.newInstance().show(ft, "create");
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

@@ -8,11 +8,28 @@
     <string name="buttonRefresh">Rafraîchir la cave</string>
     <string name="addbeer">Ajouter une bière</string>
     <string name="searchbeer">Rechercher une bière</string>
- 	<string name="preferences">Préférence</string>
- 	<string name="tab_cave">Cave</string>
- 	<string name="tab_info">Info</string>
- 	<string name="tab_news">News</string>
- 	<string name="filtre">Filtre:</string>
- 	<string name="clear">RAZ</string>
- 
+    <string name="preferences">Préférence</string>
+    <string name="tab_cave">Cave</string>
+    <string name="tab_info">Pratique</string>
+    <string name="tab_news">News</string>
+    <string name="filtre">Filtre:</string>
+    <string name="clear">RAZ</string>
+    <string name="update_ok">Mise à jour de la cave terminée!</string>
+    <string name="update_ko">Problème lors de la mise à jour?</string>
+    <string name="filter_all">Toutes</string>
+    <string name="filter_todrink">A goûter</string>
+    <string name="filter_drunk">Goûtées</string>
+    <string name="cave_beer_name">Nom</string>
+    <string name="cave_beer_degre">Degré</string>
+    <string name="cave_beer_rating">Note</string>
+    <string name="cave_beer_drunk">Goûtée</string>
+    <string name="count_drunk">Goutée(s): </string>
+    <string name="button_create">Créer</string>
+    <string name="button_validate">Valider</string>
+    <string name="button_cancel">Annuler</string>
+    <string name="button_clear">Effacer</string>
+    <string name="rate_string">Note: </string>
+    <string name="create_title">Ajouter une bière</string>
+    <string name="degree_string">Degré: </string>
+
 </resources>

@@ -1,25 +1,32 @@
 package com.caveflo.cave;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Biere {
+
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH);
 
 	private String id;
 	private String name;
 	private float degree;
 	private String status;
 	private String drunk = "";
+	private int rating;
 
 	public Biere() {
 		super();
 	}
 
-	public Biere(String id, String name, float degree, String status, String drunk) {
+	public Biere(String id, String name, float degree, String status, String drunk, int rating) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.degree = degree;
 		this.status = status;
 		this.drunk = drunk;
+		this.rating = rating;
 	}
 
 	public Biere(String id, String name, float degree, String status) {
@@ -69,4 +76,21 @@ public class Biere {
 	public void setDrunk(String drunk) {
 		this.drunk = drunk;
 	}
+
+	public void setDrunk(Date date) {
+		this.drunk = dateFormat.format(date);
+	}
+
+	public boolean isDrunk() {
+		return drunk != null && drunk.trim().length() > 0;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
 }

@@ -24,7 +24,7 @@ public class Info extends Fragment {
 		Button buttonStart = (Button) getActivity().findViewById(R.id.buttonRefresh);
 		buttonStart.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Factory.get().getCaveDB().update();
+				Factory.get().getCaveDB().update(getActivity());
 			}
 		});
 	}

@@ -10,6 +10,8 @@ package com.caveflo;
 public final class R {
     public static final class array {
         public static final int biere=0x7f040000;
+        public static final int filter_biere=0x7f040002;
+        public static final int rating=0x7f040001;
     }
     public static final class attr {
     }
@@ -22,35 +24,39 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
-        public static final int icon_bookmark=0x7f020001;
-        public static final int icon_delete=0x7f020002;
-        public static final int icon_more=0x7f020003;
-        public static final int icon_preferences=0x7f020004;
-        public static final int icon_save=0x7f020005;
-        public static final int icon_search=0x7f020006;
-        public static final int icon_share=0x7f020007;
-        public static final int javamind=0x7f020008;
-        public static final int tableborder=0x7f020009;
+        public static final int icon_more=0x7f020001;
+        public static final int tableborder=0x7f020002;
     }
     public static final class id {
-        public static final int blank=0x7f080000;
-        public static final int buttonClear=0x7f080004;
-        public static final int buttonRefresh=0x7f080006;
-        public static final int containerTable=0x7f080005;
-        public static final int dyn_layout=0x7f080002;
-        public static final int filterBeer=0x7f080003;
-        public static final int fragmentContainer=0x7f080001;
-        public static final int menu_add_beer=0x7f080007;
-        public static final int menu_preferences=0x7f080009;
-        public static final int menu_search_beer=0x7f080008;
-        public static final int web_view=0x7f08000a;
+        public static final int beercount=0x7f08000a;
+        public static final int buttonClear=0x7f080008;
+        public static final int buttonCreateKo=0x7f080005;
+        public static final int buttonCreateOk=0x7f080004;
+        public static final int buttonRatingClear=0x7f080012;
+        public static final int buttonRatingKo=0x7f080013;
+        public static final int buttonRatingOk=0x7f080011;
+        public static final int buttonRefresh=0x7f08000c;
+        public static final int containerTable=0x7f08000b;
+        public static final int createbeerdegree=0x7f080003;
+        public static final int createbeername=0x7f080001;
+        public static final int degreevalue=0x7f080002;
+        public static final int dyn_layout=0x7f080006;
+        public static final int filterBeer=0x7f080007;
+        public static final int filterdrunkbeer=0x7f080009;
+        public static final int fragmentContainer=0x7f080000;
+        public static final int menu_add_beer=0x7f08000d;
+        public static final int ratingbar=0x7f080010;
+        public static final int ratingvalue=0x7f08000f;
+        public static final int web_view=0x7f08000e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int cave=0x7f030001;
-        public static final int info=0x7f030002;
-        public static final int menu=0x7f030003;
-        public static final int news=0x7f030004;
+        public static final int addbeer=0x7f030001;
+        public static final int cave=0x7f030002;
+        public static final int info=0x7f030003;
+        public static final int menu=0x7f030004;
+        public static final int news=0x7f030005;
+        public static final int rating=0x7f030006;
     }
     public static final class string {
         public static final int addbeer=0x7f060006;
@@ -58,32 +64,46 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int blank=0x7f060004;
         public static final int buttonRefresh=0x7f060005;
+        public static final int button_cancel=0x7f06001a;
+        public static final int button_clear=0x7f06001b;
+        public static final int button_create=0x7f060018;
+        public static final int button_validate=0x7f060019;
+        public static final int cave_beer_degre=0x7f060014;
+        public static final int cave_beer_drunk=0x7f060016;
+        public static final int cave_beer_name=0x7f060013;
+        public static final int cave_beer_rating=0x7f060015;
         public static final int clear=0x7f06000d;
+        public static final int count_drunk=0x7f060017;
+        public static final int create_title=0x7f06001d;
+        public static final int degree_string=0x7f06001e;
+        public static final int filter_all=0x7f060010;
+        public static final int filter_drunk=0x7f060012;
+        public static final int filter_todrink=0x7f060011;
         public static final int filtre=0x7f06000c;
         public static final int horaire=0x7f060001;
         public static final int preferences=0x7f060008;
+        public static final int rate_string=0x7f06001c;
         public static final int searchbeer=0x7f060007;
         public static final int tab_cave=0x7f060009;
         public static final int tab_info=0x7f06000a;
         public static final int tab_news=0x7f06000b;
         public static final int tel=0x7f060003;
+        public static final int update_ko=0x7f06000f;
+        public static final int update_ok=0x7f06000e;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;
+        public static final int defaultButton=0x7f070002;
         public static final int defaultTextView=0x7f070001;
-        public static final int frag1Col=0x7f070005;
-        public static final int frag1HeaderCol=0x7f070006;
-        public static final int frag1HeaderTableRow=0x7f070003;
-        public static final int frag1TableLayout=0x7f070002;
-        public static final int frag1TableRow=0x7f070004;
-        public static final int frag2Col=0x7f070009;
-        public static final int frag2ColImpair=0x7f07000b;
-        public static final int frag2ColImpair1=0x7f07000c;
-        public static final int frag2ColPair=0x7f07000d;
-        public static final int frag2ColPair1=0x7f07000e;
-        public static final int frag2HeaderCol=0x7f07000a;
-        public static final int frag2TableLayout=0x7f070007;
-        public static final int frag2TableRow=0x7f070008;
-        public static final int frag3HeaderCol=0x7f07000f;
+        public static final int frag1Col=0x7f070006;
+        public static final int frag1HeaderCol=0x7f070007;
+        public static final int frag1HeaderTableRow=0x7f070004;
+        public static final int frag1TableLayout=0x7f070003;
+        public static final int frag1TableRow=0x7f070005;
+        public static final int frag2Col=0x7f07000a;
+        public static final int frag2HeaderCol=0x7f07000b;
+        public static final int frag2TableLayout=0x7f070008;
+        public static final int frag2TableRow=0x7f070009;
+        public static final int frag3HeaderCol=0x7f07000c;
     }
 }

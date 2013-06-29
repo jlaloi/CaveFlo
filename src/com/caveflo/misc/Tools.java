@@ -60,7 +60,8 @@ public class Tools {
 		}
 	}
 
-	public static void downloadFile(String url, File file) {
+	public static boolean downloadFile(String url, File file) {
+		Boolean result = false;
 		BufferedInputStream in = null;
 		FileOutputStream fout = null;
 		try {
@@ -74,19 +75,23 @@ public class Tools {
 			while ((count = in.read(data, 0, 1024)) != -1) {
 				fout.write(data, 0, count);
 			}
+			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				in.close();
 			} catch (Exception e) {
+				result = false;
 				e.printStackTrace();
 			}
 			try {
 				fout.close();
 			} catch (Exception e) {
+				result = false;
 				e.printStackTrace();
 			}
 		}
+		return result;
 	}
 }
