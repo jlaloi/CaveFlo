@@ -14,13 +14,9 @@ public class Biere {
 	private String status;
 	private String drunk = "";
 	private int rating;
-
-	public Biere() {
-		super();
-	}
+	private boolean custom = false;
 
 	public Biere(String id, String name, float degree, String status, String drunk, int rating) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.degree = degree;
@@ -30,11 +26,16 @@ public class Biere {
 	}
 
 	public Biere(String id, String name, float degree, String status) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.degree = degree;
 		this.status = status;
+	}
+
+	public Biere(String id, String name, float degree) {
+		this.id = id;
+		this.name = name;
+		this.degree = degree;
 	}
 
 	public String getId() {
@@ -91,6 +92,14 @@ public class Biere {
 
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+
+	public boolean isCustom() {
+		return custom;
+	}
+
+	public void setCustom(boolean custom) {
+		this.custom = custom;
 	}
 
 }

@@ -99,6 +99,11 @@ public class Cave extends Fragment {
 		}
 
 		// Create all beer row
+		initList();
+	}
+
+	public void initList() {
+		beerTableRows.clear();
 		for (Biere biere : caveDB.readDb(getActivity())) {
 			beerTableRows.add(new BiereTableRow(getActivity(), biere));
 		}

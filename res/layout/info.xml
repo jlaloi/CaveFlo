@@ -21,6 +21,22 @@
         android:text="@string/blank"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/buttonNavigation"
+        style="@style/defaultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:text="@string/buttonNavigation" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/blank"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

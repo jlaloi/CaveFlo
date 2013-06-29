@@ -14,7 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 
-import com.caveflo.fragment.BeerCreatePopup;
+import com.caveflo.fragment.dialog.BeerCreatePopup;
 import com.caveflo.misc.Factory;
 
 public class MainActivity extends Activity implements TabListener {

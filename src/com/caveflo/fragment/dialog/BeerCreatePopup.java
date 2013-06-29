@@ -1,4 +1,4 @@
-package com.caveflo.fragment;
+package com.caveflo.fragment.dialog;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class BeerCreatePopup extends DialogFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.addbeer, container, false);
 		getDialog().setTitle(getString(R.string.create_title));
-		
+
 		degreeBar = (SeekBar) v.findViewById(R.id.createbeerdegree);
 		degreeBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			public void onStopTrackingTouch(SeekBar seekBar) {
@@ -45,13 +45,14 @@ public class BeerCreatePopup extends DialogFragment {
 
 		});
 		degreeProgress = (TextView) v.findViewById(R.id.degreevalue);
-		
+
 		beerName = (EditText) v.findViewById(R.id.createbeername);
 
 		Button buttonOk = (Button) v.findViewById(R.id.buttonCreateOk);
 		buttonOk.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Factory.get().getCaveDB().addUserBeer(beerName.getText().toString(), getDegree());
+				Factory.get().getCaveDB().addCustomBeer(beerName.getText().toString(), getDegree());
+				Factory.get().getFragmentCave().initList();
 				dismiss();
 			}
 		});
@@ -66,11 +67,11 @@ public class BeerCreatePopup extends DialogFragment {
 		updateDegree();
 		return v;
 	}
-	
-	private float getDegree(){
+
+	private float getDegree() {
 		return degreeBar.getProgress() / 10f;
 	}
-	
+
 	private void updateDegree() {
 		degreeProgress.setText(getString(R.string.degree_string) + getDegree());
 	}

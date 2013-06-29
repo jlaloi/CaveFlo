@@ -1,4 +1,4 @@
-package com.caveflo.fragment;
+package com.caveflo.fragment.dialog;
 
 import java.util.Calendar;
 
@@ -14,6 +14,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.caveflo.R;
+import com.caveflo.fragment.BiereTableRow;
 
 public class BeerRatingPopup extends DialogFragment {
 

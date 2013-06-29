@@ -1,6 +1,8 @@
 package com.caveflo.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,15 @@ public class Info extends Fragment {
 		buttonStart.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Factory.get().getCaveDB().update(getActivity());
+			}
+		});
+
+		Button buttonNavigation = (Button) getActivity().findViewById(R.id.buttonNavigation);
+		buttonNavigation.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Uri request = Uri.parse("google.navigation:q=" + getString(R.string.navigation));
+				Intent i = new Intent(Intent.ACTION_VIEW, request);
+				startActivity(i);
 			}
 		});
 	}

@@ -3,9 +3,11 @@
     <string name="app_name">Cave Flo</string>
     <string name="horaire"><b>Horaires d\'ouverture:</b>\nLundi : 11h à 20h\nMardi à vendredi : 11h à 21h\nSamedi : 10h30 à 20h</string>
     <string name="address"><b>Adresse:</b>\n3 allée de Bray,\n35510 CESSON-SÉVIGNÉ</string>
+    <string name="navigation">3 allée de Bray,35510 CESSON-SÉVIGNÉ</string>
     <string name="tel">Tél. 02.90.78.02.25</string>
     <string name="blank"></string>
     <string name="buttonRefresh">Rafraîchir la cave</string>
+    <string name="buttonNavigation">Lancer la navigation</string>
     <string name="addbeer">Ajouter une bière</string>
     <string name="searchbeer">Rechercher une bière</string>
     <string name="preferences">Préférence</string>
@@ -15,7 +17,6 @@
     <string name="filtre">Filtre:</string>
     <string name="clear">RAZ</string>
     <string name="update_ok">Mise à jour de la cave terminée!</string>
-    <string name="update_ko">Problème lors de la mise à jour?</string>
     <string name="filter_all">Toutes</string>
     <string name="filter_todrink">A goûter</string>
     <string name="filter_drunk">Goûtées</string>
@@ -23,7 +24,7 @@
     <string name="cave_beer_degre">Degré</string>
     <string name="cave_beer_rating">Note</string>
     <string name="cave_beer_drunk">Goûtée</string>
-    <string name="count_drunk">Goutée(s): </string>
+    <string name="count_drunk"></string>
     <string name="button_create">Créer</string>
     <string name="button_validate">Valider</string>
     <string name="button_cancel">Annuler</string>
@@ -31,5 +32,8 @@
     <string name="rate_string">Note: </string>
     <string name="create_title">Ajouter une bière</string>
     <string name="degree_string">Degré: </string>
+    <string name="delete_beer">, supprimer la bière?</string>
+    <string name="delete_confirm">supprimée</string>
+    <string name="create_confirm">ajoutée</string>
 
 </resources>

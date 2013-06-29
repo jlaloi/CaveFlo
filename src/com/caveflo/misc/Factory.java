@@ -2,12 +2,8 @@ package com.caveflo.misc;
 
 import java.util.Comparator;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.Notification;
-import android.app.NotificationManager;
 
-import com.caveflo.R;
 import com.caveflo.cave.Biere;
 import com.caveflo.cave.CaveDB;
 import com.caveflo.fragment.Cave;
@@ -40,14 +36,6 @@ public class Factory {
 				return lhs.getName().toLowerCase().compareTo(rhs.getName().toLowerCase());
 			}
 		};
-	}
-
-	public void createNotification(Activity activity, String title, String text) {
-		Notification notification = new Notification.Builder(activity).setContentTitle(title).setContentText(text).setSmallIcon(R.drawable.ic_launcher).build();
-		NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Activity.NOTIFICATION_SERVICE);
-		notification.flags |= Notification.FLAG_AUTO_CANCEL;
-		notification.defaults = Notification.DEFAULT_ALL;
-		notificationManager.notify(0, notification);
 	}
 
 	public CaveDB getCaveDB() {
