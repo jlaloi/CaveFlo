@@ -1,21 +1,19 @@
-package com.caveflo;
+package com.caveflo.cave;
 
-import java.util.Comparator;
 
-public class Biere implements Comparator<Biere> {
+public class Biere {
 
 	private String id;
 	private String name;
 	private float degree;
 	private String status;
 	private String drunk = "";
-	
-	public Biere(){
+
+	public Biere() {
 		super();
 	}
 
-	public Biere(String id, String name, float degree, String status,
-			String drunk) {
+	public Biere(String id, String name, float degree, String status, String drunk) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -71,11 +69,4 @@ public class Biere implements Comparator<Biere> {
 	public void setDrunk(String drunk) {
 		this.drunk = drunk;
 	}
-
-
-	public int compare(Biere lhs, Biere rhs) {
-		return lhs.getName().compareTo(rhs.getName());
-	}
-
-	
 }

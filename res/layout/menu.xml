@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Single menu item 
+         Set id, icon and Title for each menu item
+    -->
+    <item android:id="@+id/menu_add_beer"
+          android:icon="@drawable/icon_more"
+          android:title="@string/addbeer" />
+    
+     <item android:id="@+id/menu_search_beer"
+          android:icon="@drawable/icon_search"
+          android:title="@string/searchbeer" />
+
+    <item android:id="@+id/menu_preferences"
+          android:icon="@drawable/icon_preferences"
+          android:title="@string/preferences" /> 
+          
+</menu>

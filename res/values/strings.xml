@@ -6,5 +6,13 @@
     <string name="tel">Tél. 02.90.78.02.25</string>
     <string name="blank"></string>
     <string name="buttonRefresh">Rafraîchir la cave</string>
-
+    <string name="addbeer">Ajouter une bière</string>
+    <string name="searchbeer">Rechercher une bière</string>
+ 	<string name="preferences">Préférence</string>
+ 	<string name="tab_cave">Cave</string>
+ 	<string name="tab_info">Info</string>
+ 	<string name="tab_news">News</string>
+ 	<string name="filtre">Filtre:</string>
+ 	<string name="clear">RAZ</string>
+ 
 </resources>

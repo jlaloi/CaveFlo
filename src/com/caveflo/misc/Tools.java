@@ -15,14 +15,14 @@ import java.util.List;
 import android.os.StrictMode;
 
 public class Tools {
-	
+
 	public static final String userAgent = "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3)";
-	
-	static{
+
+	static {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 	}
-	
+
 	public static List<String> read(File file) {
 		List<String> result = new ArrayList<String>();
 		try {
