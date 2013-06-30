@@ -55,7 +55,8 @@ public class MainActivity extends Activity implements TabListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_add_beer:
-			FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
+			getActionBar().setSelectedNavigationItem(0);
+			FragmentTransaction ft = this.getFragmentManager().beginTransaction();
 			BeerCreatePopup.newInstance().show(ft, "create");
 			return true;
 		default:
