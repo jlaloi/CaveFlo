@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
 import com.caveflo.R;
@@ -88,14 +87,12 @@ public class Cave extends Fragment {
 
 		// Create header row
 		headerRow = new TableRow(getActivity());
-		containerTable.setBackgroundColor(getResources().getColor(R.color.grey));
-		headerRow.setLayoutParams(new LayoutParams(headers.length));
-		int i = 0;
 		for (String header : headers) {
-			TextView text = new TextView(getActivity(), null, R.style.frag3HeaderCol);
+			TextView text = new TextView(getActivity());
 			text.setText(header);
-			text.setGravity(Gravity.CENTER);
-			headerRow.addView(text, i++);
+			text.setTypeface(null, Typeface.BOLD);
+			text.setPadding(4, 4, 0, 0);
+			headerRow.addView(text);
 		}
 
 		// Create all beer row
@@ -104,7 +101,7 @@ public class Cave extends Fragment {
 
 	public void initList() {
 		beerTableRows.clear();
-		for (Biere biere : caveDB.readDb(getActivity())) {
+		for (Biere biere : caveDB.readDb()) {
 			beerTableRows.add(new BiereTableRow(getActivity(), biere));
 		}
 		filterList();
@@ -114,12 +111,12 @@ public class Cave extends Fragment {
 	public void filterList() {
 		String value = textFilter.getText().toString();
 		containerTable.removeAllViews();
-		containerTable.addView(headerRow, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		containerTable.addView(headerRow);
 		for (BiereTableRow beerTableRow : beerTableRows) {
 			if (value == null || value.trim().length() == 0 || beerTableRow.getBiere().getName().toLowerCase().contains(value.toLowerCase())) {
 				String selectedFilterValue = spinnerFilter.getSelectedItem().toString();
 				if (filterDrunk[0].equals(selectedFilterValue) || (filterDrunk[1].equals(selectedFilterValue) && beerTableRow.getBiere().isDrunk()) || (filterDrunk[2].equals(selectedFilterValue) && !beerTableRow.getBiere().isDrunk())) {
-					containerTable.addView(beerTableRow, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+					containerTable.addView(beerTableRow);
 				}
 			}
 		}

@@ -43,16 +43,16 @@
 
         <TextView
             android:id="@+id/beercount"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
             android:gravity="right"
-            android:paddingTop="6dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
     </LinearLayout>
 
     <ScrollView
+        style="@style/cavelistlayout"
         android:layout_width="match_parent"
         android:layout_height="fill_parent" >
 
@@ -60,11 +60,8 @@
             android:id="@+id/containerTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:shrinkColumns="*"
-            android:stretchColumns="*" >
-        </TableLayout>
+            android:stretchColumns="*" />
     </ScrollView>
 
 </LinearLayout>

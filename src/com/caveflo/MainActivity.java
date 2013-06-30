@@ -59,6 +59,11 @@ public class MainActivity extends Activity implements TabListener {
 			FragmentTransaction ft = this.getFragmentManager().beginTransaction();
 			BeerCreatePopup.newInstance().show(ft, "create");
 			return true;
+		case R.id.menu_refresh:
+			getActionBar().setSelectedNavigationItem(0);
+			Factory.get().getCaveDB().update();
+			Factory.get().getFragmentCave().filterList();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

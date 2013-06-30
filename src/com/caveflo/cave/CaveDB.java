@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import android.app.Activity;
 import android.os.Environment;
 import android.widget.Toast;
 
@@ -37,13 +36,13 @@ public class CaveDB {
 		customBeer = new HashMap<String, Biere>();
 	}
 
-	public void shouldUpdate(Activity activity) {
+	public void shouldUpdate() {
 		if (!caveFile.exists()) {
-			update(activity);
+			update();
 		}
 	}
 
-	public void update(Activity activity) {
+	public void update() {
 		Tools.downloadFile(dlCaveFile, caveFile);
 	}
 
@@ -52,12 +51,12 @@ public class CaveDB {
 		saveUserCave();
 	}
 
-	public List<Biere> readDb(Activity activity) {
+	public List<Biere> readDb() {
 		if (db == null || db.size() == 0) {
 			loadUserCave();
 			loadCustomBeer();
 			db = new ArrayList<Biere>();
-			shouldUpdate(activity);
+			shouldUpdate();
 			// Add cave beers
 			for (String line : Tools.read(caveFile)) {
 				String[] split = line.split(fileSep);

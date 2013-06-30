@@ -28,17 +28,16 @@ public class BiereTableRow extends TableRow {
 
 		TextView name = createTextView(biere.getName(), Gravity.LEFT);
 		if (biere.isCustom()) {
-			System.out.println("Custom");
 			name.setTypeface(null, Typeface.BOLD_ITALIC);
 		}
 		TextView degree = createTextView(biere.getDegree() > 0 ? biere.getDegree() + "" : "", Gravity.CENTER);
 		rating = createTextView(biere.isDrunk() ? biere.getRating() + "" : "", Gravity.CENTER);
 		drunk = createTextView(biere.isDrunk() ? biere.getDrunk() : "", Gravity.CENTER);
 
-		addView(name, 0);
-		addView(degree, 1);
-		addView(rating, 2);
-		addView(drunk, 3);
+		addView(name);
+		addView(degree);
+		addView(rating);
+		addView(drunk);
 
 		manageBackgroundColor();
 		setOnClickListener(new BiereListener(this));
@@ -46,7 +45,7 @@ public class BiereTableRow extends TableRow {
 	}
 
 	private TextView createTextView(String value, int gravity) {
-		TextView text = new TextView(context, null, R.style.frag2TableRow);
+		TextView text = new TextView(context);
 		text.setText(value);
 		text.setGravity(gravity);
 		text.setPadding(4, 4, 0, 0);

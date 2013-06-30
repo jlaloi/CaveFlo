@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.caveflo.R;
-import com.caveflo.misc.Factory;
 
 public class Info extends Fragment {
 
@@ -23,13 +22,6 @@ public class Info extends Fragment {
 
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		Button buttonStart = (Button) getActivity().findViewById(R.id.buttonRefresh);
-		buttonStart.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Factory.get().getCaveDB().update(getActivity());
-			}
-		});
-
 		Button buttonNavigation = (Button) getActivity().findViewById(R.id.buttonNavigation);
 		buttonNavigation.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {

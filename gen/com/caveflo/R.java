@@ -36,7 +36,6 @@ public final class R {
         public static final int buttonRatingClear=0x7f080013;
         public static final int buttonRatingKo=0x7f080014;
         public static final int buttonRatingOk=0x7f080012;
-        public static final int buttonRefresh=0x7f08000d;
         public static final int containerTable=0x7f08000b;
         public static final int createbeerdegree=0x7f080003;
         public static final int createbeername=0x7f080001;
@@ -45,7 +44,8 @@ public final class R {
         public static final int filterBeer=0x7f080007;
         public static final int filterdrunkbeer=0x7f080009;
         public static final int fragmentContainer=0x7f080000;
-        public static final int menu_add_beer=0x7f08000e;
+        public static final int menu_add_beer=0x7f08000d;
+        public static final int menu_refresh=0x7f08000e;
         public static final int ratingbar=0x7f080011;
         public static final int ratingvalue=0x7f080010;
         public static final int web_view=0x7f08000f;
@@ -81,6 +81,7 @@ public final class R {
         public static final int degree_string=0x7f06001f;
         public static final int delete_beer=0x7f060020;
         public static final int delete_confirm=0x7f060021;
+        public static final int dev_url=0x7f060023;
         public static final int filter_all=0x7f060011;
         public static final int filter_drunk=0x7f060013;
         public static final int filter_todrink=0x7f060012;
@@ -98,17 +99,8 @@ public final class R {
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;
+        public static final int cavelistlayout=0x7f070003;
         public static final int defaultButton=0x7f070002;
         public static final int defaultTextView=0x7f070001;
-        public static final int frag1Col=0x7f070006;
-        public static final int frag1HeaderCol=0x7f070007;
-        public static final int frag1HeaderTableRow=0x7f070004;
-        public static final int frag1TableLayout=0x7f070003;
-        public static final int frag1TableRow=0x7f070005;
-        public static final int frag2Col=0x7f07000a;
-        public static final int frag2HeaderCol=0x7f07000b;
-        public static final int frag2TableLayout=0x7f070008;
-        public static final int frag2TableRow=0x7f070009;
-        public static final int frag3HeaderCol=0x7f07000c;
     }
 }
