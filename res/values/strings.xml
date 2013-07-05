@@ -8,9 +8,9 @@
     <string name="buttonRefresh">Rafraîchir la cave</string>
     <string name="buttonNavigation">Lancer la navigation</string>
     <string name="addbeer">Ajouter une bière</string>
-    <string name="tab_cave">Cave</string>
-    <string name="tab_info">Pratique</string>
-    <string name="tab_news">News</string>
+    <string name="tab_cave">La cave à bière</string>
+    <string name="tab_info">Infos pratiques</string>
+    <string name="tab_news">Actus du site</string>
     <string name="update_ko">Erreur lors de la mise à jour de la cave</string>
     <string name="update_ok">Mise à jour de la cave terminée!</string>
     <string name="filter_all">Toutes</string>
