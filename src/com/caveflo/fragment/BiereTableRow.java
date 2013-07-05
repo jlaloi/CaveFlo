@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TableRow;
@@ -20,6 +21,13 @@ public class BiereTableRow extends TableRow {
 	private Biere biere;
 	private Context context;
 	private TextView rating, drunk;
+	
+	public BiereTableRow(Context context) {
+	    super(context);
+	}
+	public BiereTableRow(Context context, AttributeSet attrs) {
+	    super(context, attrs);
+	}
 
 	public BiereTableRow(Context context, Biere biere) {
 		super(context);

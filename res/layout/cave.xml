@@ -13,27 +13,23 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal" >
 
-        <TextView
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/filtre"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textIsSelectable="true" />
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@null"
+            android:contentDescription="@string/addbeer"
+            android:onClick="addBeer"
+            android:src="@drawable/ic_menu_save" />
 
-        <EditText
-            android:id="@+id/filterBeer"
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
-
-        <Button
-            android:id="@+id/buttonClear"
-            style="@style/defaultButton"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:text="@string/clear" />
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@null"
+            android:contentDescription="@string/buttonRefresh"
+            android:onClick="refreshCave"
+            android:src="@drawable/ic_menu_refresh" />
 
         <Spinner
             android:id="@+id/filterdrunkbeer"
@@ -41,12 +37,19 @@
             android:layout_height="wrap_content"
             android:entries="@array/filter_biere" />
 
+        <EditText
+            android:id="@+id/filterBeerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
         <TextView
             android:id="@+id/beercount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="right"
+            android:textStyle="italic"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true" />
     </LinearLayout>

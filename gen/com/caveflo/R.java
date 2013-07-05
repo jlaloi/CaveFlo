@@ -10,92 +10,95 @@ package com.caveflo;
 public final class R {
     public static final class array {
         public static final int biere=0x7f040000;
-        public static final int filter_biere=0x7f040002;
-        public static final int rating=0x7f040001;
+        public static final int filter_biere=0x7f040001;
+        public static final int nav_menu=0x7f040002;
     }
     public static final class attr {
     }
     public static final class color {
         public static final int black=0x7f050000;
-        public static final int blue=0x7f050002;
-        public static final int drunk=0x7f050004;
+        public static final int drunk=0x7f050003;
         public static final int grey=0x7f050001;
-        public static final int white=0x7f050003;
+        public static final int white=0x7f050002;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int icon_more=0x7f020001;
-        public static final int tableborder=0x7f020002;
+        public static final int ic_drawer=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int ic_menu_refresh=0x7f020002;
+        public static final int ic_menu_save=0x7f020003;
+        public static final int tableborder=0x7f020004;
     }
     public static final class id {
-        public static final int beercount=0x7f08000a;
-        public static final int buttonClear=0x7f080008;
-        public static final int buttonCreateKo=0x7f080005;
-        public static final int buttonCreateOk=0x7f080004;
-        public static final int buttonNavigation=0x7f08000c;
-        public static final int buttonRatingClear=0x7f080013;
-        public static final int buttonRatingKo=0x7f080014;
-        public static final int buttonRatingOk=0x7f080012;
-        public static final int containerTable=0x7f08000b;
-        public static final int createbeerdegree=0x7f080003;
-        public static final int createbeername=0x7f080001;
-        public static final int degreevalue=0x7f080002;
-        public static final int dyn_layout=0x7f080006;
-        public static final int filterBeer=0x7f080007;
-        public static final int filterdrunkbeer=0x7f080009;
-        public static final int fragmentContainer=0x7f080000;
-        public static final int menu_add_beer=0x7f08000d;
-        public static final int menu_refresh=0x7f08000e;
-        public static final int ratingbar=0x7f080011;
-        public static final int ratingvalue=0x7f080010;
-        public static final int web_view=0x7f08000f;
+        public static final int action_settings=0x7f090014;
+        public static final int beercount=0x7f09000b;
+        public static final int buttonCreateKo=0x7f090007;
+        public static final int buttonCreateOk=0x7f090006;
+        public static final int buttonNavigation=0x7f09000d;
+        public static final int buttonRatingClear=0x7f090012;
+        public static final int buttonRatingKo=0x7f090013;
+        public static final int buttonRatingOk=0x7f090011;
+        public static final int containerTable=0x7f09000c;
+        public static final int content_frame=0x7f090001;
+        public static final int createbeerdegree=0x7f090005;
+        public static final int createbeername=0x7f090003;
+        public static final int degreevalue=0x7f090004;
+        public static final int drawer_layout=0x7f090000;
+        public static final int drawer_list=0x7f090002;
+        public static final int dyn_layout=0x7f090008;
+        public static final int filterBeerText=0x7f09000a;
+        public static final int filterdrunkbeer=0x7f090009;
+        public static final int ratingbar=0x7f090010;
+        public static final int ratingvalue=0x7f09000f;
+        public static final int web_view=0x7f09000e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int addbeer=0x7f030001;
         public static final int cave=0x7f030002;
-        public static final int info=0x7f030003;
-        public static final int menu=0x7f030004;
+        public static final int drawer_list_item=0x7f030003;
+        public static final int info=0x7f030004;
         public static final int news=0x7f030005;
         public static final int rating=0x7f030006;
     }
+    public static final class menu {
+        public static final int main=0x7f080000;
+    }
     public static final class string {
-        public static final int addbeer=0x7f060008;
+        public static final int action_settings=0x7f060021;
+        public static final int addbeer=0x7f060007;
         public static final int address=0x7f060002;
         public static final int app_name=0x7f060000;
-        public static final int blank=0x7f060005;
-        public static final int buttonNavigation=0x7f060007;
-        public static final int buttonRefresh=0x7f060006;
-        public static final int button_cancel=0x7f06001b;
-        public static final int button_clear=0x7f06001c;
-        public static final int button_create=0x7f060019;
-        public static final int button_validate=0x7f06001a;
-        public static final int cave_beer_degre=0x7f060015;
-        public static final int cave_beer_drunk=0x7f060017;
-        public static final int cave_beer_name=0x7f060014;
-        public static final int cave_beer_rating=0x7f060016;
-        public static final int clear=0x7f06000f;
-        public static final int count_drunk=0x7f060018;
-        public static final int create_confirm=0x7f060022;
-        public static final int create_title=0x7f06001e;
-        public static final int degree_string=0x7f06001f;
-        public static final int delete_beer=0x7f060020;
-        public static final int delete_confirm=0x7f060021;
-        public static final int dev_url=0x7f060023;
-        public static final int filter_all=0x7f060011;
-        public static final int filter_drunk=0x7f060013;
-        public static final int filter_todrink=0x7f060012;
-        public static final int filtre=0x7f06000e;
+        public static final int buttonNavigation=0x7f060006;
+        public static final int buttonRefresh=0x7f060005;
+        public static final int button_cancel=0x7f060016;
+        public static final int button_clear=0x7f060017;
+        public static final int button_validate=0x7f060015;
+        public static final int cave_beer_degre=0x7f060011;
+        public static final int cave_beer_drunk=0x7f060013;
+        public static final int cave_beer_name=0x7f060010;
+        public static final int cave_beer_rating=0x7f060012;
+        public static final int count_drunk=0x7f060014;
+        public static final int create_confirm=0x7f06001d;
+        public static final int create_title=0x7f060019;
+        public static final int degree_string=0x7f06001a;
+        public static final int delete_beer=0x7f06001b;
+        public static final int delete_confirm=0x7f06001c;
+        public static final int dev_url=0x7f06001e;
+        public static final int drawer_close=0x7f060020;
+        public static final int drawer_open=0x7f06001f;
+        public static final int filter_all=0x7f06000d;
+        public static final int filter_drunk=0x7f06000f;
+        public static final int filter_todrink=0x7f06000e;
         public static final int horaire=0x7f060001;
         public static final int navigation=0x7f060003;
-        public static final int preferences=0x7f06000a;
-        public static final int rate_string=0x7f06001d;
-        public static final int searchbeer=0x7f060009;
-        public static final int tab_cave=0x7f06000b;
-        public static final int tab_info=0x7f06000c;
-        public static final int tab_news=0x7f06000d;
+        public static final int news_url=0x7f060022;
+        public static final int rate_string=0x7f060018;
+        public static final int tab_cave=0x7f060008;
+        public static final int tab_info=0x7f060009;
+        public static final int tab_news=0x7f06000a;
         public static final int tel=0x7f060004;
-        public static final int update_ok=0x7f060010;
+        public static final int update_ko=0x7f06000b;
+        public static final int update_ok=0x7f06000c;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;

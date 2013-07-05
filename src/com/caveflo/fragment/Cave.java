@@ -2,19 +2,19 @@ package com.caveflo.fragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Fragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
@@ -37,11 +37,11 @@ public class Cave extends Fragment {
 	private String[] filterDrunk;
 	private List<BiereTableRow> beerTableRows;
 
-	public static final String layout = "cave";
 	private CaveDB caveDB;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(getResources().getIdentifier(layout, "layout", container.getContext().getPackageName()), container, false);
+		View mainView = inflater.inflate(R.layout.cave, container, false);		
+		return mainView;
 	}
 
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class Cave extends Fragment {
 			}
 		});
 
-		textFilter = (EditText) getActivity().findViewById(R.id.filterBeer);
+		textFilter = (EditText) getActivity().findViewById(R.id.filterBeerText);
 		textFilter.addTextChangedListener(new TextWatcher() {
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				if (textFilter.getText().toString().trim().length() == 0 || textFilter.getText().toString().trim().length() > 1) {
@@ -75,13 +75,6 @@ public class Cave extends Fragment {
 			}
 
 			public void afterTextChanged(Editable s) {
-			}
-		});
-		Button buttonClear = (Button) getActivity().findViewById(R.id.buttonClear);
-		buttonClear.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				textFilter.setText("");
-				filterList();
 			}
 		});
 
@@ -113,7 +106,7 @@ public class Cave extends Fragment {
 		containerTable.removeAllViews();
 		containerTable.addView(headerRow);
 		for (BiereTableRow beerTableRow : beerTableRows) {
-			if (value == null || value.trim().length() == 0 || beerTableRow.getBiere().getName().toLowerCase().contains(value.toLowerCase())) {
+			if (value == null || value.trim().length() == 0 || beerTableRow.getBiere().getName().toLowerCase(Locale.getDefault()).contains(value.toLowerCase(Locale.getDefault()))) {
 				String selectedFilterValue = spinnerFilter.getSelectedItem().toString();
 				if (filterDrunk[0].equals(selectedFilterValue) || (filterDrunk[1].equals(selectedFilterValue) && beerTableRow.getBiere().isDrunk()) || (filterDrunk[2].equals(selectedFilterValue) && !beerTableRow.getBiere().isDrunk())) {
 					containerTable.addView(beerTableRow);

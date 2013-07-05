@@ -1,6 +1,7 @@
 package com.caveflo.misc;
 
 import java.util.Comparator;
+import java.util.Locale;
 
 import android.app.Fragment;
 
@@ -33,7 +34,7 @@ public class Factory {
 		caveDB = new CaveDB();
 		biereComparator = new Comparator<Biere>() {
 			public int compare(Biere lhs, Biere rhs) {
-				return lhs.getName().toLowerCase().compareTo(rhs.getName().toLowerCase());
+				return lhs.getName().toLowerCase(Locale.getDefault()).compareTo(rhs.getName().toLowerCase(Locale.getDefault()));
 			}
 		};
 	}

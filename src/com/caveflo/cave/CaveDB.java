@@ -42,8 +42,8 @@ public class CaveDB {
 		}
 	}
 
-	public void update() {
-		Tools.downloadFile(dlCaveFile, caveFile);
+	public boolean update() {
+		return Tools.downloadFile(dlCaveFile, caveFile);
 	}
 
 	public void saveDrunk(Biere biere) {

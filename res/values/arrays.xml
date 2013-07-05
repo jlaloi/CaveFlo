@@ -7,25 +7,15 @@
         <item>@string/cave_beer_rating</item>
         <item>@string/cave_beer_drunk</item>
     </string-array>
-    <string-array name="rating">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-    </string-array>
     <string-array name="filter_biere">
         <item>@string/filter_all</item>
         <item>@string/filter_todrink</item>
         <item>@string/filter_drunk</item>
+    </string-array>
+    <string-array name="nav_menu">
+        <item>@string/tab_cave</item>
+        <item>@string/tab_news</item>
+        <item>@string/tab_info</item>
     </string-array>
 
 </resources>

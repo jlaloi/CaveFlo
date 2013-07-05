@@ -14,10 +14,9 @@ import com.caveflo.R;
 
 public class Info extends Fragment {
 
-	public static final String layout = "info";
-
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(getResources().getIdentifier(layout, "layout", container.getContext().getPackageName()), container, false);
+		View mainView = inflater.inflate(R.layout.info, container, false);		
+		return mainView;
 	}
 
 	public void onActivityCreated(Bundle savedInstanceState) {
