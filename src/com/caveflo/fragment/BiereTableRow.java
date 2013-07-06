@@ -1,5 +1,7 @@
 package com.caveflo.fragment;
 
+import java.io.Serializable;
+
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -16,17 +18,19 @@ import com.caveflo.cave.Biere;
 import com.caveflo.fragment.dialog.BeerRatingPopup;
 import com.caveflo.misc.Factory;
 
-public class BiereTableRow extends TableRow {
+public class BiereTableRow extends TableRow implements Serializable {
 
+	private static final long serialVersionUID = -4037399769129818273L;
 	private Biere biere;
 	private Context context;
 	private TextView rating, drunk;
-	
+
 	public BiereTableRow(Context context) {
-	    super(context);
+		super(context);
 	}
+
 	public BiereTableRow(Context context, AttributeSet attrs) {
-	    super(context, attrs);
+		super(context, attrs);
 	}
 
 	public BiereTableRow(Context context, Biere biere) {

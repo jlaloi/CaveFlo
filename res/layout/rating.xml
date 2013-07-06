@@ -23,6 +23,57 @@
         android:max="10"
         android:progress="5" />
 
+    <EditText
+        android:id="@+id/ratingcommentaire"
+        style="@style/cavelistlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:maxLines="3"
+        android:minLines="3"
+        android:scrollbars="vertical"
+        android:singleLine="false" />
+
+    <LinearLayout
+        android:id="@+id/dyn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="@string/daterate"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/ratingtextdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textIsSelectable="true" />
+
+        <Button
+            android:id="@+id/ratingbuttondate"
+            style="@style/defaultButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="@string/pick_date" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/dyn_layout"
         android:layout_width="match_parent"

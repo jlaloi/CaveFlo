@@ -35,5 +35,7 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_settings"></string>
     <string name="news_url">http://www.cave-flo.com/actus/</string>
+    <string name="pick_date">Changer</string>
+    <string name="daterate">Dégustation le</string>
 
 </resources>

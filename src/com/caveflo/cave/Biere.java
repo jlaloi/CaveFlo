@@ -1,11 +1,13 @@
 package com.caveflo.cave;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Biere {
+public class Biere implements Serializable {
 
+	private static final long serialVersionUID = 110072984511839423L;
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH);
 
 	private String id;
