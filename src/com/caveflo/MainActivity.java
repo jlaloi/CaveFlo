@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		Factory.get().initiateBeerDataSource(getApplicationContext());
 		content.put(getString(R.string.tab_cave), Factory.get().getFragmentCave());
 		content.put(getString(R.string.tab_news), Factory.get().getFragmentNews());
 		content.put(getString(R.string.tab_info), Factory.get().getFragmentInfo());

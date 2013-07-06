@@ -79,7 +79,7 @@ public class BeerDataSource {
 
 	public List<Beer> getAllBeer() {
 		List<Beer> beers = new ArrayList<Beer>();
-		Cursor cursor = database.query(BeerSQLiteHelper.TABLE_BEER, beerColumns, null, null, null, null, BeerSQLiteHelper.TABLE_BEER_COLUMN_NAME);
+		Cursor cursor = database.query(BeerSQLiteHelper.TABLE_BEER, beerColumns, null, null, null, null, null);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Beer beer = cursorToBeer(cursor);

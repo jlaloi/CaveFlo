@@ -25,7 +25,7 @@ public class BeerSQLiteHelper extends SQLiteOpenHelper {
 	public static final String TABLE_RATING_COLUMN_COMMENT = "comment";
 	public static final String TABLE_RATING_COLUMN_DATE = "date";
 
-	private static final String DATABASE_CREATE_BEER = "create table " + TABLE_BEER + "(" + TABLE_BEER_COLUMN_ID + " VARCHAR(20), " + TABLE_BEER_COLUMN_NAME + " VARCHAR(100)," + TABLE_BEER_COLUMN_DEGREE + " float" + TABLE_BEER_COLUMN_TYPE + " VARCHAR(100)," + TABLE_BEER_COLUMN_COUNTRY + " VARCHAR(100)," + TABLE_BEER_COLUMN_STATUS + " integer DEFAULT 1," + TABLE_BEER_COLUMN_CUSTOM + " integer DEFAULT 1 );";
+	private static final String DATABASE_CREATE_BEER = "create table " + TABLE_BEER + "(" + TABLE_BEER_COLUMN_ID + " VARCHAR(20), " + TABLE_BEER_COLUMN_NAME + " VARCHAR(100)," + TABLE_BEER_COLUMN_DEGREE + " float," + TABLE_BEER_COLUMN_TYPE + " VARCHAR(100)," + TABLE_BEER_COLUMN_COUNTRY + " VARCHAR(100)," + TABLE_BEER_COLUMN_STATUS + " integer DEFAULT 1," + TABLE_BEER_COLUMN_CUSTOM + " integer DEFAULT 1 );";
 	private static final String DATABASE_CREATE_RATING = "create table " + TABLE_RATING + "(" + TABLE_RATING_COLUMN_BEER_ID + " VARCHAR(20)," + TABLE_RATING_COLUMN_RATING + " integer" + TABLE_RATING_COLUMN_COMMENT + " text," + TABLE_RATING_COLUMN_DATE + " VARCHAR(10) );";
 
 	public BeerSQLiteHelper(Context context) {

@@ -11,14 +11,14 @@ import com.caveflo.misc.Tools;
 
 public class BeerReferential {
 
-	public static final String referentialUrl = "https://github.com/jlaloi/CaveFlo/raw/master/caveflodb.csv";
+	public static final String referentialUrl = "https://github.com/jlaloi/CaveFlo/raw/master/Referential.csv";
 	public static final String referentialSep = ";";
 	private List<Beer> beers = new ArrayList<Beer>();
 	private BeerDataSource beerDataSource;
 
-	public BeerReferential() {
+	public BeerReferential(BeerDataSource beerDataSource) {
 		beers = new ArrayList<Beer>();
-		beerDataSource = Factory.get().getBeerDataSource();
+		this.beerDataSource = beerDataSource;
 	}
 
 	public boolean update() {

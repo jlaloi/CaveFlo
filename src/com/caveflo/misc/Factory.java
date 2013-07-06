@@ -32,7 +32,6 @@ public class Factory {
 		fragmentCave = new Cave();
 		fragmentInfo = new Info();
 		fragmentNews = new News();
-		beerReferential = new BeerReferential();
 		beerComparator = new Comparator<Beer>() {
 			public int compare(Beer lhs, Beer rhs) {
 				return lhs.getName().toLowerCase(Locale.getDefault()).compareTo(rhs.getName().toLowerCase(Locale.getDefault()));
@@ -42,6 +41,8 @@ public class Factory {
 	
 	public BeerDataSource initiateBeerDataSource(Context context){
 		beerDataSource = new BeerDataSource(context);
+		beerDataSource.open();
+		beerReferential = new BeerReferential(beerDataSource);
 		beerReferential.load();
 		return beerDataSource;
 	}
