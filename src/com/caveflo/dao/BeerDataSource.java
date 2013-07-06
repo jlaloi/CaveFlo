@@ -119,6 +119,30 @@ public class BeerDataSource {
 		values.put(BeerSQLiteHelper.TABLE_RATING_COLUMN_DATE, beer.getRatingDate());
 		return values;
 	}
+	
+	public List<String> getBeerTypes(){
+		List<String> result = new ArrayList<String>();
+		Cursor cursor = database.query(true, BeerSQLiteHelper.TABLE_BEER, new String[]{BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE}, null, null, null, null, BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE,null);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			result.add(cursor.getString(0));
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return result;
+	}
+	
+	public List<String> getBeerCountries(){
+		List<String> result = new ArrayList<String>();
+		Cursor cursor = database.query(true, BeerSQLiteHelper.TABLE_BEER, new String[]{BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY}, null, null, null, null, BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY,null);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			result.add(cursor.getString(0));
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return result;
+	}
 
 	private Beer cursorToBeer(Cursor cursor) {
 		Beer beer = new Beer();

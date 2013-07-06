@@ -106,5 +106,9 @@ public class BeerReferential {
 	public void deleteRating(Beer beer) {
 		beerDataSource.deleteRating(beer);
 	}
+	
+	public List<String> getBeerTypes(){
+		return beerDataSource.getBeerTypes();
+	}
 
 }

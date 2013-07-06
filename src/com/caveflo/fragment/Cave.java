@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
@@ -30,10 +31,10 @@ public class Cave extends Fragment {
 	private TableLayout containerTable;
 	private EditText textFilter;
 	private TextView countBeer;
-	private Spinner spinnerFilter;
+	private Spinner spinnerFilter, spinnerTypeFilter;
 	private TableRow headerRow;
 	private String[] headers;
-	private String[] filterDrunk;
+	private String[] filterBeerName, filterBeerTypes;
 	private List<BiereTableRow> beerTableRows;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,17 +48,21 @@ public class Cave extends Fragment {
 		containerTable = (TableLayout) getActivity().findViewById(R.id.containerTable);
 		countBeer = (TextView) getActivity().findViewById(R.id.beercount);
 		headers = getResources().getStringArray(R.array.biere);
-		filterDrunk = new String[] { getString(R.string.filter_all), getString(R.string.filter_drunk), getString(R.string.filter_todrink) };
+		filterBeerName = new String[] { getString(R.string.filter_all), getString(R.string.filter_drunk), getString(R.string.filter_todrink) };
+		filterBeerTypes = new String[] { getString(R.string.filter_all) };
 
+		spinnerTypeFilter = (Spinner) getActivity().findViewById(R.id.filtertype);
 		spinnerFilter = (Spinner) getActivity().findViewById(R.id.filterdrunkbeer);
-		spinnerFilter.setOnItemSelectedListener(new OnItemSelectedListener() {
+		OnItemSelectedListener filterListener = new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				filterList();
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
-		});
+		};
+		spinnerFilter.setOnItemSelectedListener(filterListener);
+		spinnerTypeFilter.setOnItemSelectedListener(filterListener);
 
 		textFilter = (EditText) getActivity().findViewById(R.id.filterBeerText);
 		textFilter.addTextChangedListener(new TextWatcher() {
@@ -94,19 +99,38 @@ public class Cave extends Fragment {
 		for (Beer biere : Factory.get().getBeerReferential().getBeers()) {
 			beerTableRows.add(new BiereTableRow(getActivity(), biere));
 		}
+		initTypeFilter();
 		filterList();
 		showCount();
 	}
 
+	public void initTypeFilter() {
+		List<String> beerTypesList = Factory.get().getBeerReferential().getBeerTypes();
+		String[] filterBeerTypes = new String[beerTypesList.size() + 1];
+		filterBeerTypes[0] = getString(R.string.filter_all);
+		int i = 1;
+		for (String type : beerTypesList) {
+			filterBeerTypes[i++] = type;
+		}
+		ArrayAdapter<String> adapterBeerType = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, filterBeerTypes);
+		spinnerTypeFilter.setAdapter(adapterBeerType);
+	}
+
 	public void filterList() {
-		String value = textFilter.getText().toString();
+		String nameFilter = textFilter.getText().toString();
 		containerTable.removeAllViews();
 		containerTable.addView(headerRow);
 		for (BiereTableRow beerTableRow : beerTableRows) {
-			if (value == null || value.trim().length() == 0 || beerTableRow.getBiere().getName().toLowerCase(Locale.getDefault()).contains(value.toLowerCase(Locale.getDefault()))) {
-				String selectedFilterValue = spinnerFilter.getSelectedItem().toString();
-				if (filterDrunk[0].equals(selectedFilterValue) || (filterDrunk[1].equals(selectedFilterValue) && beerTableRow.getBiere().isDrunk()) || (filterDrunk[2].equals(selectedFilterValue) && !beerTableRow.getBiere().isDrunk())) {
-					containerTable.addView(beerTableRow);
+			// Filtering on name
+			if (nameFilter == null || nameFilter.trim().length() == 0 || beerTableRow.getBiere().getName().toLowerCase(Locale.getDefault()).contains(nameFilter.toLowerCase(Locale.getDefault()))) {
+				String selectedFilterName = spinnerFilter.getSelectedItem().toString();
+				String selectedFilterType = spinnerTypeFilter.getSelectedItem().toString();
+				// Filtering on drunk
+				if (filterBeerName[0].equals(selectedFilterName) || (filterBeerName[1].equals(selectedFilterName) && beerTableRow.getBiere().isDrunk()) || (filterBeerName[2].equals(selectedFilterName) && !beerTableRow.getBiere().isDrunk())) {
+					// Filtering on type
+					if (filterBeerTypes[0].equals(selectedFilterType) || selectedFilterType.equals(beerTableRow.getBiere().getType())) {
+						containerTable.addView(beerTableRow);
+					}
 				}
 			}
 		}
