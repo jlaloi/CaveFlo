@@ -60,6 +60,31 @@ public class Tools {
 		}
 	}
 
+	public static List<String> downloadFile(String url) {
+		List<String> result = new ArrayList<String>();
+		BufferedInputStream in = null;
+		try {
+			HttpURLConnection urlc = (HttpURLConnection) new URL(url.replace(" ", "%20")).openConnection();
+			urlc.setRequestProperty("User-Agent", userAgent);
+			urlc.connect();
+			in = new BufferedInputStream(urlc.getInputStream());
+			byte data[] = new byte[1024];
+			int count;
+			while ((count = in.read(data, 0, 1024)) != -1) {
+				result.add(new String(data, 0, count));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				in.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	public static boolean downloadFile(String url, File file) {
 		Boolean result = false;
 		BufferedInputStream in = null;

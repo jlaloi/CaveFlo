@@ -21,8 +21,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.caveflo.R;
-import com.caveflo.cave.Biere;
-import com.caveflo.cave.CaveDB;
+import com.caveflo.dao.Beer;
 import com.caveflo.misc.Factory;
 
 public class Cave extends Fragment {
@@ -36,7 +35,6 @@ public class Cave extends Fragment {
 	private String[] filterDrunk;
 	private List<BiereTableRow> beerTableRows;
 
-	private CaveDB caveDB;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View mainView = inflater.inflate(R.layout.cave, container, false);		
@@ -46,7 +44,6 @@ public class Cave extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		beerTableRows = new ArrayList<BiereTableRow>();
-		caveDB = Factory.get().getCaveDB();
 		containerTable = (TableLayout) getActivity().findViewById(R.id.containerTable);
 		countBeer = (TextView) getActivity().findViewById(R.id.beercount);
 		headers = getResources().getStringArray(R.array.biere);
@@ -93,7 +90,7 @@ public class Cave extends Fragment {
 
 	public void initList() {
 		beerTableRows.clear();
-		for (Biere biere : caveDB.readDb()) {
+		for (Beer biere : Factory.get().getBeerReferential().getBeers()) {
 			beerTableRows.add(new BiereTableRow(getActivity(), biere));
 		}
 		filterList();

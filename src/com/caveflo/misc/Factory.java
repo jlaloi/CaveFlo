@@ -4,9 +4,11 @@ import java.util.Comparator;
 import java.util.Locale;
 
 import android.app.Fragment;
+import android.content.Context;
 
-import com.caveflo.cave.Biere;
-import com.caveflo.cave.CaveDB;
+import com.caveflo.dao.Beer;
+import com.caveflo.dao.BeerDataSource;
+import com.caveflo.dao.BeerReferential;
 import com.caveflo.fragment.Cave;
 import com.caveflo.fragment.Info;
 import com.caveflo.fragment.News;
@@ -22,26 +24,28 @@ public class Factory {
 	private Cave fragmentCave;
 	private Fragment fragmentInfo;
 	private Fragment fragmentNews;
-
-	private CaveDB caveDB;
-
-	private Comparator<Biere> biereComparator;
+	private BeerDataSource beerDataSource;
+	private BeerReferential beerReferential;
+	private Comparator<Beer> beerComparator;
 
 	public Factory() {
 		fragmentCave = new Cave();
 		fragmentInfo = new Info();
 		fragmentNews = new News();
-		caveDB = new CaveDB();
-		biereComparator = new Comparator<Biere>() {
-			public int compare(Biere lhs, Biere rhs) {
+		beerReferential = new BeerReferential();
+		beerComparator = new Comparator<Beer>() {
+			public int compare(Beer lhs, Beer rhs) {
 				return lhs.getName().toLowerCase(Locale.getDefault()).compareTo(rhs.getName().toLowerCase(Locale.getDefault()));
 			}
 		};
 	}
-
-	public CaveDB getCaveDB() {
-		return caveDB;
+	
+	public BeerDataSource initiateBeerDataSource(Context context){
+		beerDataSource = new BeerDataSource(context);
+		beerReferential.load();
+		return beerDataSource;
 	}
+
 
 	public static Factory getInstance() {
 		return instance;
@@ -59,7 +63,16 @@ public class Factory {
 		return fragmentNews;
 	}
 
-	public Comparator<Biere> getBiereComparator() {
-		return biereComparator;
+	public BeerDataSource getBeerDataSource() {
+		return beerDataSource;
 	}
+
+	public BeerReferential getBeerReferential() {
+		return beerReferential;
+	}
+
+	public Comparator<Beer> getBeerComparator() {
+		return beerComparator;
+	}
+
 }

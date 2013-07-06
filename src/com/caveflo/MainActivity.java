@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void refreshCave(View v){
-		if(Factory.get().getCaveDB().update()){
+		if(Factory.get().getBeerReferential().update()){
 			Factory.get().getFragmentCave().filterList();
 			Toast.makeText(getBaseContext(), getString(R.string.update_ok), Toast.LENGTH_SHORT).show();
 		}else{

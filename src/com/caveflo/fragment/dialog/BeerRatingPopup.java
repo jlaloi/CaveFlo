@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 
 	private BiereTableRow biereTableRow;
 	private TextView textProgress, textDate;
+	private EditText comment;
 	private SeekBar ratingBar;
 	private int year, month, day;
 
@@ -46,9 +48,10 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 
 		textDate = (TextView) v.findViewById(R.id.ratingtextdate);
 		ratingBar = (SeekBar) v.findViewById(R.id.ratingbar);
+		comment = (EditText) v.findViewById(R.id.ratingcommentaire);
 		if (biereTableRow.getBiere().isDrunk()) {
 			ratingBar.setProgress(biereTableRow.getBiere().getRating());
-			String[] split = biereTableRow.getBiere().getDrunk().split(dateSep);
+			String[] split = biereTableRow.getBiere().getRatingDate().split(dateSep);
 			year = Integer.valueOf(split[2]);
 			month = Integer.valueOf(split[1]);
 			day = Integer.valueOf(split[0]);
@@ -74,8 +77,9 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 		Button buttonOk = (Button) v.findViewById(R.id.buttonRatingOk);
 		buttonOk.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				biereTableRow.getBiere().setDrunk(textDate.getText().toString());
+				biereTableRow.getBiere().setRatingDate(textDate.getText().toString());
 				biereTableRow.getBiere().setRating(ratingBar.getProgress());
+				biereTableRow.getBiere().setComment(comment.getText().toString());
 				biereTableRow.updateDrunk();
 				dismiss();
 			}
@@ -83,7 +87,8 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 		Button buttonClear = (Button) v.findViewById(R.id.buttonRatingClear);
 		buttonClear.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				biereTableRow.getBiere().setDrunk("");
+				biereTableRow.getBiere().setRatingDate("");
+				biereTableRow.getBiere().setComment("");
 				biereTableRow.updateDrunk();
 				dismiss();
 			}

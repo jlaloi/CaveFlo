@@ -14,16 +14,16 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.caveflo.R;
-import com.caveflo.cave.Biere;
+import com.caveflo.dao.Beer;
 import com.caveflo.fragment.dialog.BeerRatingPopup;
 import com.caveflo.misc.Factory;
 
 public class BiereTableRow extends TableRow implements Serializable {
 
 	private static final long serialVersionUID = -4037399769129818273L;
-	private Biere biere;
+	private Beer biere;
 	private Context context;
-	private TextView rating, drunk;
+	private TextView rating, ratingDate;
 
 	public BiereTableRow(Context context) {
 		super(context);
@@ -33,7 +33,7 @@ public class BiereTableRow extends TableRow implements Serializable {
 		super(context, attrs);
 	}
 
-	public BiereTableRow(Context context, Biere biere) {
+	public BiereTableRow(Context context, Beer biere) {
 		super(context);
 		this.biere = biere;
 		this.context = context;
@@ -44,12 +44,12 @@ public class BiereTableRow extends TableRow implements Serializable {
 		}
 		TextView degree = createTextView(biere.getDegree() > 0 ? biere.getDegree() + "" : "", Gravity.CENTER);
 		rating = createTextView(biere.isDrunk() ? biere.getRating() + "" : "", Gravity.CENTER);
-		drunk = createTextView(biere.isDrunk() ? biere.getDrunk() : "", Gravity.CENTER);
+		ratingDate = createTextView(biere.isDrunk() ? biere.getRatingDate() : "", Gravity.CENTER);
 
 		addView(name);
 		addView(degree);
 		addView(rating);
-		addView(drunk);
+		addView(ratingDate);
 
 		manageBackgroundColor();
 		setOnClickListener(new BiereListener(this));
@@ -79,7 +79,7 @@ public class BiereTableRow extends TableRow implements Serializable {
 					public void onClick(DialogInterface dialog, int which) {
 						switch (which) {
 						case DialogInterface.BUTTON_POSITIVE:
-							Factory.get().getCaveDB().deleteCustomBeer(biere.getId());
+							Factory.get().getBeerReferential().deleteBeer(biere);
 							Factory.get().getFragmentCave().initList();
 							dialog.dismiss();
 							break;
@@ -112,20 +112,20 @@ public class BiereTableRow extends TableRow implements Serializable {
 
 	}
 
-	public Biere getBiere() {
+	public Beer getBiere() {
 		return biere;
 	}
 
 	public void updateDrunk() {
 		if (biere.isDrunk()) {
 			rating.setText(biere.getRating() + "");
-			drunk.setText(biere.getDrunk());
+			ratingDate.setText(biere.getRatingDate());
 		} else {
 			rating.setText("");
-			drunk.setText("");
+			ratingDate.setText("");
 		}
 		Factory.get().getFragmentCave().showCount();
-		Factory.get().getCaveDB().saveDrunk(biere);
+		Factory.get().getBeerReferential().saveRating(biere);
 		manageBackgroundColor();
 	}
 

@@ -51,7 +51,8 @@ public class BeerCreatePopup extends DialogFragment {
 		Button buttonOk = (Button) v.findViewById(R.id.buttonCreateOk);
 		buttonOk.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Factory.get().getCaveDB().addCustomBeer(beerName.getText().toString(), getDegree());
+				// @TODO
+				Factory.get().getBeerReferential().createCustomBeer(beerName.getText().toString(), getDegree(), "", "");
 				Factory.get().getFragmentCave().initList();
 				dismiss();
 			}
