@@ -62,16 +62,15 @@ public class Tools {
 
 	public static List<String> downloadFile(String url) {
 		List<String> result = new ArrayList<String>();
-		BufferedInputStream in = null;
+		BufferedReader in = null;
 		try {
 			HttpURLConnection urlc = (HttpURLConnection) new URL(url.replace(" ", "%20")).openConnection();
 			urlc.setRequestProperty("User-Agent", userAgent);
 			urlc.connect();
-			in = new BufferedInputStream(urlc.getInputStream());
-			byte data[] = new byte[1024];
-			int count;
-			while ((count = in.read(data, 0, 1024)) != -1) {
-				result.add(new String(data, 0, count));
+			in = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				result.add(line.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+import android.util.Log;
+
 import com.caveflo.misc.Factory;
 import com.caveflo.misc.Tools;
 
@@ -34,18 +36,23 @@ public class BeerReferential {
 
 	private void updateFromLines(List<String> lines) {
 		for (String line : lines) {
-			String[] split = line.split(referentialSep);
-			if (split.length > 6) {
-				String id = split[0];
-				String name = split[1];
-				Float degree = Float.valueOf(split[2]);
-				String type = split[3];
-				String country = split[4];
-				int status = Integer.valueOf(split[5]);
-				int custom = Integer.valueOf(split[6]);
-				if (beerDataSource.updateBeer(id, name, degree, type, country, status, custom) == -1) {
-					beerDataSource.createBeer(id, name, degree, type, country, status, custom);
+			try {
+				String[] split = line.split(referentialSep);
+				if (split.length > 6) {
+					String id = split[0];
+					String name = split[1];
+					Float degree = Float.valueOf(split[2]);
+					String type = split[3];
+					String country = split[4];
+					int status = Integer.valueOf(split[5]);
+					int custom = Integer.valueOf(split[6]);
+					if (beerDataSource.updateBeer(id, name, degree, type, country, status, custom) == -1) {
+						beerDataSource.createBeer(id, name, degree, type, country, status, custom);
+					}
 				}
+			} catch (Exception e) {
+				Log.e("LINE REFRESH", line, e);
+				e.printStackTrace();
 			}
 		}
 		load();
@@ -73,8 +80,8 @@ public class BeerReferential {
 		add(beer);
 		return beer;
 	}
-	
-	private void add(Beer beer){
+
+	private void add(Beer beer) {
 		beers.add(beer);
 		Collections.sort(beers, Factory.get().getBeerComparator());
 	}
@@ -89,11 +96,12 @@ public class BeerReferential {
 		beers.remove(beer);
 	}
 
-	public void saveRating(Beer beer){
-		if(beerDataSource.updateRating(beer) == -1){
+	public void saveRating(Beer beer) {
+		if (beerDataSource.updateRating(beer) == -1) {
 			beerDataSource.createRating(beer);
 		}
 	}
+
 	public void deleteRating(Beer beer) {
 		beerDataSource.deleteRating(beer);
 	}
