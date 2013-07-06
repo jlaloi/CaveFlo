@@ -72,7 +72,6 @@ public class Tools {
 			in = new BufferedReader(new InputStreamReader(urlc.getInputStream(), "UTF8"));
 			String line = null;
 			while ((line = in.readLine()) != null) {
-				System.out.println(line);
 				result.add(line.toString());
 			}
 		} catch (Exception e) {
