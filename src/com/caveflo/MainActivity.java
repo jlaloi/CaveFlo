@@ -16,9 +16,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.caveflo.fragment.dialog.BeerCreatePopup;
+import com.caveflo.misc.ASynchUpdate;
 import com.caveflo.misc.Factory;
 
 public class MainActivity extends Activity {
@@ -64,8 +64,8 @@ public class MainActivity extends Activity {
 		});
 		setContent(0);
 	}
-	
-	private void setContent(int fragment){
+
+	private void setContent(int fragment) {
 		String[] tabs = getResources().getStringArray(R.array.nav_menu);
 		mTitle = tabs[fragment];
 		Bundle data = new Bundle();
@@ -100,19 +100,14 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	public void addBeer(View v) {
 		FragmentTransaction ft = this.getFragmentManager().beginTransaction();
 		BeerCreatePopup.newInstance().show(ft, "create");
 	}
-	
-	public void refreshCave(View v){
-		if(Factory.get().getBeerReferential().update()){
-			Factory.get().getFragmentCave().filterList();
-			Toast.makeText(getBaseContext(), getString(R.string.update_ok), Toast.LENGTH_SHORT).show();
-		}else{
-			Toast.makeText(getBaseContext(), getString(R.string.update_ko), Toast.LENGTH_SHORT).show();
-		}
+
+	public void refreshCave(View v) {
+		new ASynchUpdate(getApplicationContext()).execute();
 	}
 
 }

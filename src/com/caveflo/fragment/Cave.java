@@ -36,9 +36,8 @@ public class Cave extends Fragment {
 	private String[] filterDrunk;
 	private List<BiereTableRow> beerTableRows;
 
-
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View mainView = inflater.inflate(R.layout.cave, container, false);		
+		View mainView = inflater.inflate(R.layout.cave, container, false);
 		return mainView;
 	}
 
@@ -80,7 +79,7 @@ public class Cave extends Fragment {
 		for (String header : headers) {
 			TextView text = new TextView(getActivity());
 			text.setText(header);
-			text.setGravity( Gravity.CENTER);
+			text.setGravity(Gravity.CENTER);
 			text.setTypeface(null, Typeface.BOLD);
 			text.setPadding(4, 4, 0, 0);
 			headerRow.addView(text);

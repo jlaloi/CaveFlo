@@ -62,6 +62,7 @@ public class BeerReferential {
 		beers.clear();
 		beers = beerDataSource.getAllBeerWithRating();
 		Collections.sort(beers, Factory.get().getBeerComparator());
+		Log.i("BEER DB", "Count: " + beers.size());
 		return beers;
 	}
 

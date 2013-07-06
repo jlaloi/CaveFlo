@@ -96,8 +96,8 @@ public class Beer implements Serializable {
 	public void setRatingDate(String date) {
 		this.rating_date = date;
 	}
-	
-	public boolean isDrunk(){
+
+	public boolean isDrunk() {
 		return rating_date != null && rating_date.trim().length() > 0;
 	}
 

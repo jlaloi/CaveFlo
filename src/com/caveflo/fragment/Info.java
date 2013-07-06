@@ -15,7 +15,7 @@ import com.caveflo.R;
 public class Info extends Fragment {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View mainView = inflater.inflate(R.layout.info, container, false);		
+		View mainView = inflater.inflate(R.layout.info, container, false);
 		return mainView;
 	}
 

@@ -130,7 +130,6 @@ public class BeerDataSource {
 		beer.setStatus(cursor.getInt(5));
 		beer.setCustom(cursor.getInt(6));
 		if (cursor.getColumnCount() > 7) {
-			System.out.println("###" + beer.getId());
 			beer.setRating(cursor.getInt(7));
 			beer.setRatingDate(cursor.getString(8));
 			beer.setComment(cursor.getString(9));

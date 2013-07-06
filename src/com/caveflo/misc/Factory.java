@@ -38,15 +38,17 @@ public class Factory {
 			}
 		};
 	}
-	
-	public BeerDataSource initiateBeerDataSource(Context context){
+
+	public BeerDataSource initiateBeerDataSource(Context context) {
 		beerDataSource = new BeerDataSource(context);
 		beerDataSource.open();
 		beerReferential = new BeerReferential(beerDataSource);
 		beerReferential.load();
+		if (beerReferential.getBeers().size() == 0) {
+			new ASynchUpdate(context).execute();
+		}
 		return beerDataSource;
 	}
-
 
 	public static Factory getInstance() {
 		return instance;

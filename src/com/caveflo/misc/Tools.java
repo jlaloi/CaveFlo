@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.StrictMode;
+import android.util.Log;
 
 public class Tools {
 
@@ -61,15 +62,17 @@ public class Tools {
 	}
 
 	public static List<String> downloadFile(String url) {
+		Log.i("Download", "Downloading " + url);
 		List<String> result = new ArrayList<String>();
 		BufferedReader in = null;
 		try {
 			HttpURLConnection urlc = (HttpURLConnection) new URL(url.replace(" ", "%20")).openConnection();
 			urlc.setRequestProperty("User-Agent", userAgent);
 			urlc.connect();
-			in = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(urlc.getInputStream(), "UTF8"));
 			String line = null;
 			while ((line = in.readLine()) != null) {
+				System.out.println(line);
 				result.add(line.toString());
 			}
 		} catch (Exception e) {
@@ -85,6 +88,7 @@ public class Tools {
 	}
 
 	public static boolean downloadFile(String url, File file) {
+		Log.i("Download", "Downloading " + url + " to " + file.getName());
 		Boolean result = false;
 		BufferedInputStream in = null;
 		FileOutputStream fout = null;

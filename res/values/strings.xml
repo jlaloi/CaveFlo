@@ -13,6 +13,7 @@
     <string name="tab_news">Actus du site</string>
     <string name="update_ko">Erreur lors de la mise à jour de la cave</string>
     <string name="update_ok">Mise à jour de la cave terminée!</string>
+    <string name="update_inprogress">Mise à jour de la cave en cours...</string>
     <string name="filter_all">Toutes</string>
     <string name="filter_todrink">A goûter</string>
     <string name="filter_drunk">Goûtées</string>
