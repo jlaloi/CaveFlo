@@ -55,6 +55,7 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 			year = Integer.valueOf(split[2]);
 			month = Integer.valueOf(split[1]);
 			day = Integer.valueOf(split[0]);
+			comment.setText(biereTableRow.getBiere().getComment());
 		} else {
 			final Calendar c = Calendar.getInstance();
 			year = c.get(Calendar.YEAR);

@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +80,7 @@ public class Cave extends Fragment {
 		for (String header : headers) {
 			TextView text = new TextView(getActivity());
 			text.setText(header);
+			text.setGravity( Gravity.CENTER);
 			text.setTypeface(null, Typeface.BOLD);
 			text.setPadding(4, 4, 0, 0);
 			headerRow.addView(text);

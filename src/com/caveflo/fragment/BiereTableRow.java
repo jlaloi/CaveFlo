@@ -43,10 +43,12 @@ public class BiereTableRow extends TableRow implements Serializable {
 			name.setTypeface(null, Typeface.BOLD_ITALIC);
 		}
 		TextView degree = createTextView(biere.getDegree() > 0 ? biere.getDegree() + "" : "", Gravity.CENTER);
+		TextView type = createTextView(biere.getType(), Gravity.LEFT);
 		rating = createTextView(biere.isDrunk() ? biere.getRating() + "" : "", Gravity.CENTER);
 		ratingDate = createTextView(biere.isDrunk() ? biere.getRatingDate() : "", Gravity.CENTER);
 
 		addView(name);
+		addView(type);
 		addView(degree);
 		addView(rating);
 		addView(ratingDate);

@@ -15,9 +15,9 @@ public class BeerDataSource {
 	private BeerSQLiteHelper dbHelper;
 	private String[] beerColumns = { BeerSQLiteHelper.TABLE_BEER_COLUMN_ID, BeerSQLiteHelper.TABLE_BEER_COLUMN_NAME, BeerSQLiteHelper.TABLE_BEER_COLUMN_DEGREE, BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE, BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY, BeerSQLiteHelper.TABLE_BEER_COLUMN_STATUS, BeerSQLiteHelper.TABLE_BEER_COLUMN_CUSTOM };
 
-	private static final String selectCols = BeerSQLiteHelper.TABLE_BEER_COLUMN_ID + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_NAME + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_DEGREE + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_STATUS + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_CUSTOM + ", b." + BeerSQLiteHelper.TABLE_RATING_COLUMN_RATING + ", b."
+	private static final String selectCols = "a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_ID + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_NAME + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_DEGREE + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_STATUS + ", a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_CUSTOM + ", b." + BeerSQLiteHelper.TABLE_RATING_COLUMN_RATING + ", b."
 			+ BeerSQLiteHelper.TABLE_RATING_COLUMN_DATE + ", b." + BeerSQLiteHelper.TABLE_RATING_COLUMN_COMMENT;
-	private static final String selectQuery = "SELECT " + selectCols + " FROM " + BeerSQLiteHelper.TABLE_BEER + " a INNER JOIN " + BeerSQLiteHelper.TABLE_RATING + " b ON a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_ID + "=b." + BeerSQLiteHelper.TABLE_RATING_COLUMN_BEER_ID;
+	private static final String selectQuery = "SELECT " + selectCols + " FROM " + BeerSQLiteHelper.TABLE_BEER + " a LEFT JOIN " + BeerSQLiteHelper.TABLE_RATING + " b ON a." + BeerSQLiteHelper.TABLE_BEER_COLUMN_ID + "=b." + BeerSQLiteHelper.TABLE_RATING_COLUMN_BEER_ID;
 
 	public BeerDataSource(Context context) {
 		dbHelper = new BeerSQLiteHelper(context);
@@ -44,7 +44,7 @@ public class BeerDataSource {
 		Beer beer = getBeer(id);
 		return beer;
 	}
-	
+
 	public long updateBeer(String id, String name, float degree, String type, String country, int status, int custom) {
 		ContentValues values = new ContentValues();
 		values.put(BeerSQLiteHelper.TABLE_BEER_COLUMN_ID, id);
@@ -54,11 +54,11 @@ public class BeerDataSource {
 		values.put(BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY, country);
 		values.put(BeerSQLiteHelper.TABLE_BEER_COLUMN_STATUS, status);
 		values.put(BeerSQLiteHelper.TABLE_BEER_COLUMN_CUSTOM, custom);
-		return database.update(BeerSQLiteHelper.TABLE_BEER, values, BeerSQLiteHelper.TABLE_BEER_COLUMN_ID + "=?", new String[] {id });
+		return database.update(BeerSQLiteHelper.TABLE_BEER, values, BeerSQLiteHelper.TABLE_BEER_COLUMN_ID + "=?", new String[] { id });
 	}
 
 	public long updateBeer(Beer beer) {
-		return updateBeer(beer.getId(),beer.getName(),beer.getDegree(),beer.getType(),beer.getCountry(),beer.getStatus(),beer.getCustom() );
+		return updateBeer(beer.getId(), beer.getName(), beer.getDegree(), beer.getType(), beer.getCountry(), beer.getStatus(), beer.getCustom());
 	}
 
 	public void deleteBeer(Beer beer) {
@@ -92,7 +92,8 @@ public class BeerDataSource {
 
 	public List<Beer> getAllBeerWithRating() {
 		List<Beer> beers = new ArrayList<Beer>();
-		Cursor cursor = database.rawQuery(selectQuery + " ORDER BY " + BeerSQLiteHelper.TABLE_BEER_COLUMN_NAME, new String[] {});
+		Cursor cursor = database.rawQuery(selectQuery, null);
+		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Beer beer = cursorToBeer(cursor);
 			beers.add(beer);
@@ -128,7 +129,8 @@ public class BeerDataSource {
 		beer.setCountry(cursor.getString(4));
 		beer.setStatus(cursor.getInt(5));
 		beer.setCustom(cursor.getInt(6));
-		if (cursor.getColumnCount() > 5) {
+		if (cursor.getColumnCount() > 7) {
+			System.out.println("###" + beer.getId());
 			beer.setRating(cursor.getInt(7));
 			beer.setRatingDate(cursor.getString(8));
 			beer.setComment(cursor.getString(9));

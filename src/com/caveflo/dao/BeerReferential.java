@@ -46,7 +46,7 @@ public class BeerReferential {
 					String country = split[4];
 					int status = Integer.valueOf(split[5]);
 					int custom = Integer.valueOf(split[6]);
-					if (beerDataSource.updateBeer(id, name, degree, type, country, status, custom) == -1) {
+					if (beerDataSource.updateBeer(id, name, degree, type, country, status, custom) == 0) {
 						beerDataSource.createBeer(id, name, degree, type, country, status, custom);
 					}
 				}
@@ -60,7 +60,7 @@ public class BeerReferential {
 
 	public List<Beer> load() {
 		beers.clear();
-		beers = beerDataSource.getAllBeer();
+		beers = beerDataSource.getAllBeerWithRating();
 		Collections.sort(beers, Factory.get().getBeerComparator());
 		return beers;
 	}
@@ -97,7 +97,7 @@ public class BeerReferential {
 	}
 
 	public void saveRating(Beer beer) {
-		if (beerDataSource.updateRating(beer) == -1) {
+		if (beerDataSource.updateRating(beer) == 0) {
 			beerDataSource.createRating(beer);
 		}
 	}

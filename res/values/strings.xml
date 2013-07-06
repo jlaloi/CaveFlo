@@ -17,6 +17,7 @@
     <string name="filter_todrink">A goûter</string>
     <string name="filter_drunk">Goûtées</string>
     <string name="cave_beer_name">Nom</string>
+    <string name="cave_beer_type">Robe</string>
     <string name="cave_beer_degre">Degré</string>
     <string name="cave_beer_rating">Note</string>
     <string name="cave_beer_drunk">Goûtée</string>
