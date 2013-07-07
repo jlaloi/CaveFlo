@@ -59,7 +59,7 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 			comment.setText(biereTableRow.getBeer().getComment());
 		} else {
 			final Calendar c = Calendar.getInstance();
-			year = c.get(Calendar.YEAR);
+			year = c.get(Calendar.YEAR) % 2000;
 			month = c.get(Calendar.MONTH);
 			day = c.get(Calendar.DAY_OF_MONTH);
 		}
@@ -135,11 +135,11 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			brp = (BeerRatingPopup) getArguments().getSerializable(beerRatingPopupArg);
-			return new DatePickerDialog(getActivity(), this, brp.getYear(), brp.getMonth(), brp.getDay());
+			return new DatePickerDialog(getActivity(), this, brp.getYear() >= 2000 ? brp.getYear() : brp.getYear() + 2000, brp.getMonth(), brp.getDay());
 		}
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
-			brp.setDate(year, month, day);
+			brp.setDate(year % 2000, month, day);
 		}
 	}
 

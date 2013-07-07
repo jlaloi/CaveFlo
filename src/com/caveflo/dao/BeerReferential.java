@@ -34,20 +34,46 @@ public class BeerReferential {
 		updateFromLines(lines);
 	}
 
+	public void updateRating(File file) {
+		List<String> lines = Tools.read(file);
+		updateRatingFromLines(lines);
+	}
+
 	private void updateFromLines(List<String> lines) {
 		for (String line : lines) {
 			try {
 				String[] split = line.split(referentialSep);
-				if (split.length > 6) {
+				String type = "";
+				String country = "";
+				int status = 1;
+				int custom = 1;
+				Float degree = 0f;
+				if (split.length > 1) {
 					String id = split[0];
-					String name = split[1];
-					Float degree = Float.valueOf(split[2]);
-					String type = split[3];
-					String country = split[4];
-					int status = Integer.valueOf(split[5]);
-					int custom = Integer.valueOf(split[6]);
-					if (beerDataSource.updateBeer(id, name, degree, type, country, status, custom) == 0) {
-						beerDataSource.createBeer(id, name, degree, type, country, status, custom);
+					Beer beer = getBeer(id);
+					if (beer == null) {
+						String name = split[1];
+						if (split.length > 2) {
+							degree = Float.valueOf(split[2]);
+							if (split.length > 3) {
+								type = split[3];
+								if (split.length > 4) {
+									country = split[4];
+									if (split.length > 5) {
+										status = Integer.valueOf(split[5]);
+										if (split.length > 6) {
+											custom = Integer.valueOf(split[6]);
+										}
+									}
+								}
+							}
+						}
+						if (beerDataSource.updateBeer(id, name, degree, type, country, status, custom) == 0) {
+							beerDataSource.createBeer(id, name, degree, type, country, status, custom);
+						}
+						Log.i("Load beer", "Beer created, ID: " + id + ", name: " + name);
+					} else {
+						Log.i("Load beer", "Beer already exists, ID: " + id);
 					}
 				}
 			} catch (Exception e) {
@@ -56,6 +82,45 @@ public class BeerReferential {
 			}
 		}
 		load();
+	}
+
+	private void updateRatingFromLines(List<String> lines) {
+		for (String line : lines) {
+			try {
+				String[] split = line.split(referentialSep);
+				if (split.length > 2) {
+					String id = split[0];
+					Beer beer = getBeer(id);
+					if (beer != null) {
+						beer.setRatingDate(split[1]);
+						beer.setRating(Integer.valueOf(split[2]));
+						if (split.length > 3) {
+							beer.setComment(split[3]);
+						}
+						if (beerDataSource.updateRating(beer) == 0) {
+							beerDataSource.createRating(beer);
+						}
+						Log.i("Load rating", "Beer rating updated, ID: " + id);
+					} else {
+						Log.i("Load rating", "Beer not found, ID: " + id);
+					}
+				}
+			} catch (Exception e) {
+				Log.e("Load rating from file", "Error while parsing " + line, e);
+			}
+		}
+		load();
+	}
+
+	public Beer getBeer(String id) {
+		Beer result = null;
+		for (Beer beer : beers) {
+			if (beer.getId().equals(id)) {
+				result = beer;
+				break;
+			}
+		}
+		return result;
 	}
 
 	public List<Beer> load() {
@@ -114,15 +179,15 @@ public class BeerReferential {
 	public List<String> getBeerCountries() {
 		return beerDataSource.getBeerCountries();
 	}
-	
-	public int getBeerCount(){
+
+	public int getBeerCount() {
 		return beers.size();
 	}
 
-	public int getBeerDrunkCount(){
+	public int getBeerDrunkCount() {
 		int result = 0;
-		for(Beer beer: beers){
-			if(beer.isDrunk()){
+		for (Beer beer : beers) {
+			if (beer.isDrunk()) {
 				result++;
 			}
 		}

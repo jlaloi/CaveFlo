@@ -179,7 +179,7 @@ public class Cave extends Fragment {
 			if (nameFilter == null || nameFilter.trim().length() == 0 || beerTableRow.getBeer().getName().toLowerCase(Locale.getDefault()).contains(nameFilter.toLowerCase(Locale.getDefault()))) {
 
 				// Filtering on drunk
-				if (spinnerDrunkFilter.getSelectedItemPosition() == 0 || (spinnerDrunkFilter.getSelectedItemPosition() == 1 && beerTableRow.getBeer().isDrunk()) || (spinnerDrunkFilter.getSelectedItemPosition() == 2 && !beerTableRow.getBeer().isDrunk())) {
+				if (spinnerDrunkFilter.getSelectedItemPosition() == 0 || (spinnerDrunkFilter.getSelectedItemPosition() == 1 && !beerTableRow.getBeer().isDrunk()) || (spinnerDrunkFilter.getSelectedItemPosition() == 2 && beerTableRow.getBeer().isDrunk())) {
 
 					// Filtering on type
 					String selectedFilterType = spinnerTypeFilter.getSelectedItem().toString();

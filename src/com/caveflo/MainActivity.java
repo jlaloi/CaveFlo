@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.caveflo.fragment.dialog.CustomBeerPopup;
+import com.caveflo.fragment.dialog.ImportExportPopup;
 import com.caveflo.misc.ASynchUpdate;
 import com.caveflo.misc.Factory;
 
@@ -85,15 +86,20 @@ public class MainActivity extends Activity {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
+		FragmentTransaction ft;
 		switch (item.getItemId()) {
 		case R.id.menu_add_beer:
 			setContent(0);
-			FragmentTransaction ft = this.getFragmentManager().beginTransaction();
+			ft = this.getFragmentManager().beginTransaction();
 			CustomBeerPopup.newInstance(null).show(ft, "create");
 			return true;
 		case R.id.menu_refresh:
 			setContent(0);
 			new ASynchUpdate(getApplicationContext()).execute();
+			return true;
+		case R.id.menu_impexp:
+			ft = this.getFragmentManager().beginTransaction();
+			ImportExportPopup.newInstance().show(ft, "importexport");
 			return true;
 		}
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
