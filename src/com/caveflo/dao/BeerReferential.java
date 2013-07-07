@@ -51,7 +51,7 @@ public class BeerReferential {
 					}
 				}
 			} catch (Exception e) {
-				Log.e("LINE REFRESH", line, e);
+				Log.e("LINE REFRESH", "Error while parsing " + line, e);
 				e.printStackTrace();
 			}
 		}
@@ -106,9 +106,26 @@ public class BeerReferential {
 	public void deleteRating(Beer beer) {
 		beerDataSource.deleteRating(beer);
 	}
-	
-	public List<String> getBeerTypes(){
+
+	public List<String> getBeerTypes() {
 		return beerDataSource.getBeerTypes();
 	}
 
+	public List<String> getBeerCountries() {
+		return beerDataSource.getBeerCountries();
+	}
+	
+	public int getBeerCount(){
+		return beers.size();
+	}
+
+	public int getBeerDrunkCount(){
+		int result = 0;
+		for(Beer beer: beers){
+			if(beer.isDrunk()){
+				result++;
+			}
+		}
+		return result;
+	}
 }

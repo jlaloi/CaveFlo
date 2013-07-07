@@ -8,7 +8,7 @@
         <item>@string/cave_beer_rating</item>
         <item>@string/cave_beer_drunk</item>
     </string-array>
-    <string-array name="filter_biere">
+    <string-array name="filter_drunk_biere">
         <item>@string/filter_all</item>
         <item>@string/filter_todrink</item>
         <item>@string/filter_drunk</item>

@@ -17,7 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.caveflo.fragment.dialog.BeerCreatePopup;
+import com.caveflo.fragment.dialog.CustomBeerPopup;
 import com.caveflo.misc.ASynchUpdate;
 import com.caveflo.misc.Factory;
 
@@ -66,6 +66,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void setContent(int fragment) {
+		mDrawerList.setItemChecked(fragment, true);
 		String[] tabs = getResources().getStringArray(R.array.nav_menu);
 		mTitle = tabs[fragment];
 		Bundle data = new Bundle();
@@ -84,6 +85,17 @@ public class MainActivity extends Activity {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_add_beer:
+			setContent(0);
+			FragmentTransaction ft = this.getFragmentManager().beginTransaction();
+			CustomBeerPopup.newInstance(null).show(ft, "create");
+			return true;
+		case R.id.menu_refresh:
+			setContent(0);
+			new ASynchUpdate(getApplicationContext()).execute();
+			return true;
+		}
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
@@ -100,14 +112,4 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
-	public void addBeer(View v) {
-		FragmentTransaction ft = this.getFragmentManager().beginTransaction();
-		BeerCreatePopup.newInstance().show(ft, "create");
-	}
-
-	public void refreshCave(View v) {
-		new ASynchUpdate(getApplicationContext()).execute();
-	}
-
 }

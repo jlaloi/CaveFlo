@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.caveflo.R;
 import com.caveflo.fragment.BiereTableRow;
+import com.caveflo.misc.Factory;
 
 public class BeerRatingPopup extends DialogFragment implements Serializable {
 
@@ -44,18 +45,18 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.rating, container, false);
 		biereTableRow = (BiereTableRow) getArguments().getSerializable(biereTableRowKey);
-		getDialog().setTitle(biereTableRow.getBiere().getName());
+		getDialog().setTitle(biereTableRow.getBeer().getName());
 
 		textDate = (TextView) v.findViewById(R.id.ratingtextdate);
 		ratingBar = (SeekBar) v.findViewById(R.id.ratingbar);
 		comment = (EditText) v.findViewById(R.id.ratingcommentaire);
-		if (biereTableRow.getBiere().isDrunk()) {
-			ratingBar.setProgress(biereTableRow.getBiere().getRating());
-			String[] split = biereTableRow.getBiere().getRatingDate().split(dateSep);
+		if (biereTableRow.getBeer().isDrunk()) {
+			ratingBar.setProgress(biereTableRow.getBeer().getRating());
+			String[] split = biereTableRow.getBeer().getRatingDate().split(dateSep);
 			year = Integer.valueOf(split[2]);
 			month = Integer.valueOf(split[1]);
 			day = Integer.valueOf(split[0]);
-			comment.setText(biereTableRow.getBiere().getComment());
+			comment.setText(biereTableRow.getBeer().getComment());
 		} else {
 			final Calendar c = Calendar.getInstance();
 			year = c.get(Calendar.YEAR);
@@ -78,22 +79,28 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 		Button buttonOk = (Button) v.findViewById(R.id.buttonRatingOk);
 		buttonOk.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				biereTableRow.getBiere().setRatingDate(textDate.getText().toString());
-				biereTableRow.getBiere().setRating(ratingBar.getProgress());
-				biereTableRow.getBiere().setComment(comment.getText().toString());
-				biereTableRow.updateDrunk();
+				biereTableRow.getBeer().setRatingDate(textDate.getText().toString());
+				biereTableRow.getBeer().setRating(ratingBar.getProgress());
+				biereTableRow.getBeer().setComment(comment.getText().toString());
+				Factory.get().getBeerReferential().saveRating(biereTableRow.getBeer());
+				biereTableRow.onBeerUpdate();
+				Factory.get().getFragmentCave().showCount();
 				dismiss();
 			}
 		});
+
 		Button buttonClear = (Button) v.findViewById(R.id.buttonRatingClear);
 		buttonClear.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				biereTableRow.getBiere().setRatingDate("");
-				biereTableRow.getBiere().setComment("");
-				biereTableRow.updateDrunk();
+				biereTableRow.getBeer().setRatingDate("");
+				biereTableRow.getBeer().setComment("");
+				Factory.get().getBeerReferential().saveRating(biereTableRow.getBeer());
+				biereTableRow.onBeerUpdate();
+				Factory.get().getFragmentCave().showCount();
 				dismiss();
 			}
 		});
+
 		Button buttonCancel = (Button) v.findViewById(R.id.buttonRatingKo);
 		buttonCancel.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {

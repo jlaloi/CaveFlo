@@ -13,32 +13,18 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal" >
 
-        <ImageButton
+        <Spinner
+            android:id="@+id/filtertype"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="@null"
-            android:contentDescription="@string/addbeer"
-            android:onClick="addBeer"
-            android:src="@drawable/ic_menu_save" />
+            android:layout_height="wrap_content" />
 
-        <ImageButton
+        <Spinner
+            android:id="@+id/filtercountry"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="@null"
-            android:contentDescription="@string/buttonRefresh"
-            android:onClick="refreshCave"
-            android:src="@drawable/ic_menu_refresh" />
+            android:layout_height="wrap_content" />
 
         <Spinner
             android:id="@+id/filterdrunkbeer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/filter_biere" />
-
-        <Spinner
-            android:id="@+id/filtertype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

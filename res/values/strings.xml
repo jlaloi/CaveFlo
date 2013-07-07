@@ -5,20 +5,23 @@
     <string name="address"><b>Adresse:</b>\n3 allée de Bray,\n35510 CESSON-SÉVIGNÉ</string>
     <string name="navigation">3 allée de Bray,35510 CESSON-SÉVIGNÉ</string>
     <string name="tel">Tél. 02.90.78.02.25</string>
+    <string name="menuRefresh">Rafraîchir la cave</string>
     <string name="buttonRefresh">Rafraîchir la cave</string>
     <string name="buttonNavigation">Lancer la navigation</string>
+    <string name="button_delete">Supprimer</string>
     <string name="addbeer">Ajouter une bière</string>
     <string name="tab_cave">La cave à bière</string>
     <string name="tab_info">Infos pratiques</string>
     <string name="tab_news">Actus du site</string>
     <string name="update_ko">Erreur lors de la mise à jour de la cave</string>
     <string name="update_ok">Mise à jour de la cave terminée!</string>
-    <string name="update_inprogress">Mise à jour de la cave en cours...</string>
+    <string name="update_inprogress">Mise à jour de la cave en cours</string>
     <string name="filter_all">Toutes</string>
     <string name="filter_todrink">A goûter</string>
     <string name="filter_drunk">Goûtées</string>
     <string name="cave_beer_name">Nom</string>
     <string name="cave_beer_type">Robe</string>
+    <string name="cave_beer_country">Pays</string>
     <string name="cave_beer_degre">Degré</string>
     <string name="cave_beer_rating">Note</string>
     <string name="cave_beer_drunk">Goûtée</string>
@@ -28,6 +31,7 @@
     <string name="button_clear">Effacer</string>
     <string name="rate_string">Note: </string>
     <string name="create_title">Ajouter une bière</string>
+    <string name="modify_title">Modifier une bière</string>
     <string name="degree_string">Degré: </string>
     <string name="delete_beer">, supprimer la bière?</string>
     <string name="delete_confirm">supprimée</string>
@@ -39,5 +43,7 @@
     <string name="news_url">http://www.cave-flo.com/actus/</string>
     <string name="pick_date">Changer</string>
     <string name="daterate">Dégustation le</string>
+    <string name="numberdrunk">%1$s bière(s) goûtée(s) sur %2$s</string>
+    
 
 </resources>

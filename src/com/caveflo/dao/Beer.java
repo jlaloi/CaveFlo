@@ -104,5 +104,9 @@ public class Beer implements Serializable {
 	public boolean isCustom() {
 		return custom == 1;
 	}
+	
+	public String toString(){
+		return name;
+	}
 
 }

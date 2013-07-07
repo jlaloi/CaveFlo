@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -21,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.caveflo.R;
 import com.caveflo.dao.Beer;
@@ -31,11 +33,12 @@ public class Cave extends Fragment {
 	private TableLayout containerTable;
 	private EditText textFilter;
 	private TextView countBeer;
-	private Spinner spinnerFilter, spinnerTypeFilter;
+	private Spinner spinnerDrunkFilter, spinnerTypeFilter, spinnerCountryFilter;
 	private TableRow headerRow;
 	private String[] headers;
-	private String[] filterBeerName, filterBeerTypes;
+	private String[] filterBeerDrunkValues;
 	private List<BiereTableRow> beerTableRows;
+	public static final int spinnerStyleId = android.R.layout.simple_spinner_item;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View mainView = inflater.inflate(R.layout.cave, container, false);
@@ -48,11 +51,14 @@ public class Cave extends Fragment {
 		containerTable = (TableLayout) getActivity().findViewById(R.id.containerTable);
 		countBeer = (TextView) getActivity().findViewById(R.id.beercount);
 		headers = getResources().getStringArray(R.array.biere);
-		filterBeerName = new String[] { getString(R.string.filter_all), getString(R.string.filter_drunk), getString(R.string.filter_todrink) };
-		filterBeerTypes = new String[] { getString(R.string.filter_all) };
+		filterBeerDrunkValues = getResources().getStringArray(R.array.filter_drunk_biere);
 
+		spinnerCountryFilter = (Spinner) getActivity().findViewById(R.id.filtercountry);
 		spinnerTypeFilter = (Spinner) getActivity().findViewById(R.id.filtertype);
-		spinnerFilter = (Spinner) getActivity().findViewById(R.id.filterdrunkbeer);
+		spinnerDrunkFilter = (Spinner) getActivity().findViewById(R.id.filterdrunkbeer);
+		ArrayAdapter<String> adapterBeerDrunk = new ArrayAdapter<String>(getActivity(), spinnerStyleId, filterBeerDrunkValues);
+		spinnerDrunkFilter.setAdapter(adapterBeerDrunk);
+
 		OnItemSelectedListener filterListener = new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				filterList();
@@ -61,8 +67,10 @@ public class Cave extends Fragment {
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		};
-		spinnerFilter.setOnItemSelectedListener(filterListener);
+
+		spinnerDrunkFilter.setOnItemSelectedListener(filterListener);
 		spinnerTypeFilter.setOnItemSelectedListener(filterListener);
+		spinnerCountryFilter.setOnItemSelectedListener(filterListener);
 
 		textFilter = (EditText) getActivity().findViewById(R.id.filterBeerText);
 		textFilter.addTextChangedListener(new TextWatcher() {
@@ -76,6 +84,13 @@ public class Cave extends Fragment {
 			}
 
 			public void afterTextChanged(Editable s) {
+			}
+		});
+
+		countBeer.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				affToastCount();
+
 			}
 		});
 
@@ -96,12 +111,38 @@ public class Cave extends Fragment {
 
 	public void initList() {
 		beerTableRows.clear();
-		for (Beer biere : Factory.get().getBeerReferential().getBeers()) {
-			beerTableRows.add(new BiereTableRow(getActivity(), biere));
+		for (Beer beer : Factory.get().getBeerReferential().getBeers()) {
+			beerTableRows.add(new BiereTableRow(getActivity(), beer));
 		}
 		initTypeFilter();
+		initCountryFilter();
 		filterList();
 		showCount();
+	}
+
+	public void onBeerCreation(Beer beer) {
+		initList();
+	}
+
+	public void onBeerModification(Beer beer) {
+		getBiereTableRow(beer).updateBeer(beer);
+	}
+
+	public void onBeerDeletion(Beer beer) {
+		BiereTableRow toRemove = getBiereTableRow(beer);
+		containerTable.removeView(toRemove);
+		beerTableRows.remove(toRemove);
+	}
+
+	private BiereTableRow getBiereTableRow(Beer beer) {
+		BiereTableRow result = null;
+		for (BiereTableRow biereTableRow : beerTableRows) {
+			if (biereTableRow.getBeer().equals(beer)) {
+				result = biereTableRow;
+				break;
+			}
+		}
+		return result;
 	}
 
 	public void initTypeFilter() {
@@ -112,8 +153,20 @@ public class Cave extends Fragment {
 		for (String type : beerTypesList) {
 			filterBeerTypes[i++] = type;
 		}
-		ArrayAdapter<String> adapterBeerType = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, filterBeerTypes);
+		ArrayAdapter<String> adapterBeerType = new ArrayAdapter<String>(getActivity(), spinnerStyleId, filterBeerTypes);
 		spinnerTypeFilter.setAdapter(adapterBeerType);
+	}
+
+	public void initCountryFilter() {
+		List<String> beerCountryList = Factory.get().getBeerReferential().getBeerCountries();
+		String[] filterBeerCountry = new String[beerCountryList.size() + 1];
+		filterBeerCountry[0] = getString(R.string.filter_all);
+		int i = 1;
+		for (String type : beerCountryList) {
+			filterBeerCountry[i++] = type;
+		}
+		ArrayAdapter<String> adapterBeerCountry = new ArrayAdapter<String>(getActivity(), spinnerStyleId, filterBeerCountry);
+		spinnerCountryFilter.setAdapter(adapterBeerCountry);
 	}
 
 	public void filterList() {
@@ -121,29 +174,38 @@ public class Cave extends Fragment {
 		containerTable.removeAllViews();
 		containerTable.addView(headerRow);
 		for (BiereTableRow beerTableRow : beerTableRows) {
+
 			// Filtering on name
-			if (nameFilter == null || nameFilter.trim().length() == 0 || beerTableRow.getBiere().getName().toLowerCase(Locale.getDefault()).contains(nameFilter.toLowerCase(Locale.getDefault()))) {
-				String selectedFilterName = spinnerFilter.getSelectedItem().toString();
-				String selectedFilterType = spinnerTypeFilter.getSelectedItem().toString();
+			if (nameFilter == null || nameFilter.trim().length() == 0 || beerTableRow.getBeer().getName().toLowerCase(Locale.getDefault()).contains(nameFilter.toLowerCase(Locale.getDefault()))) {
+
 				// Filtering on drunk
-				if (filterBeerName[0].equals(selectedFilterName) || (filterBeerName[1].equals(selectedFilterName) && beerTableRow.getBiere().isDrunk()) || (filterBeerName[2].equals(selectedFilterName) && !beerTableRow.getBiere().isDrunk())) {
+				if (spinnerDrunkFilter.getSelectedItemPosition() == 0 || (spinnerDrunkFilter.getSelectedItemPosition() == 1 && beerTableRow.getBeer().isDrunk()) || (spinnerDrunkFilter.getSelectedItemPosition() == 2 && !beerTableRow.getBeer().isDrunk())) {
+
 					// Filtering on type
-					if (filterBeerTypes[0].equals(selectedFilterType) || selectedFilterType.equals(beerTableRow.getBiere().getType())) {
-						containerTable.addView(beerTableRow);
+					String selectedFilterType = spinnerTypeFilter.getSelectedItem().toString();
+					if (spinnerTypeFilter.getSelectedItemPosition() == 0 || selectedFilterType.equals(beerTableRow.getBeer().getType())) {
+
+						// Filtering on country
+						String selectedFilterCountry = spinnerCountryFilter.getSelectedItem().toString();
+						if (spinnerCountryFilter.getSelectedItemPosition() == 0 || selectedFilterCountry.equals(beerTableRow.getBeer().getCountry())) {
+							containerTable.addView(beerTableRow);
+						}
+
 					}
+
 				}
+
 			}
 		}
+	}
+
+	public void affToastCount() {
+		String text = getString(R.string.numberdrunk, Factory.get().getBeerReferential().getBeerDrunkCount(), Factory.get().getBeerReferential().getBeerCount());
+		Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
 	}
 
 	public void showCount() {
-		int count = 0;
-		for (BiereTableRow beerTableRow : beerTableRows) {
-			if (beerTableRow.getBiere().isDrunk()) {
-				count++;
-			}
-		}
-		countBeer.setText(getString(R.string.count_drunk) + count + "/" + beerTableRows.size());
+		int pourc = Factory.get().getBeerReferential().getBeerDrunkCount() * 100 / Factory.get().getBeerReferential().getBeerCount();
+		countBeer.setText(pourc + "%");
 	}
-
 }
