@@ -205,7 +205,11 @@ public class Cave extends Fragment {
 	}
 
 	public void showCount() {
-		int pourc = Factory.get().getBeerReferential().getBeerDrunkCount() * 100 / Factory.get().getBeerReferential().getBeerCount();
+		int pourc = 0;
+		if (Factory.get().getBeerReferential().getBeerCount() > 0) {
+			pourc = Factory.get().getBeerReferential().getBeerDrunkCount() * 100 / Factory.get().getBeerReferential().getBeerCount();
+		}
 		countBeer.setText(pourc + "%");
+
 	}
 }
