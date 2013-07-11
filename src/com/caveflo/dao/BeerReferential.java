@@ -54,7 +54,9 @@ public class BeerReferential {
 					if (beer == null) {
 						String name = split[1];
 						if (split.length > 2) {
-							degree = Float.valueOf(split[2]);
+							if(split[2].trim().length() > 0){
+								degree = Float.valueOf(split[2]);
+							}
 							if (split.length > 3) {
 								type = split[3];
 								if (split.length > 4) {
@@ -62,7 +64,9 @@ public class BeerReferential {
 									if (split.length > 5) {
 										status = Integer.valueOf(split[5]);
 										if (split.length > 6) {
-											custom = Integer.valueOf(split[6]);
+											if(split[6].trim().length() > 0){
+												custom = Integer.valueOf(split[6]);
+											}
 										}
 									}
 								}
