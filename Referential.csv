@@ -1,48 +1,188 @@
-﻿#1;Abbayes des rocs;9;Brune;Belgique;1;0
-#2;Affligem blonde;0.8;Blonde;Belgique;1;0
-#3;Affligem triple;9.5;Blonde;Belgique;1;0
-#4;Augstijn;7;Blonde;Belgique;1;0
-#5;Banane chapeau;3.5;Fruitée;Belgique;1;0
-#6;Barbar;8;Blonde miel;Belgique;1;0
-#7;Barbare bok;8.5;Brune miel;Belgique;1;0
-#8;Bière des ours;8.5;Blonde miel;Belgique;1;0
-#9;Blanche de Bruxelles;4.5;Blanche;Belgique;1;0
-#10;Brugs;4.8;Blanche;Belgique;1;0
-#11;Blande de Namur;4.5;Blanche;Belgique;1;0
-#12;Bon secours;8;Ambrée;Belgique;1;0
-#13;Bourgogne des Flandres;5;Brune;Belgique;1;0
-#14;Brigand;9;Ambrée;Belgique;1;0
-#15;Brugge triple;8.7;Ambrée;Belgique;1;0
-#16;Brigand;9;Ambrée;Belgique;1;0
-#17;Brugge triple;8.7;Ambrée;Belgique;1;0
-#18;Brugsezot;6;Blonde;Belgique;1;0
-#19;Bush;12;Ambrée;Belgique;1;0
-#20;Carolus Ambrio;8;Ambrée;Belgique;1;0
-#21;Carolus classic;8.5;Brune;Belgique;1;0
-#22;Carolus triple;9;Blonde;Belgique;1;0
-#23;Cassis;3.5;Fruitée;Belgique;1;0
-#24;Charles Quint blonde;8.5;Blonde;Belgique;1;0
-#25;Charles Quint rubis;8.5;Ambrée;Belgique;1;0
-#26;Chimay bleue;9;Brune;Belgique;1;0
-#27;Chimay rouge;7;Brune;Belgique;1;0
-#28;Chimay triple;8;Blonde;Belgique;1;0
-#29;Ciney;7;Blonde;Belgique;1;0
-#30;Crétonnerre;7;Blonde;Belgique;1;0
-#31;Curvée des trolls;7;Blonde;Belgique;1;0
-#32;Corsendonk rousse;8;Ambrée;Belgique;1;0
-#33;Corsendonk pater double;8;Brune;Belgique;1;0
-#34;Delirium noctormum;8.5;Brune;Belgique;1;0
-#35;Delirium tremens;8.5;Blonde;Belgique;1;0
-#36;Duvel;8.5;Blonde;Belgique;1;0
-#37;Faro;4.2;Lambic;Belgique;1;0
-#38;Floreffe double;6.3;Brune;Belgique;1;0
-#39;Floreffe melior;8;Brune;Belgique;1;0
-#40;Floreffe triple;7.5;Blonde;Belgique;1;0
-#41;Floris apple;3.6;Fruitée;Belgique;1;0
-#42;Floris fraise;3.6;Fruitée;Belgique;1;0
-#43;Framboise;2.5;Fruitée;Belgique;1;0
-#44;Fruit défendu;8.5;Ambrée;Belgique;1;0
-#45;Gauloise blonde;6.3;Blonde;Belgique;1;0
-#46;Gauloise brune;8.1;Brune;Belgique;1;0
-#47;Gouyasse;6;Blonde;Belgique;1;0
-#48;Goliath;9;Blonde;Belgique;1;0
+﻿#1;A I aven;;;;1;0
+#2;Abbayes des rocs;9;Brune;Belgique;1;0
+#3;Affligem blonde;0.8;Blonde;Belgique;1;0
+#4;Affligem triple;9.5;Blonde;Belgique;1;0
+#5;Ar men blanche;;;;1;0
+#6;Ar men blonde;;;;1;0
+#7;Ar men doree;;;;1;0
+#8;Ar men rousse;;;;1;0
+#9;Augstijn;7;Blonde;Belgique;1;0
+#10;Augustiner weissbier;;;;1;0
+#11;Banane chapeau;3.5;Fruitée;Belgique;1;0
+#12;Barbar;8;Blonde miel;Belgique;1;0
+#13;Barbare bok;8.5;Brune miel;Belgique;1;0
+#14;Beck's;;;;1;0
+#15;Blanche de Bruxelles;4.5;Blanche;Belgique;1;0
+#16;Bière des ours;8.5;Blonde miel;Belgique;1;0
+#17;Biere du desert;;;;1;0
+#18;Bitburger;;;;1;0
+#19;Blande de Namur;4.5;Blanche;Belgique;1;0
+#20;Bon secours;8;Ambrée;Belgique;1;0
+#21;Bonnets rouge;;;;1;0
+#22;Bourgogne des Flandres;5;Brune;Belgique;1;0
+#23;Brigand;9;Ambrée;Belgique;1;0
+#24;Britt blonde;;;;1;0
+#25;Britt rousse;;;;1;0
+#26;Brugge triple;;;;1;0
+#27;Brugge triple;8.7;Ambrée;Belgique;1;0
+#28;Brugsezot;6;Blonde;Belgique;1;0
+#29;Budweiser;;;;1;0
+#30;Bush;12;Ambrée;Belgique;1;0
+#31;Carolus Ambrio;8;Ambrée;Belgique;1;0
+#32;Carolus classic;8.5;Brune;Belgique;1;0
+#33;Carolus triple;9;Blonde;Belgique;1;0
+#34;Cassis;3.5;Fruitée;Belgique;1;0
+#35;Celtika;;;;1;0
+#36;Charles Quint blonde;8.5;Blonde;Belgique;1;0
+#37;Charles Quint rubis;8.5;Ambrée;Belgique;1;0
+#38;Chimay Bleue;9;Brune;Belgique;1;0
+#39;Chimay Rouge;7;Brune;Belgique;1;0
+#40;Chimay Triple;8;Blonde;Belgique;1;0
+#41;Choufe;;;;1;0
+#42;Ch'ti;;;;1;0
+#43;Ciney;7;Blonde;Belgique;1;0
+#44;Colomba;;;;1;0
+#45;Corsendonk pater double;8;Brune;Belgique;1;0
+#46;Corsendonk rousse;8;Ambrée;Belgique;1;0
+#47;Crétonnerre;7;Blonde;Belgique;1;0
+#48;Curvée des trolls;7;Blonde;Belgique;1;0
+#49;Delirium noctormum;8.5;Brune;Belgique;1;0
+#50;Delirium tremens;8.5;Blonde;Belgique;1;0
+#51;Demi de melee;;;;1;0
+#52;Demi de melee framboise;;;;1;0
+#53;Diebels;;;;1;0
+#54;Dodo bourbon;;;;1;0
+#55;Dremmwel blonde bio;;;;1;0
+#56;Dremmwel doree bio;;;;1;0
+#57;Duchesse anne triple;;;;1;0
+#58;Duff;;;;1;0
+#59;Duvel;8.5;Blonde;Belgique;1;0
+#60;Duvel tripel;9.5;Blonde;Belgique;1;0
+#61;Eku 28;;;;1;0
+#62;Erdinger;;;;1;0
+#63;Faro;4.2;Lambic;Belgique;1;0
+#64;Floreffe double;6.3;Brune;Belgique;1;0
+#65;Floreffe triple;7.5;Blonde;Belgique;1;0
+#66;Floreffe melior;8;Brune;Belgique;1;0
+#67;Floris apple;3.6;Fruitée;Belgique;1;0
+#68;Floris fraise;3.6;Fruitée;Belgique;1;0
+#69;Fosters;;;;1;0
+#70;Framboise;2.5;Fruitée;Belgique;1;0
+#71;Franziskaner dunkel;;;;1;0
+#72;Franziskaner kristallklar;;;;1;0
+#73;Franziskaner weissbier;;;;1;0
+#74;Fruh kolsh;;;;1;0
+#75;Fruit défendu;8.5;Ambrée;Belgique;1;0
+#76;Gauloise blonde;6.3;Blonde;Belgique;1;0
+#77;Gauloise brune;8.1;Brune;Belgique;1;0
+#78;Gavroche;;;;1;0
+#79;Goliath;9;Blonde;Belgique;1;0
+#80;Gordon scotch;;;;1;0
+#81;Gouyasse;6;Blonde;Belgique;1;0
+#82;Grimbergen blonde;6.7;Blonde;Belgique;1;0
+#83;Grimbergen brune;;;;1;0
+#84;Grisette;3.5;Fruitée;Belgique;1;0
+#85;Gueuze;;;;1;0
+#86;Guillotine;;;;1;0
+#87;guiness;;;;1;0
+#88;Gulden draak;;;;1;0
+#89;Hacker munchner;;;;1;0
+#90;Hacker pschorr hefe;;;;1;0
+#91;Hoegaarden grd cru;;;;1;0
+#92;Hopus;;;;1;0
+#93;Judas;;;;1;0
+#94;Jupiler;;;;1;0
+#95;Karmeliet;;;;1;0
+#96;Kasteel blonde;;;;1;0
+#97;Kasteel brune;;;;1;0
+#98;Kasteel r;;;;1;0
+#99;Kasteel triple;;;;1;0
+#100;Kilkenny;;;;1;0
+#101;Konig ludwig;;;;1;0
+#102;Kostritzer;;;;1;0
+#103;Kriek;;;;1;0
+#104;Krombacher;;;;1;0
+#105;Kwak;;;;1;0
+#106;La choulette ambree;;;;1;0
+#107;La choulette blonde;;;;1;0
+#108;La grevine;;;;1;0
+#109;Lancelot;;;;1;0
+#110;Lefe 9;;;;1;0
+#111;Lefe brune;;;;1;0
+#112;Lefe radieuse;;;;1;0
+#113;Leroy stout;;;;1;0
+#114;Levrette blonde;;;;1;0
+#115;Levrette cherry;;;;1;0
+#116;Liefmans;;;;1;0
+#117;Lucifer;;;;1;0
+#118;Malheur 6;;;;1;0
+#119;Maredsous 6;;;;1;0
+#120;Maredsous 8;;;;1;0
+#121;Martin's;;;;1;0
+#122;Mc choufe;;;;1;0
+#123;Meisel's weisse;;;;1;0
+#124;Melusine;;;;1;0
+#125;Moinette;;;;1;0
+#126;Montagnarde;;;;1;0
+#127;Moulinsard;;;;1;0
+#128;newcastle;;;;1;0
+#129;Omer;;;;1;0
+#130;Ommegang;;;;1;0
+#131;Page 24 ambree;;;;1;0
+#132;Page 24 blonde;;;;1;0
+#133;Pater Eleven blonde;;;;1;0
+#134;Pater lieven triple;;;;1;0
+#135;Paulaner original;;;;1;0
+#136;Paulaner salvator;;;;1;0
+#137;Paulaner sans alcool;;;;1;0
+#138;Pecheresse;;;;1;0
+#139;Petrus brune;;;;1;0
+#140;Petrus triple;;;;1;0
+#141;Pilsner urquell;;;;1;0
+#142;Piraat;;;;1;0
+#143;Primator 16;;;;1;0
+#144;Primator 21;;;;1;0
+#145;Queue de c. ambree;;;;1;0
+#146;Queue de c. blonde;;;;1;0
+#147;Queue de c. brune;;;;1;0
+#148;Queue de c. triple;;;;1;0
+#149;Rince cochon;;;;1;0
+#150;Rochefort 6;;;;1;0
+#151;Rochefort 8;;;;1;0
+#152;Rodenbach;;;;1;0
+#153;Rodenbach grd cru;;;;1;0
+#154;Rothaus;;;;1;0
+#155;Saison 1900;;;;1;0
+#156;Samuel a;;;;1;0
+#157;San miguel;;;;1;0
+#158;Satan gold;;;;1;0
+#159;Spaten;;;;1;0
+#160;St benoit blonde;;;;1;0
+#161;St bernardus pater;;;;1;0
+#162;St bernardus prior 8;;;;1;0
+#163;St bernardus triple;;;;1;0
+#164;St erwan;;;;1;0
+#165;St feuillen grand cru;;;;1;0
+#166;St feuillen triple;;;;1;0
+#167;St feullle blonde;;;;1;0
+#168;Staropramen;;;;1;0
+#169;Super bock;;;;1;0
+#170;Telenn du;;;;1;0
+#171;Tempelier;;;;1;0
+#172;Thurn and taxi dunkel;;;;1;0
+#173;Tongerlo prior;;;;1;0
+#174;Trappe blonde;;;;1;0
+#175;Trappe double;;;;1;0
+#176;Trappe isidor;;;;1;0
+#177;Trappe quadrupel;;;;1;0
+#178;Trappe tripel;;;;1;0
+#179;Trappe witte trappist;;;;1;0
+#180;Triple moine;;;;1;0
+#181;Tsingtao;;;;1;0
+#182;Vedette extra blonde;;;;1;0
+#183;Vedette extra white;;;;1;0
+#184;Warseteiner;;;;1;0
+#185;Weihenstephaner festbier;;;;1;0
+#186;Weihenstephaner hefe;;;;1;0
+#187;Westmalle double;;;;1;0
+#188;Westmalle triple;;;;1;0
