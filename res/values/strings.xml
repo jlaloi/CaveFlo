@@ -52,6 +52,6 @@
     <string name="filesimportok">Importation terminée</string>
     <string name="notimplemented">Not Yet Implemented :/</string>
     <string name="exportresult">%1$s bière(s) exportée(s), %2$s évalution(s) exportée(s) </string>
-    <string name="ratinginfo">%1$s à %2$s° de %3$s</string>
+    <string name="ratinginfo">%1$s à %2$s° (%3$s)</string>
 
 </resources>
