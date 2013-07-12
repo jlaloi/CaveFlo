@@ -106,7 +106,7 @@ public final class R {
         public static final int directory=0x7f06002b;
         public static final int drawer_close=0x7f060022;
         public static final int drawer_open=0x7f060021;
-        public static final int exportresult=0x7f060033;
+        public static final int exportresult=0x7f060032;
         public static final int filenotfound=0x7f060030;
         public static final int filesimportok=0x7f060031;
         public static final int filter_all=0x7f060010;
@@ -120,11 +120,10 @@ public final class R {
         public static final int modify_title=0x7f06001e;
         public static final int navigation=0x7f060003;
         public static final int news_url=0x7f060024;
-        public static final int notimplemented=0x7f060032;
         public static final int numberdrunk=0x7f060027;
         public static final int pick_date=0x7f060025;
         public static final int rate_string=0x7f06001c;
-        public static final int ratinginfo=0x7f060034;
+        public static final int ratinginfo=0x7f060033;
         public static final int tab_cave=0x7f06000a;
         public static final int tab_info=0x7f06000b;
         public static final int tab_news=0x7f06000c;
