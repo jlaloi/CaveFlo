@@ -49,16 +49,16 @@
 #50;Delirium tremens;8.5;Blonde;Belgique;1;0
 #51;Demi de melee;7;Blonde;Bretagne;1;0
 #52;Demi de melee framboise;3.5;Fruitée;Bretagne;1;0
-#53;Diebels;;;;1;0
+#53;Diebels;4.9;Ambrée;Allemagne;1;0
 #54;Dodo bourbon;5;Blonde;France;1;0
-#55;Dremmwel blonde bio;;;;1;0
-#56;Dremmwel doree bio;;;;1;0
-#57;Duchesse anne triple;;;;1;0
-#58;Duff;;;;1;0
+#55;Dremmwel blonde bio;5;Blonde;Bretagne;1;0
+#56;Dremmwel doree bio;7;Blonde;Bretagne;1;0
+#57;Duchesse anne triple;7.5;Clonde;Bretagne;1;0
+#58;Duff;4,7;Blonde;Allemagne;1;0
 #59;Duvel;8.5;Blonde;Belgique;1;0
 #60;Duvel tripel;9.5;Blonde;Belgique;1;0
-#61;Eku 28;;;;1;0
-#62;Erdinger;;;;1;0
+#61;Eku 28;11;Ambrée;Allemagne;1;0
+#62;Erdinger;5.3;Blanche;Allemagne;1;0
 #63;Faro;4.2;Lambic;Belgique;1;0
 #64;Floreffe double;6.3;Brune;Belgique;1;0
 #65;Floreffe triple;7.5;Blonde;Belgique;1;0
@@ -67,10 +67,10 @@
 #68;Floris fraise;3.6;Fruitée;Belgique;1;0
 #69;Fosters;5;Blonde;Australie;1;0
 #70;Framboise;2.5;Fruitée;Belgique;1;0
-#71;Franziskaner dunkel;;;;1;0
-#72;Franziskaner kristallklar;;;;1;0
-#73;Franziskaner weissbier;;;;1;0
-#74;Fruh kolsh;;;;1;0
+#71;Franziskaner dunkel;5;Brune;Allemagne;1;0
+#72;Franziskaner kristallklar;5;Blonde;Allemagne;1;0
+#73;Franziskaner weissbier;5.5;Blanche;Allemagne;1;0
+#74;Fruh kolsh;4.8;Blonde;Allemagne;1;0
 #75;Fruit défendu;8.5;Ambrée;Belgique;1;0
 #76;Gauloise blonde;6.3;Blonde;Belgique;1;0
 #77;Gauloise brune;8.1;Brune;Belgique;1;0
@@ -84,9 +84,9 @@
 #85;Gueuze;5;Lambic;Belgique;1;0
 #86;Guillotine;8.5;Blonde;Belgique;1;0
 #87;Guiness;4.5;Stout;Irlande;1;0
-#88;Gulden draak;;;;1;0
-#89;Hacker munchner;;;;1;0
-#90;Hacker pschorr hefe;;;;1;0
+#88;Gulden draak;10.5;Brune;Belgique;1;0
+#89;Hacker munchner;5;Blonde;Allemagne;1;0
+#90;Hacker pschorr hefe;5.5;Blanche;Allemagne;1;0
 #91;Hoegaarden grand cru;8.5;Blanche;Belgique;1;0
 #92;Hopus;8.3;Blonde;Belgique;1;0
 #93;Judas;8.5;Blonde;Belgique;1;0
@@ -95,12 +95,12 @@
 #96;Kasteel blonde;7;Blonde;Belgique;1;0
 #97;Kasteel brune;11;Brune;Belgique;1;0
 #98;Kasteel rouge;8;Fruitée;Belgique;1;0
-#99;Kasteel triple;;;;1;0
+#99;Kasteel triple;11;Blonde;Belgique;1;0
 #100;Kilkenny;4.2;Ambrée;Irlande;1;0
-#101;Konig ludwig;;;;1;0
-#102;Kostritzer;;;;1;0
+#101;Konig ludwig;5.5;Blonde;Allemagne;1;0
+#102;Kostritzer;4.8;Brune;Allemagne;1;0
 #103;Kriek;3.5;Fruitée;Belgique;1;0
-#104;Krombacher;;;;1;0
+#104;Krombacher;4.8;Blonde;Allemagne;1;0
 #105;Kwak;8.4;Ambrée;Belgique;1;0
 #106;La choulette ambree;8;Ambrée;France;1;0
 #107;La choulette blonde;7.5;Blonde;France;1;0
@@ -119,7 +119,7 @@
 #120;Maredsous 8;8;Brune;Belgique;1;0
 #121;Martin's;5.8;Ambrée;Angleterre;1;0
 #122;Mc Chouffe;8;Brune;Belgique;1;0
-#123;Meisel's weisse;;;;1;0
+#123;Meisel's weisse;5.1;Blanche;Allemagne;1;0
 #124;Melusine;6.5;Blonde;France;1;0
 #125;Moinette;8.5;Blonde;Belgique;1;0
 #126;Montagnarde;9;Ambrée;Belgique;1;0
@@ -131,8 +131,8 @@
 #132;Page 24 blonde;6.9;Blonde;France;1;0
 #133;Pater Eleven blonde;6.5;Blonde;Belgique;1;0
 #134;Pater lieven triple;8;Blonde;Belgique;1;0
-#135;Paulaner original;;;;1;0
-#136;Paulaner salvator;;;;1;0
+#135;Paulaner original;4.9;Blonde;Allemagne;1;0
+#136;Paulaner salvator;7.9;Ambrée;Allemagne;1;0
 #137;Paulaner sans alcool;0.4;Blonde;Allemagne;1;0
 #138;Pecheresse;2.5;Fruitée;Belgique;1;0
 #139;Petrus brune;6.5;Brune;Belgique;1;0
@@ -150,12 +150,12 @@
 #151;Rochefort 8;9.2;Brune;Belgique;1;0
 #152;Rodenbach;5.2;Brune;Belgique;1;0
 #153;Rodenbach grandd cru;6;Brune;Belgique;1;0
-#154;Rothaus;;;;1;0
+#154;Rothaus;5.6;Blonde;Allemagne;1;0
 #155;Saison 1900;5.5;Blonde;Belgique;1;0
 #156;Samuel Adams;4.8;Blonde;Etas Unis;1;0
 #157;San Miguel;5.4;Blonde;Espagne;1;0
 #158;Satan gold;8;Blonde;Belgique;1;0
-#159;Spaten;;;;1;0
+#159;Spaten;5.2;Blonde;Allemagne;1;0
 #160;St benoit blonde;6.3;Blonde;Belgique;1;0
 #161;St bernardus pater 6;6.7;Brune;Belgique;1;0
 #162;St bernardus prior 8;8;Brune;Belgique;1;0
@@ -168,7 +168,7 @@
 #169;Super bock;5.2;Blonde;Portugal;1;0
 #170;Telenn du;4.5;Brune;Bretagne;1;0
 #171;Tempelier;6;Ambrée;Belgique;1;0
-#172;Thurn and taxi dunkel;;;;1;0
+#172;Thurn and taxi dunkel;5.5;Brune;Allemagne;1;0
 #173;Tongerlo prior;9;Blonde;Belgique;1;0
 #174;Trappe blonde;6.5;Blonde;Hollande;1;0
 #175;Trappe double;7;Bru;Hollande;1;0
@@ -180,8 +180,8 @@
 #181;Tsingtao;4.7;Blonde;Chine;1;0
 #182;Vedette extra blonde;5.2;Blonde;Belgique;1;0
 #183;Vedette extra white;4.7;Blanche;Belgique;1;0
-#184;Warseteiner;;;;1;0
-#185;Weihenstephaner festbier;;;;1;0
-#186;Weihenstephaner hefe;;;;1;0
+#184;Warseteiner;4.8;Blonde;Allemagne;1;0
+#185;Weihenstephaner festbier;5.8;Blonde;Allemagne;1;0
+#186;Weihenstephaner hefe weissbier;5.4;Blanche;Allemagne;1;0
 #187;Westmalle double;7;Brune;Belgique;1;0
 #188;Westmalle triple;9.5;Blonde;Belgique;1;0
