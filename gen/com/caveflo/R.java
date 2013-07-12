@@ -27,15 +27,15 @@ public final class R {
         public static final int tableborder=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f090022;
+        public static final int action_settings=0x7f090023;
         public static final int beercount=0x7f090008;
         public static final int buttonCreateKo=0x7f090010;
         public static final int buttonCreateOk=0x7f09000f;
         public static final int buttonDelete=0x7f090011;
         public static final int buttonNavigation=0x7f090018;
-        public static final int buttonRatingClear=0x7f090020;
-        public static final int buttonRatingKo=0x7f090021;
-        public static final int buttonRatingOk=0x7f09001f;
+        public static final int buttonRatingClear=0x7f090021;
+        public static final int buttonRatingKo=0x7f090022;
+        public static final int buttonRatingOk=0x7f090020;
         public static final int buttonexpimpcancel=0x7f090017;
         public static final int buttonexpimpdo=0x7f090016;
         public static final int containerTable=0x7f090009;
@@ -54,16 +54,17 @@ public final class R {
         public static final int filterdrunkbeer=0x7f090006;
         public static final int filtertype=0x7f090004;
         public static final int impexpradiogroup=0x7f090012;
-        public static final int menu_add_beer=0x7f090023;
-        public static final int menu_impexp=0x7f090025;
-        public static final int menu_refresh=0x7f090024;
+        public static final int menu_add_beer=0x7f090024;
+        public static final int menu_impexp=0x7f090026;
+        public static final int menu_refresh=0x7f090025;
         public static final int radioexport=0x7f090014;
         public static final int radioimport=0x7f090013;
-        public static final int ratingbar=0x7f09001b;
-        public static final int ratingbuttondate=0x7f09001e;
-        public static final int ratingcommentaire=0x7f09001c;
-        public static final int ratingtextdate=0x7f09001d;
-        public static final int ratingvalue=0x7f09001a;
+        public static final int ratingbar=0x7f09001c;
+        public static final int ratingbuttondate=0x7f09001f;
+        public static final int ratingcommentaire=0x7f09001d;
+        public static final int ratingtext=0x7f09001a;
+        public static final int ratingtextdate=0x7f09001e;
+        public static final int ratingvalue=0x7f09001b;
         public static final int web_view=0x7f090019;
     }
     public static final class layout {
@@ -105,6 +106,7 @@ public final class R {
         public static final int directory=0x7f06002b;
         public static final int drawer_close=0x7f060022;
         public static final int drawer_open=0x7f060021;
+        public static final int exportresult=0x7f060033;
         public static final int filenotfound=0x7f060030;
         public static final int filesimportok=0x7f060031;
         public static final int filter_all=0x7f060010;
@@ -122,6 +124,7 @@ public final class R {
         public static final int numberdrunk=0x7f060027;
         public static final int pick_date=0x7f060025;
         public static final int rate_string=0x7f06001c;
+        public static final int ratinginfo=0x7f060034;
         public static final int tab_cave=0x7f06000a;
         public static final int tab_info=0x7f06000b;
         public static final int tab_news=0x7f06000c;

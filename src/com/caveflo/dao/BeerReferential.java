@@ -54,7 +54,7 @@ public class BeerReferential {
 					if (beer == null) {
 						String name = split[1];
 						if (split.length > 2) {
-							if(split[2].trim().length() > 0){
+							if (split[2].trim().length() > 0) {
 								degree = Float.valueOf(split[2]);
 							}
 							if (split.length > 3) {
@@ -64,7 +64,7 @@ public class BeerReferential {
 									if (split.length > 5) {
 										status = Integer.valueOf(split[5]);
 										if (split.length > 6) {
-											if(split[6].trim().length() > 0){
+											if (split[6].trim().length() > 0) {
 												custom = Integer.valueOf(split[6]);
 											}
 										}
@@ -86,6 +86,29 @@ public class BeerReferential {
 			}
 		}
 		load();
+	}
+
+	public int saveCustomBeerToFile(File file) {
+		List<String> lines = new ArrayList<String>();
+		for (Beer beer : beers) {
+			if (beer.isCustom()) {
+				lines.add(beerToLine(beer));
+			}
+		}
+		Tools.write(file, lines);
+		return lines.size();
+	}
+
+	private String beerToLine(Beer beer) {
+		String result = "";
+		result += beer.getId() + referentialSep;
+		result += beer.getName() + referentialSep;
+		result += beer.getDegree() + referentialSep;
+		result += beer.getType() + referentialSep;
+		result += beer.getCountry() + referentialSep;
+		result += beer.getStatus() + referentialSep;
+		result += beer.getCustom() + referentialSep;
+		return result;
 	}
 
 	private void updateRatingFromLines(List<String> lines) {
@@ -114,6 +137,26 @@ public class BeerReferential {
 			}
 		}
 		load();
+	}
+
+	private String ratingToLine(Beer beer) {
+		String result = "";
+		result += beer.getId() + referentialSep;
+		result += beer.getRatingDate() + referentialSep;
+		result += beer.getRating() + referentialSep;
+		result += beer.getComment();
+		return result;
+	}
+
+	public int saveRatingToFile(File file) {
+		List<String> lines = new ArrayList<String>();
+		for (Beer beer : beers) {
+			if (beer.isDrunk()) {
+				lines.add(ratingToLine(beer));
+			}
+		}
+		Tools.write(file, lines);
+		return lines.size();
 	}
 
 	public Beer getBeer(String id) {

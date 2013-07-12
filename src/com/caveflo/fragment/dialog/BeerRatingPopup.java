@@ -47,6 +47,8 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 		biereTableRow = (BiereTableRow) getArguments().getSerializable(biereTableRowKey);
 		getDialog().setTitle(biereTableRow.getBeer().getName());
 
+		((TextView) v.findViewById(R.id.ratingtext)).setText(getString(R.string.ratinginfo, biereTableRow.getBeer().getType(), biereTableRow.getBeer().getDegree(), biereTableRow.getBeer().getCountry()));
+
 		textDate = (TextView) v.findViewById(R.id.ratingtextdate);
 		ratingBar = (SeekBar) v.findViewById(R.id.ratingbar);
 		comment = (EditText) v.findViewById(R.id.ratingcommentaire);

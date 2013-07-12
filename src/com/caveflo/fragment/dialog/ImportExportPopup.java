@@ -79,7 +79,16 @@ public class ImportExportPopup extends DialogFragment {
 	}
 
 	public void exportingConfig(String path) {
-		Toast.makeText(getActivity(), getString(R.string.notimplemented), Toast.LENGTH_LONG).show();
+		new File(Environment.getExternalStorageDirectory(), path).mkdirs();
+		// Custom beer
+		String beerFilePath = path + "/" + getString(R.string.userbeerfile).replace("//", "/");
+		File beerFile = new File(Environment.getExternalStorageDirectory(), beerFilePath);
+		int nbBeer = Factory.get().getBeerReferential().saveCustomBeerToFile(beerFile);
+		// Rating
+		String ratingFilePath = path + "/" + getString(R.string.userratingfile).replace("//", "/");
+		File ratingFile = new File(Environment.getExternalStorageDirectory(), ratingFilePath);
+		int nbRating = Factory.get().getBeerReferential().saveRatingToFile(ratingFile);
+		Toast.makeText(getActivity(), getString(R.string.exportresult, nbBeer, nbRating), Toast.LENGTH_LONG).show();
 	}
 
 }
