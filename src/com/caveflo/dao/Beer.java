@@ -9,16 +9,16 @@ public class Beer implements Serializable {
 	public static final int customValue = 1;
 	public static final int validValue = 1;
 
-	private String id;
-	private String name;
+	private String id = "";
+	private String name = "";
 	private float degree;
-	private String type;
-	private String country;
+	private String type = "";
+	private String country = "";
 	private Integer status;
 	private Integer custom;
 	private Integer rating;
-	private String comment;
-	private String rating_date;
+	private String comment = "";
+	private String rating_date = "";
 
 	public String getId() {
 		return id;
