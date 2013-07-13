@@ -64,6 +64,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		setContent(0);
+		
 	}
 
 	private void setContent(int fragment) {

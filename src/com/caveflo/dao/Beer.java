@@ -5,6 +5,9 @@ import java.io.Serializable;
 public class Beer implements Serializable {
 
 	private static final long serialVersionUID = 110072984511839423L;
+	
+	public static final int customValue = 1;
+	public static final int validValue = 1;
 
 	private String id;
 	private String name;
@@ -102,7 +105,11 @@ public class Beer implements Serializable {
 	}
 
 	public boolean isCustom() {
-		return custom == 1;
+		return custom == customValue;
+	}
+	
+	public boolean isValid(){
+		return status == validValue;
 	}
 	
 	public String toString(){

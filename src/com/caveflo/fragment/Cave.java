@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class Cave extends Fragment {
 	private String[] headers;
 	private String[] filterBeerDrunkValues;
 	private List<BiereTableRow> beerTableRows;
+	public String allItem;
 	public static final int spinnerStyleId = android.R.layout.simple_spinner_item;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +60,8 @@ public class Cave extends Fragment {
 		spinnerDrunkFilter = (Spinner) getActivity().findViewById(R.id.filterdrunkbeer);
 		ArrayAdapter<String> adapterBeerDrunk = new ArrayAdapter<String>(getActivity(), spinnerStyleId, filterBeerDrunkValues);
 		spinnerDrunkFilter.setAdapter(adapterBeerDrunk);
+		
+		allItem = getString(R.string.filter_all);
 
 		OnItemSelectedListener filterListener = new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
@@ -111,8 +115,10 @@ public class Cave extends Fragment {
 
 	public void initList() {
 		beerTableRows.clear();
-		for (Beer beer : Factory.get().getBeerReferential().getBeers()) {
-			beerTableRows.add(new BiereTableRow(getActivity(), beer));
+		List<Beer> beers = Factory.get().getBeerReferential().getBeers();
+		Activity activity = getActivity();
+		for (Beer beer : beers) {
+			beerTableRows.add(new BiereTableRow(activity, beer));
 		}
 		initTypeFilter();
 		initCountryFilter();
@@ -148,7 +154,7 @@ public class Cave extends Fragment {
 	public void initTypeFilter() {
 		List<String> beerTypesList = Factory.get().getBeerReferential().getBeerTypes();
 		String[] filterBeerTypes = new String[beerTypesList.size() + 1];
-		filterBeerTypes[0] = getString(R.string.filter_all);
+		filterBeerTypes[0] = allItem;
 		int i = 1;
 		for (String type : beerTypesList) {
 			filterBeerTypes[i++] = type;
@@ -160,7 +166,7 @@ public class Cave extends Fragment {
 	public void initCountryFilter() {
 		List<String> beerCountryList = Factory.get().getBeerReferential().getBeerCountries();
 		String[] filterBeerCountry = new String[beerCountryList.size() + 1];
-		filterBeerCountry[0] = getString(R.string.filter_all);
+		filterBeerCountry[0] = allItem;
 		int i = 1;
 		for (String type : beerCountryList) {
 			filterBeerCountry[i++] = type;
@@ -170,23 +176,26 @@ public class Cave extends Fragment {
 	}
 
 	public void filterList() {
-		String nameFilter = textFilter.getText().toString();
+		Locale locale = Locale.getDefault();
+		String nameFilter = textFilter.getText().toString().toLowerCase(locale);
+		String selectedFilterType = spinnerTypeFilter.getSelectedItem().toString();
+		String selectedFilterCountry = spinnerCountryFilter.getSelectedItem().toString();
+
 		containerTable.removeAllViews();
 		containerTable.addView(headerRow);
+		
 		for (BiereTableRow beerTableRow : beerTableRows) {
 
 			// Filtering on name
-			if (nameFilter == null || nameFilter.trim().length() == 0 || beerTableRow.getBeer().getName().toLowerCase(Locale.getDefault()).contains(nameFilter.toLowerCase(Locale.getDefault()))) {
+			if (nameFilter == null || nameFilter.trim().length() == 0 || beerTableRow.getBeer().getName().toLowerCase(locale).contains(nameFilter)) {
 
 				// Filtering on drunk
 				if (spinnerDrunkFilter.getSelectedItemPosition() == 0 || (spinnerDrunkFilter.getSelectedItemPosition() == 1 && !beerTableRow.getBeer().isDrunk()) || (spinnerDrunkFilter.getSelectedItemPosition() == 2 && beerTableRow.getBeer().isDrunk())) {
 
 					// Filtering on type
-					String selectedFilterType = spinnerTypeFilter.getSelectedItem().toString();
 					if (spinnerTypeFilter.getSelectedItemPosition() == 0 || selectedFilterType.equals(beerTableRow.getBeer().getType())) {
 
 						// Filtering on country
-						String selectedFilterCountry = spinnerCountryFilter.getSelectedItem().toString();
 						if (spinnerCountryFilter.getSelectedItemPosition() == 0 || selectedFilterCountry.equals(beerTableRow.getBeer().getCountry())) {
 							containerTable.addView(beerTableRow);
 						}
@@ -210,6 +219,6 @@ public class Cave extends Fragment {
 			pourc = Factory.get().getBeerReferential().getBeerDrunkCount() * 100 / Factory.get().getBeerReferential().getBeerCount();
 		}
 		countBeer.setText(pourc + "%");
-
 	}
+
 }
