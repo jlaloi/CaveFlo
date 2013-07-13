@@ -30,7 +30,7 @@ public final class R {
         public static final int tableborder=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f09002b;
+        public static final int action_settings=0x7f09002d;
         public static final int alco_add=0x7f090007;
         public static final int alco_button=0x7f090009;
         public static final int alco_poid=0x7f090006;
@@ -42,12 +42,12 @@ public final class R {
         public static final int buttonCreateKo=0x7f090018;
         public static final int buttonCreateOk=0x7f090017;
         public static final int buttonDelete=0x7f090019;
-        public static final int buttonNavigation=0x7f090020;
-        public static final int buttonRatingClear=0x7f090029;
-        public static final int buttonRatingKo=0x7f09002a;
-        public static final int buttonRatingOk=0x7f090028;
-        public static final int buttonexpimpcancel=0x7f09001f;
-        public static final int buttonexpimpdo=0x7f09001e;
+        public static final int buttonNavigation=0x7f090022;
+        public static final int buttonRatingClear=0x7f09002b;
+        public static final int buttonRatingKo=0x7f09002c;
+        public static final int buttonRatingOk=0x7f09002a;
+        public static final int buttonexpimpcancel=0x7f090021;
+        public static final int buttonexpimpdo=0x7f090020;
         public static final int containerTable=0x7f090011;
         public static final int content_frame=0x7f090001;
         public static final int createbeercountry=0x7f090014;
@@ -65,18 +65,20 @@ public final class R {
         public static final int filterdrunkbeer=0x7f09000e;
         public static final int filtertype=0x7f09000c;
         public static final int impexpradiogroup=0x7f09001a;
-        public static final int menu_add_beer=0x7f09002c;
-        public static final int menu_impexp=0x7f09002e;
-        public static final int menu_refresh=0x7f09002d;
+        public static final int menu_add_beer=0x7f09002e;
+        public static final int menu_impexp=0x7f090030;
+        public static final int menu_refresh=0x7f09002f;
         public static final int radioexport=0x7f09001c;
         public static final int radioimport=0x7f09001b;
-        public static final int ratingbar=0x7f090024;
-        public static final int ratingbuttondate=0x7f090027;
-        public static final int ratingcommentaire=0x7f090025;
-        public static final int ratingtext=0x7f090022;
-        public static final int ratingtextdate=0x7f090026;
-        public static final int ratingvalue=0x7f090023;
-        public static final int web_view=0x7f090021;
+        public static final int ratingbar=0x7f090026;
+        public static final int ratingbuttondate=0x7f090029;
+        public static final int ratingcommentaire=0x7f090027;
+        public static final int ratingtext=0x7f090024;
+        public static final int ratingtextdate=0x7f090028;
+        public static final int ratingvalue=0x7f090025;
+        public static final int userbeerfile=0x7f09001e;
+        public static final int userratingfile=0x7f09001f;
+        public static final int web_view=0x7f090023;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -96,14 +98,14 @@ public final class R {
         public static final int action_settings=0x7f060024;
         public static final int addbeer=0x7f060009;
         public static final int address=0x7f060002;
-        public static final int alco_error=0x7f06003a;
-        public static final int alco_lega=0x7f060037;
-        public static final int alco_poid_1=0x7f06003c;
-        public static final int alco_poid_2=0x7f06003d;
-        public static final int alco_result_ko=0x7f060039;
-        public static final int alco_result_ok=0x7f060038;
-        public static final int alco_sexe_femme=0x7f060036;
-        public static final int alco_sexe_homme=0x7f060035;
+        public static final int alco_error=0x7f06003c;
+        public static final int alco_lega=0x7f060039;
+        public static final int alco_poid_1=0x7f06003e;
+        public static final int alco_poid_2=0x7f06003f;
+        public static final int alco_result_ko=0x7f06003b;
+        public static final int alco_result_ok=0x7f06003a;
+        public static final int alco_sexe_femme=0x7f060038;
+        public static final int alco_sexe_homme=0x7f060037;
         public static final int app_name=0x7f060000;
         public static final int buttonNavigation=0x7f060007;
         public static final int button_calculer=0x7f06001b;
@@ -127,18 +129,18 @@ public final class R {
         public static final int directory=0x7f06002c;
         public static final int drawer_close=0x7f060023;
         public static final int drawer_open=0x7f060022;
-        public static final int drink_action=0x7f060041;
-        public static final int drink_degree=0x7f06003f;
-        public static final int drink_note=0x7f06003e;
-        public static final int drink_quantity=0x7f060040;
-        public static final int exportresult=0x7f060033;
-        public static final int filenotfound=0x7f060031;
-        public static final int filesimportok=0x7f060032;
+        public static final int drink_action=0x7f060043;
+        public static final int drink_degree=0x7f060041;
+        public static final int drink_note=0x7f060040;
+        public static final int drink_quantity=0x7f060042;
+        public static final int exportresult=0x7f060035;
+        public static final int filenotfound=0x7f060033;
+        public static final int filesimportok=0x7f060034;
         public static final int filter_all=0x7f060010;
         public static final int filter_drunk=0x7f060012;
         public static final int filter_todrink=0x7f060011;
         public static final int horaire=0x7f060001;
-        public static final int importexporttile=0x7f060030;
+        public static final int importexporttile=0x7f060032;
         public static final int loadingpage=0x7f060029;
         public static final int menuRefresh=0x7f060005;
         public static final int menuimportexport=0x7f060006;
@@ -148,8 +150,8 @@ public final class R {
         public static final int numberdrunk=0x7f060028;
         public static final int pick_date=0x7f060026;
         public static final int rate_string=0x7f06001d;
-        public static final int ratinginfo=0x7f060034;
-        public static final int tab_alco=0x7f06003b;
+        public static final int ratinginfo=0x7f060036;
+        public static final int tab_alco=0x7f06003d;
         public static final int tab_cave=0x7f06000a;
         public static final int tab_info=0x7f06000b;
         public static final int tab_news=0x7f06000c;
@@ -158,7 +160,9 @@ public final class R {
         public static final int update_ko=0x7f06000d;
         public static final int update_ok=0x7f06000e;
         public static final int userbeerfile=0x7f06002e;
+        public static final int userbeerfiletext=0x7f060030;
         public static final int userratingfile=0x7f06002f;
+        public static final int userratingfiletext=0x7f060031;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;

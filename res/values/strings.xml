@@ -48,6 +48,8 @@
     <string name="defaultDirectory">/Caveflo/</string>
     <string name="userbeerfile">customBeer.ext</string>
     <string name="userratingfile">ratingUser.ext</string>
+    <string name="userbeerfiletext">Bières utilisateur:</string>
+    <string name="userratingfiletext">Notations:</string>
     <string name="importexporttile">Configuration: Importer/Exporter</string>
     <string name="filenotfound">Fichier %1$s non trouvé.</string>
     <string name="filesimportok">Importation terminée</string>

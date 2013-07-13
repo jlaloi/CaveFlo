@@ -19,7 +19,7 @@ import com.caveflo.misc.Factory;
 
 public class ImportExportPopup extends DialogFragment {
 
-	private EditText directory;
+	private EditText directory, userbeer, userrating;
 	private RadioGroup actionRadio;
 
 	public static ImportExportPopup newInstance() {
@@ -33,6 +33,8 @@ public class ImportExportPopup extends DialogFragment {
 		getDialog().setTitle(getString(R.string.importexporttile));
 
 		directory = (EditText) v.findViewById(R.id.expimpdirectory);
+		userbeer = (EditText) v.findViewById(R.id.userbeerfile);
+		userrating = (EditText) v.findViewById(R.id.userratingfile);
 		actionRadio = (RadioGroup) v.findViewById(R.id.impexpradiogroup);
 
 		Button buttonCancel = (Button) v.findViewById(R.id.buttonexpimpcancel);
@@ -46,48 +48,47 @@ public class ImportExportPopup extends DialogFragment {
 		buttonValidate.setOnClickListener(new OnClickListener() {
 			public void onClick(View arg0) {
 				if (actionRadio.getCheckedRadioButtonId() == R.id.radioimport) {
-					importConfig(directory.getText().toString());
+					importConfig();
 				} else if (actionRadio.getCheckedRadioButtonId() == R.id.radioexport) {
-					exportingConfig(directory.getText().toString());
+					exportingConfig();
 				}
 				dismiss();
 			}
 		});
-
 		return v;
 	}
 
-	public void importConfig(String path) {
-		// Import beer
-		String beerFilePath = path + "/" + getString(R.string.userbeerfile).replace("//", "/");
-		File beerFile = new File(Environment.getExternalStorageDirectory(), beerFilePath);
+	private File getBeerFile() {
+		String path = (directory.getText() + "/" + userbeer.getText()).replace("//", "/");
+		return new File(Environment.getExternalStorageDirectory(), path);
+	}
+
+	private File getRatingFile() {
+		String path = (directory.getText() + "/" + userrating.getText()).replace("//", "/");
+		return new File(Environment.getExternalStorageDirectory(), path);
+	}
+
+	public void importConfig() {
+		File beerFile = getBeerFile();
 		if (beerFile.exists()) {
 			Factory.get().getBeerReferential().update(beerFile);
-			// Import rating
-			String ratingFilePath = path + "/" + getString(R.string.userratingfile).replace("//", "/");
-			File ratingFile = new File(Environment.getExternalStorageDirectory(), ratingFilePath);
+			File ratingFile = getRatingFile();
 			if (ratingFile.exists()) {
 				Factory.get().getBeerReferential().updateRating(ratingFile);
 				Toast.makeText(getActivity(), getString(R.string.filesimportok), Toast.LENGTH_LONG).show();
 			} else {
-				Toast.makeText(getActivity(), getString(R.string.filenotfound, ratingFilePath), Toast.LENGTH_LONG).show();
+				Toast.makeText(getActivity(), getString(R.string.filenotfound, ratingFile.getAbsolutePath()), Toast.LENGTH_LONG).show();
 			}
+			Factory.get().getFragmentCave().initList();
 		} else {
-			Toast.makeText(getActivity(), getString(R.string.filenotfound, beerFilePath), Toast.LENGTH_LONG).show();
+			Toast.makeText(getActivity(), getString(R.string.filenotfound, beerFile.getAbsolutePath()), Toast.LENGTH_LONG).show();
 		}
-		Factory.get().getFragmentCave().initList();
 	}
 
-	public void exportingConfig(String path) {
-		new File(Environment.getExternalStorageDirectory(), path).mkdirs();
-		// Custom beer
-		String beerFilePath = path + "/" + getString(R.string.userbeerfile).replace("//", "/");
-		File beerFile = new File(Environment.getExternalStorageDirectory(), beerFilePath);
-		int nbBeer = Factory.get().getBeerReferential().saveCustomBeerToFile(beerFile);
-		// Rating
-		String ratingFilePath = path + "/" + getString(R.string.userratingfile).replace("//", "/");
-		File ratingFile = new File(Environment.getExternalStorageDirectory(), ratingFilePath);
-		int nbRating = Factory.get().getBeerReferential().saveRatingToFile(ratingFile);
+	public void exportingConfig() {
+		new File(Environment.getExternalStorageDirectory(), directory.getText().toString()).mkdirs();
+		int nbBeer = Factory.get().getBeerReferential().saveCustomBeerToFile(getBeerFile());
+		int nbRating = Factory.get().getBeerReferential().saveRatingToFile(getRatingFile());
 		Toast.makeText(getActivity(), getString(R.string.exportresult, nbBeer, nbRating), Toast.LENGTH_LONG).show();
 	}
 
