@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private String mTitle = "";
+	private String[] tabs;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class MainActivity extends Activity {
 		content.put(getString(R.string.tab_news), Factory.get().getFragmentNews());
 		content.put(getString(R.string.tab_info), Factory.get().getFragmentInfo());
 		content.put(getString(R.string.tab_alco), Factory.get().getFragmentAlcoolemie());
+		tabs = getResources().getStringArray(R.array.nav_menu);
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.drawer_list);
@@ -65,21 +67,17 @@ public class MainActivity extends Activity {
 			}
 		});
 		setContent(0);
-		
 	}
 
 	private void setContent(int fragment) {
 		mDrawerList.setItemChecked(fragment, true);
-		String[] tabs = getResources().getStringArray(R.array.nav_menu);
 		mTitle = tabs[fragment];
-		Bundle data = new Bundle();
-		data.putInt("position", fragment);
+		mDrawerLayout.closeDrawer(mDrawerList);
+		getActionBar().setTitle(mTitle);
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction ft = fragmentManager.beginTransaction();
 		ft.replace(R.id.content_frame, content.get(mTitle));
 		ft.commit();
-		mDrawerLayout.closeDrawer(mDrawerList);
-		getActionBar().setTitle(mTitle);
 	}
 
 	protected void onPostCreate(Bundle savedInstanceState) {

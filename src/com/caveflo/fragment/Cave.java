@@ -109,7 +109,7 @@ public class Cave extends Fragment {
 			headerRow.addView(text);
 		}
 
-		// Create all beer row
+		// Create all beer rows
 		initList();
 	}
 
