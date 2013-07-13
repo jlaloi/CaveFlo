@@ -3,6 +3,7 @@
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_drawer"
+        android:listSelector="@drawable/listitem_selector"
         android:showAsAction="always"
         android:title="@string/action_settings">
         <menu>

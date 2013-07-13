@@ -73,7 +73,7 @@ public class BiereTableRow extends TableRow implements Serializable {
 		} else {
 			rating.setText("");
 			ratingDate.setText("");
-			setBackgroundColor(getResources().getColor(R.color.white));
+			setBackgroundColor(getResources().getColor(R.color.notdrunk));
 		}
 	}
 

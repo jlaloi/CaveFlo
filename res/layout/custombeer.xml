@@ -117,8 +117,8 @@
             android:layout_height="36dp"
             android:layout_gravity="center"
             android:text="@string/button_cancel" />
-        
-          <Button
+
+        <Button
             android:id="@+id/buttonDelete"
             style="@style/defaultButton"
             android:layout_width="wrap_content"

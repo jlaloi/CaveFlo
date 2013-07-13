@@ -3,12 +3,12 @@
 
     <string-array name="biere">
         <item>@string/cave_beer_name</item>
-         <item>@string/cave_beer_type</item>
+        <item>@string/cave_beer_type</item>
         <item>@string/cave_beer_degre</item>
         <item>@string/cave_beer_rating</item>
         <item>@string/cave_beer_drunk</item>
     </string-array>
-       <string-array name="drink">
+    <string-array name="drink">
         <item>@string/drink_note</item>
         <item>@string/drink_degree</item>
         <item>@string/drink_quantity</item>

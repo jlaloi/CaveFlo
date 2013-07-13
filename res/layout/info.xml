@@ -61,13 +61,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom|center"
+            android:layout_marginTop="40dp"
             android:autoLink="web"
             android:gravity="center"
             android:linksClickable="true"
             android:text="@string/dev_url"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textIsSelectable="true"
-            android:layout_marginTop="40dp"
             android:textSize="12sp" />
     </LinearLayout>
 

@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Factory.get().initiateBeerDataSource(getApplicationContext());
+		Factory.get().initiateBeerDataSource(getBaseContext());
 		content.put(getString(R.string.tab_cave), Factory.get().getFragmentCave());
 		content.put(getString(R.string.tab_news), Factory.get().getFragmentNews());
 		content.put(getString(R.string.tab_info), Factory.get().getFragmentInfo());
@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
 			return true;
 		case R.id.menu_refresh:
 			setContent(0);
-			new ASynchUpdate(getApplicationContext()).execute();
+			new ASynchUpdate(getBaseContext()).execute();
 			return true;
 		case R.id.menu_impexp:
 			ft = this.getFragmentManager().beginTransaction();
@@ -119,4 +119,5 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+
 }

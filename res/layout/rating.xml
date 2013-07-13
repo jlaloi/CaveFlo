@@ -11,8 +11,7 @@
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textIsSelectable="true"
-        />
+        android:textIsSelectable="true" />
 
     <TextView
         android:id="@+id/ratingvalue"
