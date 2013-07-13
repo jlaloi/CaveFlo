@@ -48,7 +48,7 @@
     <ScrollView
         style="@style/cavelistlayout"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="match_parent" >
 
         <TableLayout
             android:id="@+id/containerTable"

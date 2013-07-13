@@ -162,8 +162,7 @@ public final class R {
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;
-        public static final int cavelistlayout=0x7f070003;
-        public static final int defaultButton=0x7f070002;
-        public static final int defaultTextView=0x7f070001;
+        public static final int cavelistlayout=0x7f070002;
+        public static final int defaultButton=0x7f070001;
     }
 }

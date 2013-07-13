@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,32 +55,33 @@ public class Cave extends Fragment {
 		countBeer = (TextView) getActivity().findViewById(R.id.beercount);
 		headers = getResources().getStringArray(R.array.biere);
 		filterBeerDrunkValues = getResources().getStringArray(R.array.filter_drunk_biere);
-
 		spinnerCountryFilter = (Spinner) getActivity().findViewById(R.id.filtercountry);
 		spinnerTypeFilter = (Spinner) getActivity().findViewById(R.id.filtertype);
 		spinnerDrunkFilter = (Spinner) getActivity().findViewById(R.id.filterdrunkbeer);
+		textFilter = (EditText) getActivity().findViewById(R.id.filterBeerText);
 		ArrayAdapter<String> adapterBeerDrunk = new ArrayAdapter<String>(getActivity(), spinnerStyleId, filterBeerDrunkValues);
 		spinnerDrunkFilter.setAdapter(adapterBeerDrunk);
-		
 		allItem = getString(R.string.filter_all);
 
-		OnItemSelectedListener filterListener = new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				filterList();
-			}
+		// Create header row
+		headerRow = new TableRow(getActivity());
+		for (String header : headers) {
+			TextView text = new TextView(getActivity());
+			text.setText(header);
+			text.setGravity(Gravity.CENTER);
+			text.setTypeface(null, Typeface.BOLD);
+			text.setPadding(4, 4, 0, 0);
+			headerRow.addView(text);
+		}
 
-			public void onNothingSelected(AdapterView<?> arg0) {
-			}
-		};
+		initList();
+		initListener();
+	}
 
-		spinnerDrunkFilter.setOnItemSelectedListener(filterListener);
-		spinnerTypeFilter.setOnItemSelectedListener(filterListener);
-		spinnerCountryFilter.setOnItemSelectedListener(filterListener);
-
-		textFilter = (EditText) getActivity().findViewById(R.id.filterBeerText);
+	private void initListener() {
 		textFilter.addTextChangedListener(new TextWatcher() {
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				if (textFilter.getText().toString().trim().length() == 0 || textFilter.getText().toString().trim().length() > 1) {
+				if (textFilter.getText().toString().trim().length() != 1) {
 					filterList();
 				}
 			}
@@ -98,19 +100,9 @@ public class Cave extends Fragment {
 			}
 		});
 
-		// Create header row
-		headerRow = new TableRow(getActivity());
-		for (String header : headers) {
-			TextView text = new TextView(getActivity());
-			text.setText(header);
-			text.setGravity(Gravity.CENTER);
-			text.setTypeface(null, Typeface.BOLD);
-			text.setPadding(4, 4, 0, 0);
-			headerRow.addView(text);
-		}
-
-		// Create all beer rows
-		initList();
+		spinnerDrunkFilter.setOnItemSelectedListener(new FilterListner());
+		spinnerTypeFilter.setOnItemSelectedListener(new FilterListner());
+		spinnerCountryFilter.setOnItemSelectedListener(new FilterListner());
 	}
 
 	public void initList() {
@@ -176,6 +168,8 @@ public class Cave extends Fragment {
 	}
 
 	public void filterList() {
+		Log.i("Perf Cave", "Filter List start");
+
 		Locale locale = Locale.getDefault();
 		String nameFilter = textFilter.getText().toString().toLowerCase(locale);
 		String selectedFilterType = spinnerTypeFilter.getSelectedItem().toString();
@@ -183,7 +177,7 @@ public class Cave extends Fragment {
 
 		containerTable.removeAllViews();
 		containerTable.addView(headerRow);
-		
+
 		for (BiereTableRow beerTableRow : beerTableRows) {
 
 			// Filtering on name
@@ -206,6 +200,8 @@ public class Cave extends Fragment {
 
 			}
 		}
+
+		Log.i("Perf Cave", "Filter List end");
 	}
 
 	public void affToastCount() {
@@ -220,5 +216,20 @@ public class Cave extends Fragment {
 		}
 		countBeer.setText(pourc + "%");
 	}
+
+	class FilterListner implements OnItemSelectedListener {
+
+		private long oldPos = 0;
+
+		public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+			if (id != oldPos) {
+				filterList();
+				id = oldPos;
+			}
+		}
+
+		public void onNothingSelected(AdapterView<?> arg0) {
+		}
+	};
 
 }

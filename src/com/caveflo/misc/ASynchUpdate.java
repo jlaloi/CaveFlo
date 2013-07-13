@@ -31,7 +31,6 @@ public class ASynchUpdate extends AsyncTask<Void, Integer, Boolean> {
 	protected void onPostExecute(Boolean result) {
 		if (result) {
 			Factory.get().getFragmentCave().initList();
-			Factory.get().getFragmentCave().filterList();
 			Toast.makeText(context, context.getString(R.string.update_ok), Toast.LENGTH_SHORT).show();
 		} else {
 			Toast.makeText(context, context.getString(R.string.update_ko), Toast.LENGTH_SHORT).show();
