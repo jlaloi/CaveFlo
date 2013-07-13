@@ -8,6 +8,12 @@
         <item>@string/cave_beer_rating</item>
         <item>@string/cave_beer_drunk</item>
     </string-array>
+       <string-array name="drink">
+        <item>@string/drink_note</item>
+        <item>@string/drink_degree</item>
+        <item>@string/drink_quantity</item>
+        <item>@string/drink_action</item>
+    </string-array>
     <string-array name="filter_drunk_biere">
         <item>@string/filter_all</item>
         <item>@string/filter_todrink</item>
@@ -17,6 +23,7 @@
         <item>@string/tab_cave</item>
         <item>@string/tab_news</item>
         <item>@string/tab_info</item>
+        <item>@string/tab_alco</item>
     </string-array>
 
 </resources>

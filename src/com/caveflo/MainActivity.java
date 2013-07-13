@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
 		content.put(getString(R.string.tab_cave), Factory.get().getFragmentCave());
 		content.put(getString(R.string.tab_news), Factory.get().getFragmentNews());
 		content.put(getString(R.string.tab_info), Factory.get().getFragmentInfo());
+		content.put(getString(R.string.tab_alco), Factory.get().getFragmentAlcoolemie());
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.drawer_list);

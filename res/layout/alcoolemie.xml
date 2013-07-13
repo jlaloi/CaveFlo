@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RadioGroup
+            android:id="@+id/alco_sexe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/alco_sexe_homme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/alco_sexe_homme" />
+
+            <RadioButton
+                android:id="@+id/alco_sexe_femme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alco_sexe_femme" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="@string/alco_poid_1"
+            android:textIsSelectable="true"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/alco_poid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:paddingLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="@string/alco_poid_2"
+            android:textIsSelectable="true"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/alco_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription="@string/buttonimport"
+            android:paddingLeft="5dp"
+            android:src="@drawable/ic_input_add" />
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/drinkList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/alco_button"
+        style="@style/defaultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:text="@string/button_calculer" />
+
+    <TextView
+        android:id="@+id/alco_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/alco_lega"
+        android:textStyle="bold|italic" />
+
+</LinearLayout>

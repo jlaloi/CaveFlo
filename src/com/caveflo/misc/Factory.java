@@ -9,6 +9,7 @@ import android.content.Context;
 import com.caveflo.dao.Beer;
 import com.caveflo.dao.BeerDataSource;
 import com.caveflo.dao.BeerReferential;
+import com.caveflo.fragment.Alcoolemie;
 import com.caveflo.fragment.Cave;
 import com.caveflo.fragment.Info;
 import com.caveflo.fragment.News;
@@ -24,6 +25,7 @@ public class Factory {
 	private Cave fragmentCave;
 	private Fragment fragmentInfo;
 	private Fragment fragmentNews;
+	private Alcoolemie fragmentAlcoolemie;
 	private BeerDataSource beerDataSource;
 	private BeerReferential beerReferential;
 	private Comparator<Beer> beerComparator;
@@ -32,6 +34,7 @@ public class Factory {
 		fragmentCave = new Cave();
 		fragmentInfo = new Info();
 		fragmentNews = new News();
+		fragmentAlcoolemie = new Alcoolemie();
 		beerComparator = new Comparator<Beer>() {
 			public int compare(Beer lhs, Beer rhs) {
 				return lhs.getName().toLowerCase(Locale.getDefault()).compareTo(rhs.getName().toLowerCase(Locale.getDefault()));
@@ -76,6 +79,10 @@ public class Factory {
 
 	public Comparator<Beer> getBeerComparator() {
 		return beerComparator;
+	}
+
+	public Alcoolemie getFragmentAlcoolemie() {
+		return fragmentAlcoolemie;
 	}
 
 }
