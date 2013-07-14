@@ -1,15 +1,16 @@
-package com.caveflo.fragment;
+package com.caveflo.fragment.cave;
 
 import java.io.Serializable;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.caveflo.R;
 import com.caveflo.dao.Beer;
@@ -17,22 +18,14 @@ import com.caveflo.fragment.dialog.BeerRatingPopup;
 import com.caveflo.fragment.dialog.CustomBeerPopup;
 import com.caveflo.misc.Factory;
 
-public class BiereTableRow extends TableRow implements Serializable {
+public class BeerTableRow extends TableRow implements Serializable {
 
 	private static final long serialVersionUID = -4037399769129818273L;
 	private Beer beer;
 	private Context context;
 	private TextView rating, ratingDate, name, degree, type;
 
-	public BiereTableRow(Context context) {
-		super(context);
-	}
-
-	public BiereTableRow(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
-
-	public BiereTableRow(Context context, Beer beer) {
+	public BeerTableRow(Context context, Beer beer) {
 		super(context);
 		this.context = context;
 
@@ -46,15 +39,35 @@ public class BiereTableRow extends TableRow implements Serializable {
 		ratingDate = createTextView(Gravity.CENTER);
 
 		updateBeer(beer);
-		
+
 		addView(name);
 		addView(type);
 		addView(degree);
 		addView(rating);
 		addView(ratingDate);
 
+		setOnTouchListener(new OnTouchListener() {
+			float oldX = -1;
+			float newX;
+
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_MOVE) {
+					newX = event.getX();
+					if (oldX == -1) {
+						oldX = newX;
+					} else if (newX - oldX > (Factory.get().getDisplayMetrics().widthPixels * 0.25f)) {
+						addToDrunk();
+						oldX = newX;
+						return true;
+					}
+				}
+				return false;
+			}
+		});
 		setOnClickListener(new BiereListener(this));
-		setOnLongClickListener(new BiereLongListener());
+		if (beer.isCustom()) {
+			setOnLongClickListener(new BiereLongListener());
+		}
 	}
 
 	public void onBeerUpdate() {
@@ -86,20 +99,19 @@ public class BiereTableRow extends TableRow implements Serializable {
 
 	class BiereLongListener implements OnLongClickListener {
 		public boolean onLongClick(View v) {
-			if (beer.isCustom()) {
-				FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
-				CustomBeerPopup.newInstance(beer).show(ft, "Modify");
-			}
+			showModificationDialog();
 			return false;
 		}
 	}
 
 	class BiereListener implements OnClickListener {
-		private BiereTableRow btr;
-		public BiereListener(BiereTableRow btr) {
+		private BeerTableRow btr;
+
+		public BiereListener(BeerTableRow btr) {
 			super();
 			this.btr = btr;
 		}
+
 		public void onClick(View v) {
 			FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
 			BeerRatingPopup.newInstance(btr).show(ft, "Rating");
@@ -108,6 +120,16 @@ public class BiereTableRow extends TableRow implements Serializable {
 
 	public Beer getBeer() {
 		return beer;
+	}
+
+	private void addToDrunk() {
+		Factory.get().getFragmentAlcoolemie().addBeer(beer);
+		Toast.makeText(getContext(), getContext().getString(R.string.drink_beer_added, beer.getName()), Toast.LENGTH_LONG).show();
+	}
+
+	private void showModificationDialog() {
+		FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
+		CustomBeerPopup.newInstance(beer).show(ft, "Modify");
 	}
 
 }

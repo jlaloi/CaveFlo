@@ -1,4 +1,4 @@
-package com.caveflo.fragment;
+package com.caveflo.fragment.cave;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class Cave extends Fragment {
 	private TableRow headerRow;
 	private String[] headers;
 	private String[] filterBeerDrunkValues;
-	private List<BiereTableRow> beerTableRows;
+	private List<BeerTableRow> beerTableRows;
 	public String allItem;
 	public static final int spinnerStyleId = android.R.layout.simple_spinner_item;
 
@@ -50,7 +50,7 @@ public class Cave extends Fragment {
 
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		beerTableRows = new ArrayList<BiereTableRow>();
+		beerTableRows = new ArrayList<BeerTableRow>();
 		containerTable = (TableLayout) getActivity().findViewById(R.id.containerTable);
 		countBeer = (TextView) getActivity().findViewById(R.id.beercount);
 		headers = getResources().getStringArray(R.array.biere);
@@ -74,6 +74,10 @@ public class Cave extends Fragment {
 			headerRow.addView(text);
 		}
 
+	}
+
+	public void onStart() {
+		super.onStart();
 		initList();
 		initListener();
 	}
@@ -100,9 +104,9 @@ public class Cave extends Fragment {
 			}
 		});
 
-		spinnerDrunkFilter.setOnItemSelectedListener(new FilterListner());
-		spinnerTypeFilter.setOnItemSelectedListener(new FilterListner());
-		spinnerCountryFilter.setOnItemSelectedListener(new FilterListner());
+		spinnerDrunkFilter.setOnItemSelectedListener(new FilterListner(spinnerDrunkFilter.getSelectedItemPosition()));
+		spinnerTypeFilter.setOnItemSelectedListener(new FilterListner(spinnerTypeFilter.getSelectedItemPosition()));
+		spinnerCountryFilter.setOnItemSelectedListener(new FilterListner(spinnerCountryFilter.getSelectedItemPosition()));
 	}
 
 	public void initList() {
@@ -110,7 +114,7 @@ public class Cave extends Fragment {
 		List<Beer> beers = Factory.get().getBeerReferential().getBeers();
 		Activity activity = getActivity();
 		for (Beer beer : beers) {
-			beerTableRows.add(new BiereTableRow(activity, beer));
+			beerTableRows.add(new BeerTableRow(activity, beer));
 		}
 		initTypeFilter();
 		initCountryFilter();
@@ -127,14 +131,14 @@ public class Cave extends Fragment {
 	}
 
 	public void onBeerDeletion(Beer beer) {
-		BiereTableRow toRemove = getBiereTableRow(beer);
+		BeerTableRow toRemove = getBiereTableRow(beer);
 		containerTable.removeView(toRemove);
 		beerTableRows.remove(toRemove);
 	}
 
-	private BiereTableRow getBiereTableRow(Beer beer) {
-		BiereTableRow result = null;
-		for (BiereTableRow biereTableRow : beerTableRows) {
+	private BeerTableRow getBiereTableRow(Beer beer) {
+		BeerTableRow result = null;
+		for (BeerTableRow biereTableRow : beerTableRows) {
 			if (biereTableRow.getBeer().equals(beer)) {
 				result = biereTableRow;
 				break;
@@ -178,7 +182,7 @@ public class Cave extends Fragment {
 		containerTable.removeAllViews();
 		containerTable.addView(headerRow);
 
-		for (BiereTableRow beerTableRow : beerTableRows) {
+		for (BeerTableRow beerTableRow : beerTableRows) {
 
 			// Filtering on name
 			if (nameFilter == null || nameFilter.trim().length() == 0 || beerTableRow.getBeer().getName().toLowerCase(locale).contains(nameFilter)) {
@@ -221,10 +225,14 @@ public class Cave extends Fragment {
 
 		private long oldPos = 0;
 
+		public FilterListner(long oldPos) {
+			this.oldPos = oldPos;
+		}
+
 		public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 			if (id != oldPos) {
 				filterList();
-				id = oldPos;
+				oldPos = id;
 			}
 		}
 

@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Factory.get().initiateBeerDataSource(getBaseContext());
+		getWindowManager().getDefaultDisplay().getRealMetrics(Factory.get().getDisplayMetrics());
 		content.put(getString(R.string.tab_cave), Factory.get().getFragmentCave());
 		content.put(getString(R.string.tab_news), Factory.get().getFragmentNews());
 		content.put(getString(R.string.tab_info), Factory.get().getFragmentInfo());
@@ -66,6 +67,12 @@ public class MainActivity extends Activity {
 				setContent(position);
 			}
 		});
+		setContent(0);
+	}
+
+	public void onResume() {
+		super.onResume();
+		Factory.get().initiateBeerDataSource(getBaseContext());
 		setContent(0);
 	}
 

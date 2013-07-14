@@ -64,9 +64,14 @@
     <string name="tab_alco">Estimation alcoolémie</string>
     <string name="alco_poid_1">de</string>
     <string name="alco_poid_2">kg</string>
-    <string name="drink_note">Commentaire</string>
+    <string name="drink_note">Déscription</string>
     <string name="drink_degree">Degrée</string>
-    <string name="drink_quantity">Volume en cl</string>
+    <string name="drink_quantity">Volume (cl)</string>
+    <string name="drink_hour">Heure</string>
     <string name="drink_action"></string>
-
+    <string name="saved_weight">saved_weight</string>
+    <string name="saved_sexe">saved_sexe</string>
+    <string name="saved_hour">saved_hour</string>
+   	<string name="drink_beer_added">Bière %1$s ajoutée au calcul d\'alcoolémie!</string>
+   	<string name="alco_hour">Première boisson à</string>
 </resources>

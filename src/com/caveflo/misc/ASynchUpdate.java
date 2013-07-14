@@ -1,10 +1,10 @@
 package com.caveflo.misc;
 
-import com.caveflo.R;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.caveflo.R;
 
 public class ASynchUpdate extends AsyncTask<Void, Integer, Boolean> {
 

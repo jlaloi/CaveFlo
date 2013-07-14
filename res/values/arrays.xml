@@ -12,6 +12,7 @@
         <item>@string/drink_note</item>
         <item>@string/drink_degree</item>
         <item>@string/drink_quantity</item>
+        <item>@string/drink_hour</item>
         <item>@string/drink_action</item>
     </string-array>
     <string-array name="filter_drunk_biere">
@@ -24,6 +25,32 @@
         <item>@string/tab_news</item>
         <item>@string/tab_info</item>
         <item>@string/tab_alco</item>
+    </string-array>
+    <string-array name="alco_hour">
+        <item>00h</item>
+        <item>01h</item>
+        <item>02h</item>
+        <item>03h</item>
+        <item>04h</item>
+        <item>05h</item>
+        <item>06h</item>
+        <item>07h</item>
+        <item>08h</item>
+        <item>09h</item>
+        <item>10h</item>
+        <item>11h</item>
+        <item>12h</item>
+        <item>13h</item>
+        <item>14h</item>
+        <item>15h</item>
+        <item>16h</item>
+        <item>17h</item>
+        <item>18h</item>
+        <item>19h</item>
+        <item>20h</item>
+        <item>21h</item>
+        <item>22h</item>
+        <item>23h</item>
     </string-array>
 
 </resources>

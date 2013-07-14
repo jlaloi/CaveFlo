@@ -9,6 +9,7 @@ package com.caveflo;
 
 public final class R {
     public static final class array {
+        public static final int alco_hour=0x7f040004;
         public static final int biere=0x7f040000;
         public static final int drink=0x7f040001;
         public static final int filter_drunk_biere=0x7f040002;
@@ -17,6 +18,9 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int chartaxis=0x7f050003;
+        public static final int chartlimit=0x7f050005;
+        public static final int chartline=0x7f050004;
         public static final int drunk=0x7f050002;
         public static final int grey=0x7f050000;
         public static final int notdrunk=0x7f050001;
@@ -30,55 +34,57 @@ public final class R {
         public static final int tableborder=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f09002d;
+        public static final int action_settings=0x7f09002f;
         public static final int alco_add=0x7f090007;
-        public static final int alco_button=0x7f090009;
+        public static final int alco_button=0x7f09000a;
+        public static final int alco_chart=0x7f09000c;
+        public static final int alco_hour=0x7f090008;
         public static final int alco_poid=0x7f090006;
-        public static final int alco_result=0x7f09000a;
+        public static final int alco_result=0x7f09000b;
         public static final int alco_sexe=0x7f090003;
         public static final int alco_sexe_femme=0x7f090005;
         public static final int alco_sexe_homme=0x7f090004;
-        public static final int beercount=0x7f090010;
-        public static final int buttonCreateKo=0x7f090018;
-        public static final int buttonCreateOk=0x7f090017;
-        public static final int buttonDelete=0x7f090019;
-        public static final int buttonNavigation=0x7f090022;
-        public static final int buttonRatingClear=0x7f09002b;
-        public static final int buttonRatingKo=0x7f09002c;
-        public static final int buttonRatingOk=0x7f09002a;
-        public static final int buttonexpimpcancel=0x7f090021;
-        public static final int buttonexpimpdo=0x7f090020;
-        public static final int containerTable=0x7f090011;
+        public static final int beercount=0x7f090012;
+        public static final int buttonCreateKo=0x7f09001a;
+        public static final int buttonCreateOk=0x7f090019;
+        public static final int buttonDelete=0x7f09001b;
+        public static final int buttonNavigation=0x7f090024;
+        public static final int buttonRatingClear=0x7f09002d;
+        public static final int buttonRatingKo=0x7f09002e;
+        public static final int buttonRatingOk=0x7f09002c;
+        public static final int buttonexpimpcancel=0x7f090023;
+        public static final int buttonexpimpdo=0x7f090022;
+        public static final int containerTable=0x7f090013;
         public static final int content_frame=0x7f090001;
-        public static final int createbeercountry=0x7f090014;
-        public static final int createbeerdegree=0x7f090016;
-        public static final int createbeername=0x7f090012;
-        public static final int createbeertype=0x7f090013;
-        public static final int degreevalue=0x7f090015;
+        public static final int createbeercountry=0x7f090016;
+        public static final int createbeerdegree=0x7f090018;
+        public static final int createbeername=0x7f090014;
+        public static final int createbeertype=0x7f090015;
+        public static final int degreevalue=0x7f090017;
         public static final int drawer_layout=0x7f090000;
         public static final int drawer_list=0x7f090002;
-        public static final int drinkList=0x7f090008;
-        public static final int dyn_layout=0x7f09000b;
-        public static final int expimpdirectory=0x7f09001d;
-        public static final int filterBeerText=0x7f09000f;
-        public static final int filtercountry=0x7f09000d;
-        public static final int filterdrunkbeer=0x7f09000e;
-        public static final int filtertype=0x7f09000c;
-        public static final int impexpradiogroup=0x7f09001a;
-        public static final int menu_add_beer=0x7f09002e;
-        public static final int menu_impexp=0x7f090030;
-        public static final int menu_refresh=0x7f09002f;
-        public static final int radioexport=0x7f09001c;
-        public static final int radioimport=0x7f09001b;
-        public static final int ratingbar=0x7f090026;
-        public static final int ratingbuttondate=0x7f090029;
-        public static final int ratingcommentaire=0x7f090027;
-        public static final int ratingtext=0x7f090024;
-        public static final int ratingtextdate=0x7f090028;
-        public static final int ratingvalue=0x7f090025;
-        public static final int userbeerfile=0x7f09001e;
-        public static final int userratingfile=0x7f09001f;
-        public static final int web_view=0x7f090023;
+        public static final int drinkList=0x7f090009;
+        public static final int dyn_layout=0x7f09000d;
+        public static final int expimpdirectory=0x7f09001f;
+        public static final int filterBeerText=0x7f090011;
+        public static final int filtercountry=0x7f09000f;
+        public static final int filterdrunkbeer=0x7f090010;
+        public static final int filtertype=0x7f09000e;
+        public static final int impexpradiogroup=0x7f09001c;
+        public static final int menu_add_beer=0x7f090030;
+        public static final int menu_impexp=0x7f090032;
+        public static final int menu_refresh=0x7f090031;
+        public static final int radioexport=0x7f09001e;
+        public static final int radioimport=0x7f09001d;
+        public static final int ratingbar=0x7f090028;
+        public static final int ratingbuttondate=0x7f09002b;
+        public static final int ratingcommentaire=0x7f090029;
+        public static final int ratingtext=0x7f090026;
+        public static final int ratingtextdate=0x7f09002a;
+        public static final int ratingvalue=0x7f090027;
+        public static final int userbeerfile=0x7f090020;
+        public static final int userratingfile=0x7f090021;
+        public static final int web_view=0x7f090025;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -99,6 +105,7 @@ public final class R {
         public static final int addbeer=0x7f060009;
         public static final int address=0x7f060002;
         public static final int alco_error=0x7f06003c;
+        public static final int alco_hour=0x7f060049;
         public static final int alco_lega=0x7f060039;
         public static final int alco_poid_1=0x7f06003e;
         public static final int alco_poid_2=0x7f06003f;
@@ -129,8 +136,10 @@ public final class R {
         public static final int directory=0x7f06002c;
         public static final int drawer_close=0x7f060023;
         public static final int drawer_open=0x7f060022;
-        public static final int drink_action=0x7f060043;
+        public static final int drink_action=0x7f060044;
+        public static final int drink_beer_added=0x7f060048;
         public static final int drink_degree=0x7f060041;
+        public static final int drink_hour=0x7f060043;
         public static final int drink_note=0x7f060040;
         public static final int drink_quantity=0x7f060042;
         public static final int exportresult=0x7f060035;
@@ -151,6 +160,9 @@ public final class R {
         public static final int pick_date=0x7f060026;
         public static final int rate_string=0x7f06001d;
         public static final int ratinginfo=0x7f060036;
+        public static final int saved_hour=0x7f060047;
+        public static final int saved_sexe=0x7f060046;
+        public static final int saved_weight=0x7f060045;
         public static final int tab_alco=0x7f06003d;
         public static final int tab_cave=0x7f06000a;
         public static final int tab_info=0x7f06000b;

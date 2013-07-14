@@ -4,5 +4,8 @@
     <color name="grey">#E0DFDB</color>
     <color name="notdrunk">@android:color/transparent</color>
     <color name="drunk">#FCD59C</color>
+    <color name="chartaxis">@android:color/black</color>
+    <color name="chartline">#FCD59C</color>
+    <color name="chartlimit">#FF0000</color>
 
 </resources>

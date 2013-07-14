@@ -19,7 +19,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.caveflo.R;
-import com.caveflo.fragment.BiereTableRow;
+import com.caveflo.fragment.cave.BeerTableRow;
 import com.caveflo.misc.Factory;
 
 public class BeerRatingPopup extends DialogFragment implements Serializable {
@@ -28,13 +28,13 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 	public static final String dateSep = "/";
 	public static final String biereTableRowKey = "BiereTableRowKey";
 
-	private BiereTableRow biereTableRow;
+	private BeerTableRow biereTableRow;
 	private TextView textProgress, textDate;
 	private EditText comment;
 	private SeekBar ratingBar;
 	private int year, month, day;
 
-	public static BeerRatingPopup newInstance(BiereTableRow biereTableRow) {
+	public static BeerRatingPopup newInstance(BeerTableRow biereTableRow) {
 		BeerRatingPopup dialog = new BeerRatingPopup();
 		Bundle args = new Bundle();
 		args.putSerializable(biereTableRowKey, biereTableRow);
@@ -44,7 +44,7 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.rating, container, false);
-		biereTableRow = (BiereTableRow) getArguments().getSerializable(biereTableRowKey);
+		biereTableRow = (BeerTableRow) getArguments().getSerializable(biereTableRowKey);
 		getDialog().setTitle(biereTableRow.getBeer().getName());
 
 		((TextView) v.findViewById(R.id.ratingtext)).setText(getString(R.string.ratinginfo, biereTableRow.getBeer().getType(), biereTableRow.getBeer().getDegree(), biereTableRow.getBeer().getCountry()));

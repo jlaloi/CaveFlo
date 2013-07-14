@@ -119,10 +119,10 @@ public class BeerDataSource {
 		values.put(BeerSQLiteHelper.TABLE_RATING_COLUMN_DATE, beer.getRatingDate());
 		return values;
 	}
-	
-	public List<String> getBeerTypes(){
+
+	public List<String> getBeerTypes() {
 		List<String> result = new ArrayList<String>();
-		Cursor cursor = database.query(true, BeerSQLiteHelper.TABLE_BEER, new String[]{BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE}, null, null, null, null, BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE,null);
+		Cursor cursor = database.query(true, BeerSQLiteHelper.TABLE_BEER, new String[] { BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE }, null, null, null, null, BeerSQLiteHelper.TABLE_BEER_COLUMN_TYPE, null);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			result.add(cursor.getString(0));
@@ -131,10 +131,34 @@ public class BeerDataSource {
 		cursor.close();
 		return result;
 	}
-	
-	public List<String> getBeerCountries(){
+
+	public List<Drink> getDrinks() {
+		List<Drink> result = new ArrayList<Drink>();
+		String[] columns = new String[] { BeerSQLiteHelper.TABLE_DRINK_ID, BeerSQLiteHelper.TABLE_DRINK_NOTE, BeerSQLiteHelper.TABLE_DRINK_DEGREE, BeerSQLiteHelper.TABLE_DRINK_VOLUME, BeerSQLiteHelper.TABLE_DRINK_HOUR };
+		Cursor cursor = database.query(true, BeerSQLiteHelper.TABLE_DRINK, columns, null, null, null, null, BeerSQLiteHelper.TABLE_DRINK_ID, null);
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			result.add(cursorToDrink(cursor));
+			cursor.moveToNext();
+		}
+		cursor.close();
+		return result;
+	}
+
+	public void saveDrinks(List<Drink> drinks) {
+		for (Drink drink : drinks) {
+			ContentValues values = drinkToContentValues(drink, true);
+			database.insert(BeerSQLiteHelper.TABLE_DRINK, null, values);
+		}
+	}
+
+	public void clearDrinks() {
+		database.delete(BeerSQLiteHelper.TABLE_DRINK, null, null);
+	}
+
+	public List<String> getBeerCountries() {
 		List<String> result = new ArrayList<String>();
-		Cursor cursor = database.query(true, BeerSQLiteHelper.TABLE_BEER, new String[]{BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY}, null, null, null, null, BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY,null);
+		Cursor cursor = database.query(true, BeerSQLiteHelper.TABLE_BEER, new String[] { BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY }, null, null, null, null, BeerSQLiteHelper.TABLE_BEER_COLUMN_COUNTRY, null);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			result.add(cursor.getString(0));
@@ -160,5 +184,27 @@ public class BeerDataSource {
 		}
 		return beer;
 	}
-	
+
+	private Drink cursorToDrink(Cursor cursor) {
+		Drink drink = new Drink();
+		drink.setId(cursor.getInt(0));
+		drink.setNote(cursor.getString(1));
+		drink.setDegree(cursor.getFloat(2));
+		drink.setQuantity(cursor.getInt(3));
+		drink.setHour(cursor.getInt(4));
+		return drink;
+	}
+
+	private ContentValues drinkToContentValues(Drink drink, boolean toInsert) {
+		ContentValues values = new ContentValues();
+		if (!toInsert) {
+			values.put(BeerSQLiteHelper.TABLE_DRINK_ID, drink.getId());
+		}
+		values.put(BeerSQLiteHelper.TABLE_DRINK_NOTE, drink.getNote());
+		values.put(BeerSQLiteHelper.TABLE_DRINK_DEGREE, drink.getDegree());
+		values.put(BeerSQLiteHelper.TABLE_DRINK_VOLUME, drink.getQuantity());
+		values.put(BeerSQLiteHelper.TABLE_DRINK_HOUR, drink.getHour());
+		return values;
+	}
+
 }

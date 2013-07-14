@@ -5,14 +5,15 @@ import java.util.Locale;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.util.DisplayMetrics;
 
 import com.caveflo.dao.Beer;
 import com.caveflo.dao.BeerDataSource;
 import com.caveflo.dao.BeerReferential;
-import com.caveflo.fragment.Alcoolemie;
-import com.caveflo.fragment.Cave;
 import com.caveflo.fragment.Info;
 import com.caveflo.fragment.News;
+import com.caveflo.fragment.bloodalchohol.BloodAlcoholContent;
+import com.caveflo.fragment.cave.Cave;
 
 public class Factory {
 
@@ -25,21 +26,23 @@ public class Factory {
 	private Cave fragmentCave;
 	private Fragment fragmentInfo;
 	private Fragment fragmentNews;
-	private Alcoolemie fragmentAlcoolemie;
+	private BloodAlcoholContent fragmentAlcoolemie;
 	private BeerDataSource beerDataSource;
 	private BeerReferential beerReferential;
 	private Comparator<Beer> beerComparator;
+	private DisplayMetrics displayMetrics;
 
 	public Factory() {
 		fragmentCave = new Cave();
 		fragmentInfo = new Info();
 		fragmentNews = new News();
-		fragmentAlcoolemie = new Alcoolemie();
+		fragmentAlcoolemie = new BloodAlcoholContent();
 		beerComparator = new Comparator<Beer>() {
 			public int compare(Beer lhs, Beer rhs) {
 				return lhs.getName().toLowerCase(Locale.getDefault()).compareTo(rhs.getName().toLowerCase(Locale.getDefault()));
 			}
 		};
+		displayMetrics = new DisplayMetrics();
 	}
 
 	public BeerDataSource initiateBeerDataSource(Context context) {
@@ -81,8 +84,16 @@ public class Factory {
 		return beerComparator;
 	}
 
-	public Alcoolemie getFragmentAlcoolemie() {
+	public BloodAlcoholContent getFragmentAlcoolemie() {
 		return fragmentAlcoolemie;
+	}
+
+	public DisplayMetrics getDisplayMetrics() {
+		return displayMetrics;
+	}
+
+	public void setDisplayMetrics(DisplayMetrics displayMetrics) {
+		this.displayMetrics = displayMetrics;
 	}
 
 }
