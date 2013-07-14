@@ -55,7 +55,7 @@ public class BloodAlcoholContentCalculator {
 			Log.d("Blood Compute", "At " + currentHour + " = > " + current);
 			values.add(Math.round(current * 100f) / 100f);
 			axisX.add(currentHour + "h");
-			if ((currentHour - 1) % 24 == Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
+			if (currentHour == Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
 				currentBAC = Math.round(current * 100f) / 100f;
 			}
 			if (current > max) {
