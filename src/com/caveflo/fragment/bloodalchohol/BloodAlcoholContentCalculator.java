@@ -15,11 +15,12 @@ public class BloodAlcoholContentCalculator {
 	public static final float manCoef = 0.7f;
 	public static final float decreaseCoef = 0.15f;
 
-	private float sexCoeff;
+	private float sexCoeff, max;
 	private int weight;
 	private int startHour;
 	private List<Drink> drinks;
 	private float currentBAC;
+	private boolean relevant = false;
 
 	private List<Float> values = new ArrayList<Float>();
 	private List<Float> axisY = new ArrayList<Float>();
@@ -39,10 +40,11 @@ public class BloodAlcoholContentCalculator {
 		axisX.clear();
 		int currentHour = startHour;
 		float current = 0f;
-		float max = 0f;
+		max = 0f;
 		SparseIntArray perHours = getBACPerHour();
-		for (int i = 0; i < 24; i++) {
+		for (int i = 0; i < 23; i++) {
 			if (current > 0) {
+				relevant = true;
 				if (current - decreaseCoef < 0) {
 					current = 0f;
 				} else {
@@ -72,7 +74,7 @@ public class BloodAlcoholContentCalculator {
 		}
 
 		// Generate Y axis
-		for (float j = 0f; j <= max + 0.3f; j += 0.25f) {
+		for (float j = 0f; j <= max + 0.60f; j += 0.50f) {
 			axisY.add(j);
 		}
 	}
@@ -88,7 +90,9 @@ public class BloodAlcoholContentCalculator {
 	private SparseIntArray getBACPerHour() {
 		SparseIntArray result = new SparseIntArray();
 		for (Drink drink : drinks) {
-			result.put(drink.getHour() + 1, (int) ((getBAC(drink) * 100) + result.get(drink.getHour() + 1)));
+			int hour = (drink.getHour() + 1) % 24;
+			int value = (int) ((getBAC(drink) * 100) + result.get(hour));
+			result.put(hour, value);
 		}
 		return result;
 	}
@@ -103,6 +107,14 @@ public class BloodAlcoholContentCalculator {
 
 	public List<String> getAxisX() {
 		return axisX;
+	}
+
+	public float getMax() {
+		return max;
+	}
+
+	public boolean isRelevant() {
+		return relevant;
 	}
 
 }

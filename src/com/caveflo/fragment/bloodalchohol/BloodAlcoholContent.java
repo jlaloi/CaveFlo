@@ -77,6 +77,8 @@ public class BloodAlcoholContent extends Fragment {
 		drinkTable.addView(headerRow);
 		loadUserValues();
 		loadDrinks();
+
+		compute();
 	}
 
 	public void onStop() {
@@ -115,17 +117,12 @@ public class BloodAlcoholContent extends Fragment {
 			BloodAlcoholContentCalculator calc = new BloodAlcoholContentCalculator(sexCoeff, weightValue, drinks, hour.getSelectedItemPosition());
 			calc.compute();
 			float alco = calc.getResult();
-			if (alco < limit) {
-				result.setText(getString(R.string.alco_result_ok, alco));
-			} else {
-				int h = Math.round(((alco - limit) / elimination));
-				result.setText(getString(R.string.alco_result_ko, alco, h));
-			}
+			result.setText(getString(R.string.alco_result, alco));
 			saveUserValues();
 			saveDrinks();
-			if(drinks.size() > 0){
+			if (calc.isRelevant()) {
 				chart.setContent(calc.getAxisX(), calc.getAxisY(), calc.getValues());
-			}else{
+			} else {
 				chart.hideContent();
 			}
 		} catch (Exception e) {

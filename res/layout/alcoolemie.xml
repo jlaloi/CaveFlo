@@ -119,7 +119,7 @@
         <com.caveflo.fragment.bloodalchohol.BloodAlcoholContentChart
             android:id="@+id/alco_chart"
             android:layout_width="match_parent"
-            android:layout_height="120dp" />
+            android:layout_height="160dp" />
 
         <TextView
             android:layout_width="wrap_content"

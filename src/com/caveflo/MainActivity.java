@@ -9,6 +9,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +31,7 @@ public class MainActivity extends Activity {
 	private ActionBarDrawerToggle mDrawerToggle;
 	private String mTitle = "";
 	private String[] tabs;
-	private int currentFragment;
+	public static int currentFragment = 0;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,16 +69,19 @@ public class MainActivity extends Activity {
 				setContent(position);
 			}
 		});
-		setContent(0);
+		setContent(currentFragment);
+		Log.d("MainActivity", "onCreate " + currentFragment);
 	}
 
 	public void onResume() {
 		super.onResume();
+		Log.d("MainActivity", "Resuming " + currentFragment);
 		Factory.get().initiateBeerDataSource(getBaseContext());
 		setContent(currentFragment);
 	}
 
 	private void setContent(int fragment) {
+		Log.d("MainActivity", "Setting fragment " + fragment);
 		mDrawerList.setItemChecked(fragment, true);
 		mTitle = tabs[fragment];
 		mDrawerLayout.closeDrawer(mDrawerList);
@@ -87,6 +91,7 @@ public class MainActivity extends Activity {
 		ft.replace(R.id.content_frame, content.get(mTitle));
 		ft.commit();
 		currentFragment = fragment;
+		Log.d("MainActivity", "Current Fragment set to " + fragment);
 	}
 
 	protected void onPostCreate(Bundle savedInstanceState) {

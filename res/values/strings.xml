@@ -57,9 +57,8 @@
     <string name="ratinginfo">%1$s à %2$s° (%3$s)</string>
     <string name="alco_sexe_homme">Un homme</string>
     <string name="alco_sexe_femme">Une femme</string>
-    <string name="alco_lega">En France, le taux légal est de 0,5g d\'alcool par litre de sang, à partir de 0.8g il s\'agit d\'un délit.\nLe taux d\'élimination de l\'alcool est en moyenne de 0,15 g / litre de sang / heure.</string>
-    <string name="alco_result_ok"><b>%1$sg</b> d\'alcool par litre de sang.</string>
-    <string name="alco_result_ko">Attention!! <b>%1$sg</b> d\'alcool par litre de sang.\n\nLe taux d\'alcoolémie sera sous la limite légale dans <b>%2$sh.</b></string>
+    <string name="alco_lega">En France, le taux légal est de 0,5g d\'alcool par litre de sang, à partir de 0.8g il s\'agit d\'un délit. Le taux d\'élimination de l\'alcool est en moyenne de 0,15 g / litre de sang / heure.</string>
+    <string name="alco_result"><b>%1$sg</b> d\'alcool par litre de sang maintenant.</string>
     <string name="alco_error">Merci de vérifier les valeurs!</string>
     <string name="tab_alco">Estimation alcoolémie</string>
     <string name="alco_poid_1">de</string>
