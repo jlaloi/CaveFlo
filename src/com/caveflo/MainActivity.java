@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
 	private ActionBarDrawerToggle mDrawerToggle;
 	private String mTitle = "";
 	private String[] tabs;
+	private int currentFragment;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,7 +74,7 @@ public class MainActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		Factory.get().initiateBeerDataSource(getBaseContext());
-		setContent(0);
+		setContent(currentFragment);
 	}
 
 	private void setContent(int fragment) {
@@ -85,6 +86,7 @@ public class MainActivity extends Activity {
 		FragmentTransaction ft = fragmentManager.beginTransaction();
 		ft.replace(R.id.content_frame, content.get(mTitle));
 		ft.commit();
+		currentFragment = fragment;
 	}
 
 	protected void onPostCreate(Bundle savedInstanceState) {

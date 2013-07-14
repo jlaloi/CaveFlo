@@ -39,6 +39,11 @@ public class BloodAlcoholContentChart extends View {
 		defined = true;
 		invalidate();
 	}
+	
+	public void hideContent(){
+		defined = false;
+		invalidate();
+	}
 
 	protected void onDraw(Canvas canvas) {
 		width = getWidth();

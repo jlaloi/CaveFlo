@@ -123,7 +123,11 @@ public class BloodAlcoholContent extends Fragment {
 			}
 			saveUserValues();
 			saveDrinks();
-			chart.setContent(calc.getAxisX(), calc.getAxisY(), calc.getValues());
+			if(drinks.size() > 0){
+				chart.setContent(calc.getAxisX(), calc.getAxisY(), calc.getValues());
+			}else{
+				chart.hideContent();
+			}
 		} catch (Exception e) {
 			Log.e("Alcoolemie", "COMPUTE", e);
 			result.setText(getString(R.string.alco_error));
@@ -152,7 +156,7 @@ public class BloodAlcoholContent extends Fragment {
 		weight.setText(savedWeigth);
 		sexe.check(savedSexe);
 		if (savedHour == 25) {
-			hour.setSelection(Calendar.getInstance().get(Calendar.HOUR));
+			hour.setSelection(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
 		} else {
 			hour.setSelection(savedHour);
 		}
