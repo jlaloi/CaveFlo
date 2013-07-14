@@ -63,8 +63,8 @@
     <string name="tab_alco">Estimation alcoolémie</string>
     <string name="alco_poid_1">de</string>
     <string name="alco_poid_2">kg</string>
-    <string name="drink_note">Déscription</string>
-    <string name="drink_degree">Degrée</string>
+    <string name="drink_note">Description</string>
+    <string name="drink_degree">Degré</string>
     <string name="drink_quantity">Volume (cl)</string>
     <string name="drink_hour">Heure</string>
     <string name="drink_action"></string>
