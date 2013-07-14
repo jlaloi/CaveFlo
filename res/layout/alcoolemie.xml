@@ -61,15 +61,6 @@
                 android:text="@string/alco_poid_2"
                 android:textIsSelectable="true"
                 android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/alco_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:contentDescription="@string/buttonimport"
-                android:paddingLeft="5dp"
-                android:src="@drawable/ic_input_add" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,6 +82,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/alco_hour" />
+
+            <ImageButton
+                android:id="@+id/alco_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="@string/buttonimport"
+                android:paddingLeft="5dp"
+                android:src="@drawable/ic_input_add" />
         </LinearLayout>
 
         <TableLayout

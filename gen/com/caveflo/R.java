@@ -35,10 +35,10 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f09002f;
-        public static final int alco_add=0x7f090007;
+        public static final int alco_add=0x7f090008;
         public static final int alco_button=0x7f09000a;
         public static final int alco_chart=0x7f09000c;
-        public static final int alco_hour=0x7f090008;
+        public static final int alco_hour=0x7f090007;
         public static final int alco_poid=0x7f090006;
         public static final int alco_result=0x7f09000b;
         public static final int alco_sexe=0x7f090003;
