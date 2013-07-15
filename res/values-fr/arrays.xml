@@ -27,30 +27,30 @@
         <item>@string/tab_alco</item>
     </string-array>
     <string-array name="alco_hour">
-        <item>12 PM</item>
-        <item>01 AM</item>
-        <item>02 AM</item>
-        <item>03 AM</item>
-        <item>04 AM</item>
-        <item>05 AM</item>
-        <item>06 AM</item>
-        <item>07 AM</item>
-        <item>08 AM</item>
-        <item>09 AM</item>
-        <item>10 AM</item>
-        <item>11 AM</item>
-        <item>12 AM</item>
-        <item>01 PM</item>
-        <item>02 PM</item>
-        <item>03 PM</item>
-        <item>04 PM</item>
-        <item>05 PM</item>
-        <item>06 PM</item>
-        <item>07 PM</item>
-        <item>08 PM</item>
-        <item>09 PM</item>
-        <item>10 PM</item>
-        <item>11 PM</item>
+        <item>00h</item>
+        <item>01h</item>
+        <item>02h</item>
+        <item>03h</item>
+        <item>04h</item>
+        <item>05h</item>
+        <item>06h</item>
+        <item>07h</item>
+        <item>08h</item>
+        <item>09h</item>
+        <item>10h</item>
+        <item>11h</item>
+        <item>12h</item>
+        <item>13h</item>
+        <item>14h</item>
+        <item>15h</item>
+        <item>16h</item>
+        <item>17h</item>
+        <item>18h</item>
+        <item>19h</item>
+        <item>20h</item>
+        <item>21h</item>
+        <item>22h</item>
+        <item>23h</item>
     </string-array>
 
 </resources>

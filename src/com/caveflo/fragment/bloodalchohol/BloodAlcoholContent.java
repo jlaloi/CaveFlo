@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils.TruncateAt;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -71,7 +72,9 @@ public class BloodAlcoholContent extends Fragment {
 			text.setText(header);
 			text.setGravity(Gravity.CENTER);
 			text.setTypeface(null, Typeface.BOLD);
-			text.setPadding(20, 20, 0, 0);
+			text.setPadding(4, 0, 4, 0);
+			text.setSingleLine(true);
+			text.setEllipsize(TruncateAt.END);
 			headerRow.addView(text);
 		}
 		drinkTable.addView(headerRow);
@@ -114,7 +117,7 @@ public class BloodAlcoholContent extends Fragment {
 			} else if (sexe.getCheckedRadioButtonId() == R.id.alco_sexe_femme) {
 				sexCoeff = BloodAlcoholContentCalculator.womenCoef;
 			}
-			BloodAlcoholContentCalculator calc = new BloodAlcoholContentCalculator(sexCoeff, weightValue, drinks, hour.getSelectedItemPosition());
+			BloodAlcoholContentCalculator calc = new BloodAlcoholContentCalculator(sexCoeff, weightValue, drinks, hour.getSelectedItemPosition(), getResources().getStringArray(R.array.alco_hour));
 			calc.compute();
 			float alco = calc.getResult();
 			result.setText(getString(R.string.alco_result, alco));

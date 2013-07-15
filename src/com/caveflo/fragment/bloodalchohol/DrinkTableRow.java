@@ -21,16 +21,15 @@ public class DrinkTableRow extends TableRow {
 	private EditText quantity, degree, note;
 	private Spinner hour;
 	private Context context;
-	private TableRow me;
 	private Drink drink;
 
 	public DrinkTableRow(Context context, Drink drink) {
 		super(context);
-		this.me = this;
 		this.context = context;
 		this.drink = drink;
 		setPadding(0, 0, 0, 0);
 		note = createEditText(InputType.TYPE_CLASS_TEXT);
+		note.setEms(10);
 		quantity = createEditText(InputType.TYPE_CLASS_NUMBER);
 		degree = createEditText(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 		hour = new Spinner(context);
@@ -41,11 +40,7 @@ public class DrinkTableRow extends TableRow {
 		delete.setImageResource(R.drawable.ic_delete);
 		delete.setBackground(null);
 		delete.setPadding(0, 0, 0, 0);
-		delete.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Factory.get().getFragmentAlcoolemie().removeTableRow(me);
-			}
-		});
+		delete.setOnClickListener(new DeleteListner(this));
 		addView(note);
 		addView(degree);
 		addView(quantity);
@@ -86,6 +81,21 @@ public class DrinkTableRow extends TableRow {
 		drink.setQuantity(quantityValue);
 		drink.setHour(hour.getSelectedItemPosition());
 		return drink;
+	}
+
+	class DeleteListner implements OnClickListener {
+
+		private DrinkTableRow drinkTableRow;
+
+		public DeleteListner(DrinkTableRow drinkTableRow) {
+			super();
+			this.drinkTableRow = drinkTableRow;
+		}
+
+		public void onClick(View arg0) {
+			Factory.get().getFragmentAlcoolemie().removeTableRow(drinkTableRow);
+		}
+
 	}
 
 }

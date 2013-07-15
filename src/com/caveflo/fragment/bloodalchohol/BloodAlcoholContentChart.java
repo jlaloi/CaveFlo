@@ -18,6 +18,7 @@ public class BloodAlcoholContentChart extends View {
 	private List<Float> values;
 	private Paint paint = new Paint();
 	private float width, height, paddingX, paddingY, scale;
+	private float paddingXScale;
 	private float oldX, oldY, newX, newY;
 	private float strokeSize = 4f;
 	private float segmentSize = 4f;
@@ -42,6 +43,10 @@ public class BloodAlcoholContentChart extends View {
 	private void configure() {
 		pointToDisplay = new ArrayList<Float[]>();
 		paint.setTextSize(paint.getTextSize() * 1.5f);
+		paint.setStrokeWidth(strokeSize);
+		paddingY = paint.getTextSize();
+		colorValue = context.getResources().getColor(R.color.chartline);
+		colorAxis = context.getResources().getColor(R.color.chartaxis);
 	}
 
 	public void setContent(List<String> headerX, List<Float> headerY, List<Float> values) {
@@ -58,24 +63,21 @@ public class BloodAlcoholContentChart extends View {
 	}
 
 	protected void onDraw(Canvas canvas) {
-		width = getWidth();
-		height = getHeight();
 		if (defined) {
 			// Configuration
-			paint.setStrokeWidth(strokeSize);
+			width = getWidth();
+			height = getHeight();
 			pointToDisplay.clear();
-			paddingX = width / (headerX.size());
-			paddingY = height / (headerY.size() + 1);
+			getXAxisScaleMaxSize();
+			paddingX = (width - paddingXScale) / (headerX.size() - 1);
 			scale = (height - paddingY) / (headerY.get(headerY.size() - 1));
-			colorValue = context.getResources().getColor(R.color.chartline);
-			colorAxis = context.getResources().getColor(R.color.chartaxis);
 
 			// Limit
 			paint.setColor(context.getResources().getColor(R.color.chartlimit));
-			canvas.drawLine(paddingX, height - paddingY - (BloodAlcoholContent.limit * scale), width, height - paddingY - (BloodAlcoholContent.limit * scale), paint);
+			canvas.drawLine(paddingXScale, height - paddingY - (BloodAlcoholContent.limit * scale), width, height - paddingY - (BloodAlcoholContent.limit * scale), paint);
 
 			// Values
-			oldX = paddingX;
+			oldX = paddingXScale;
 			oldY = height - paddingY - (values.get(0) * scale + strokeSize / 2);
 			paint.setColor(colorValue);
 			for (int i = 1; i < headerX.size(); i++) {
@@ -99,17 +101,28 @@ public class BloodAlcoholContentChart extends View {
 			// Axis
 			paint.setColor(colorAxis);
 			paint.setStrokeWidth(strokeSize / 2);
-			canvas.drawLine(paddingX, 0f, paddingX, height - paddingY, paint);
-			canvas.drawLine(paddingX, height - paddingY, width, height - paddingY, paint);
+			canvas.drawLine(paddingXScale, 0f, paddingXScale, height - paddingY, paint);
+			canvas.drawLine(paddingXScale, height - paddingY, width, height - paddingY, paint);
 			for (int y = 0; y < headerY.size(); y++) {
-				canvas.drawLine(paddingX, height - paddingY - (headerY.get(y) * scale), segmentSize + paddingX, height - paddingY - (headerY.get(y) * scale), paint);
+				canvas.drawLine(paddingXScale, height - paddingY - (headerY.get(y) * scale), segmentSize + paddingXScale, height - paddingY - (headerY.get(y) * scale), paint);
 				canvas.drawText(headerY.get(y) + "", 0, height - paddingY - (headerY.get(y) * scale), paint);
 			}
 			for (int x = 0; x < headerX.size(); x++) {
-				canvas.drawLine((x + 1) * paddingX, height - paddingY, (x + 1) * paddingX, height - paddingY - segmentSize, paint);
-				if (headerX.size() < 20 || x % 2 == 0) {
-					canvas.drawText(headerX.get(x) + "", (x + 1) * paddingX, height, paint);
+				canvas.drawLine(paddingXScale + x * paddingX, height - paddingY, paddingXScale + x * paddingX, height - paddingY - segmentSize, paint);
+				if (headerX.size() < 18 || x % 2 == 0) {
+					canvas.drawText(headerX.get(x) + "", paddingXScale + x * paddingX, height, paint);
 				}
+			}
+		}
+	}
+
+	private void getXAxisScaleMaxSize() {
+		paddingXScale = 0f;
+		float current;
+		for (float value : headerY) {
+			current = paint.measureText(value + " ");
+			if (current > paddingXScale) {
+				paddingXScale = current;
 			}
 		}
 	}

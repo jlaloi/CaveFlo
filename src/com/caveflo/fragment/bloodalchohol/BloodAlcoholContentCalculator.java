@@ -25,13 +25,15 @@ public class BloodAlcoholContentCalculator {
 	private List<Float> values = new ArrayList<Float>();
 	private List<Float> axisY = new ArrayList<Float>();
 	private List<String> axisX = new ArrayList<String>();
+	private String[] hours;
 
-	public BloodAlcoholContentCalculator(float sexCoeff, int weight, List<Drink> drinks, int startHour) {
+	public BloodAlcoholContentCalculator(float sexCoeff, int weight, List<Drink> drinks, int startHour, String[] hours) {
 		super();
 		this.sexCoeff = sexCoeff;
 		this.weight = weight;
 		this.drinks = drinks;
 		this.startHour = startHour;
+		this.hours = hours;
 	}
 
 	public void compute() {
@@ -54,7 +56,7 @@ public class BloodAlcoholContentCalculator {
 			current += (perHours.get(currentHour) / 100f);
 			Log.d("Blood Compute", "At " + currentHour + " = > " + current);
 			values.add(Math.round(current * 100f) / 100f);
-			axisX.add(currentHour + "h");
+			axisX.add(hours[currentHour]);
 			if (currentHour == Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
 				currentBAC = Math.round(current * 100f) / 100f;
 			}
