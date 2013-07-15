@@ -9,6 +9,7 @@ import android.app.Fragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils.TruncateAt;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
@@ -70,7 +71,8 @@ public class Cave extends Fragment {
 			text.setText(header);
 			text.setGravity(Gravity.CENTER);
 			text.setTypeface(null, Typeface.BOLD);
-			text.setPadding(4, 4, 0, 0);
+			text.setSingleLine(true);
+			text.setEllipsize(TruncateAt.END);
 			headerRow.addView(text);
 		}
 

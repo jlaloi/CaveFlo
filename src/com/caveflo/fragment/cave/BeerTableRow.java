@@ -5,6 +5,8 @@ import java.io.Serializable;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.TextUtils.TruncateAt;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,6 +34,7 @@ public class BeerTableRow extends TableRow implements Serializable {
 		name = createTextView(Gravity.LEFT);
 		if (beer.isCustom()) {
 			name.setTypeface(null, Typeface.BOLD_ITALIC);
+
 		}
 		degree = createTextView(Gravity.CENTER);
 		type = createTextView(Gravity.LEFT);
@@ -46,28 +49,7 @@ public class BeerTableRow extends TableRow implements Serializable {
 		addView(rating);
 		addView(ratingDate);
 
-		setOnTouchListener(new OnTouchListener() {
-			float oldX = -1;
-			float newX;
-
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_MOVE) {
-					newX = event.getX();
-					if (oldX == -1) {
-						oldX = newX;
-					} else if (newX - oldX > (Factory.get().getDisplayMetrics().widthPixels * 0.25f)) {
-						addToDrunk();
-						oldX = newX;
-						return true;
-					}
-				}
-				return false;
-			}
-		});
-		setOnClickListener(new BiereListener(this));
-		if (beer.isCustom()) {
-			setOnLongClickListener(new BiereLongListener());
-		}
+		setOnTouchListener(new BiereListener(this));
 	}
 
 	public void onBeerUpdate() {
@@ -93,43 +75,53 @@ public class BeerTableRow extends TableRow implements Serializable {
 	private TextView createTextView(int gravity) {
 		TextView text = new TextView(context);
 		text.setGravity(gravity);
-		text.setPadding(4, 4, 0, 0);
+		text.setPadding(2, 2, 0, 0);
+		text.setSingleLine(true);
+		text.setEllipsize(TruncateAt.END);
 		return text;
 	}
 
-	class BiereLongListener implements OnLongClickListener {
-		public boolean onLongClick(View v) {
-			showModificationDialog();
-			return false;
-		}
-	}
-
-	class BiereListener implements OnClickListener {
+	class BiereListener implements OnTouchListener {
 		private BeerTableRow btr;
+
+		float oldX = -1;
+		float newX;
+		float eventDuration;
 
 		public BiereListener(BeerTableRow btr) {
 			super();
 			this.btr = btr;
 		}
 
-		public void onClick(View v) {
-			FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
-			BeerRatingPopup.newInstance(btr).show(ft, "Rating");
+		public boolean onTouch(View v, MotionEvent event) {
+			if (event.getAction() == MotionEvent.ACTION_MOVE) {
+				newX = event.getX();
+				if (oldX == -1) {
+					oldX = newX;
+				} else if (newX - oldX > (Factory.get().getDisplayMetrics().widthPixels * 0.25f)) {
+					Factory.get().getFragmentAlcoolemie().addBeer(beer);
+					Toast.makeText(getContext(), getContext().getString(R.string.drink_beer_added, beer.getName()), Toast.LENGTH_LONG).show();
+					oldX = newX;
+				}
+			} else if (event.getAction() == MotionEvent.ACTION_UP) {
+				eventDuration = event.getEventTime() - event.getDownTime();
+				Log.d("BeerTableRow", "onTouch, duration: " + eventDuration);
+				if (eventDuration > 700) { // Long press
+					if (beer.isCustom()) {
+						FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
+						CustomBeerPopup.newInstance(beer).show(ft, "Modify");
+					}
+				} else if (eventDuration < 100) {
+					FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
+					BeerRatingPopup.newInstance(btr).show(ft, "Rating");
+				}
+			}
+			return true;
 		}
 	}
 
 	public Beer getBeer() {
 		return beer;
-	}
-
-	private void addToDrunk() {
-		Factory.get().getFragmentAlcoolemie().addBeer(beer);
-		Toast.makeText(getContext(), getContext().getString(R.string.drink_beer_added, beer.getName()), Toast.LENGTH_LONG).show();
-	}
-
-	private void showModificationDialog() {
-		FragmentTransaction ft = Factory.get().getFragmentCave().getActivity().getFragmentManager().beginTransaction();
-		CustomBeerPopup.newInstance(beer).show(ft, "Modify");
 	}
 
 }
