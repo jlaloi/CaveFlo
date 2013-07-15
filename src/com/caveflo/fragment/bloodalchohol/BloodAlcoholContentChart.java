@@ -1,5 +1,6 @@
 package com.caveflo.fragment.bloodalchohol;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -24,6 +25,7 @@ public class BloodAlcoholContentChart extends View {
 	private int colorValue;
 	boolean defined = false;
 	private Context context;
+	private List<Float[]> pointToDisplay;
 
 	public BloodAlcoholContentChart(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -38,6 +40,7 @@ public class BloodAlcoholContentChart extends View {
 	}
 
 	private void configure() {
+		pointToDisplay = new ArrayList<Float[]>();
 		paint.setTextSize(paint.getTextSize() * 1.5f);
 	}
 
@@ -60,7 +63,7 @@ public class BloodAlcoholContentChart extends View {
 		if (defined) {
 			// Configuration
 			paint.setStrokeWidth(strokeSize);
-
+			pointToDisplay.clear();
 			paddingX = width / (headerX.size());
 			paddingY = height / (headerY.size() + 1);
 			scale = (height - paddingY) / (headerY.get(headerY.size() - 1));
@@ -69,7 +72,7 @@ public class BloodAlcoholContentChart extends View {
 
 			// Limit
 			paint.setColor(context.getResources().getColor(R.color.chartlimit));
-			canvas.drawLine(paddingX, height - paddingY - (BloodAlcoholContent.limit * scale)  , width, height - paddingY - (BloodAlcoholContent.limit * scale)  , paint);
+			canvas.drawLine(paddingX, height - paddingY - (BloodAlcoholContent.limit * scale), width, height - paddingY - (BloodAlcoholContent.limit * scale), paint);
 
 			// Values
 			oldX = paddingX;
@@ -80,13 +83,17 @@ public class BloodAlcoholContentChart extends View {
 				newX = oldX + paddingX;
 				canvas.drawLine(oldX, oldY, newX, newY, paint);
 				if (oldY > newY) {
-					paint.setColor(colorAxis);
-					String toDisplay = values.get(i) + "";
-					canvas.drawText(toDisplay, newX - paint.measureText(toDisplay) / 2, newY - strokeSize, paint);
-					paint.setColor(colorValue);
+					pointToDisplay.add(new Float[] { values.get(i), newX, newY - strokeSize });
 				}
 				oldX = newX;
 				oldY = newY;
+			}
+
+			// Display point
+			paint.setColor(colorAxis);
+			for (Float[] points : pointToDisplay) {
+				String toDisplay = points[0] + "";
+				canvas.drawText(toDisplay, points[1] - paint.measureText(toDisplay) / 2, points[2], paint);
 			}
 
 			// Axis
