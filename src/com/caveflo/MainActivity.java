@@ -33,10 +33,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Factory.get().initiateBeerDataSource(getBaseContext());
-		getWindowManager().getDefaultDisplay().getRealMetrics(Factory.get().getDisplayMetrics());
 		tabs = getResources().getStringArray(R.array.nav_menu);
-
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.drawer_list);
 
@@ -67,6 +64,7 @@ public class MainActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		Log.i("MainActivity", "Resuming " + currentFragment);
+		getWindowManager().getDefaultDisplay().getRealMetrics(Factory.get().getDisplayMetrics());
 		Factory.get().initiateBeerDataSource(getBaseContext());
 		setContent(currentFragment);
 	}
