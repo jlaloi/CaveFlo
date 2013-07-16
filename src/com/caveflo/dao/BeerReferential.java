@@ -118,6 +118,8 @@ public class BeerReferential {
 						beer.setRating(Integer.valueOf(split[2]));
 						if (split.length > 3) {
 							beer.setComment(split[3]);
+						} else {
+							beer.setComment("");
 						}
 						if (beerDataSource.updateRating(beer) == 0) {
 							beerDataSource.createRating(beer);

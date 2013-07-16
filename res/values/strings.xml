@@ -24,13 +24,13 @@
     <string name="cave_beer_type">Robe</string>
     <string name="cave_beer_country">Country</string>
     <string name="cave_beer_degre">Degree</string>
-    <string name="cave_beer_rating">Note</string>
+    <string name="cave_beer_rating">Rating</string>
     <string name="cave_beer_drunk">Tasted</string>
     <string name="button_validate">Validate</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_calculer">Compute</string>
     <string name="button_clear">Clarte</string>
-    <string name="rate_string">Note: </string>
+    <string name="rate_string">Rating: </string>
     <string name="create_title">Add a beer</string>
     <string name="modify_title">Modify a beer</string>
     <string name="degree_string">Degre: </string>
