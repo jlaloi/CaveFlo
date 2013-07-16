@@ -33,9 +33,6 @@ public class Factory {
 	private DisplayMetrics displayMetrics;
 
 	public Factory() {
-		fragmentCave = new Cave();
-		fragmentInfo = new Info();
-		fragmentNews = new News();
 		fragmentAlcoolemie = new BloodAlcoholContent();
 		beerComparator = new Comparator<Beer>() {
 			public int compare(Beer lhs, Beer rhs) {
@@ -61,14 +58,23 @@ public class Factory {
 	}
 
 	public Cave getFragmentCave() {
+		if (fragmentCave == null) {
+			fragmentCave = new Cave();
+		}
 		return fragmentCave;
 	}
 
 	public Fragment getFragmentInfo() {
+		if (fragmentInfo == null) {
+			fragmentInfo = new Info();
+		}
 		return fragmentInfo;
 	}
 
 	public Fragment getFragmentNews() {
+		if (fragmentNews == null) {
+			fragmentNews = new News();
+		}
 		return fragmentNews;
 	}
 
@@ -85,6 +91,9 @@ public class Factory {
 	}
 
 	public BloodAlcoholContent getFragmentAlcoolemie() {
+		if (fragmentAlcoolemie == null) {
+			fragmentAlcoolemie = new BloodAlcoholContent();
+		}
 		return fragmentAlcoolemie;
 	}
 

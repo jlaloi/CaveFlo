@@ -1,7 +1,5 @@
 package com.caveflo;
 
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -25,7 +23,6 @@ import com.caveflo.misc.Factory;
 
 public class MainActivity extends Activity {
 
-	private HashMap<String, Fragment> content = new HashMap<String, Fragment>();
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -38,10 +35,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Factory.get().initiateBeerDataSource(getBaseContext());
 		getWindowManager().getDefaultDisplay().getRealMetrics(Factory.get().getDisplayMetrics());
-		content.put(getString(R.string.tab_cave), Factory.get().getFragmentCave());
-		content.put(getString(R.string.tab_news), Factory.get().getFragmentNews());
-		content.put(getString(R.string.tab_info), Factory.get().getFragmentInfo());
-		content.put(getString(R.string.tab_alco), Factory.get().getFragmentAlcoolemie());
 		tabs = getResources().getStringArray(R.array.nav_menu);
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -69,26 +62,29 @@ public class MainActivity extends Activity {
 				setContent(position);
 			}
 		});
-		setContent(currentFragment);
-		Log.d("MainActivity", "onCreate " + currentFragment);
 	}
 
 	public void onResume() {
 		super.onResume();
-		Log.d("MainActivity", "Resuming " + currentFragment);
+		Log.i("MainActivity", "Resuming " + currentFragment);
 		Factory.get().initiateBeerDataSource(getBaseContext());
 		setContent(currentFragment);
 	}
 
+	protected void onDestroy() {
+		super.onDestroy();
+		Factory.get().getBeerDataSource().close();
+	}
+
 	private void setContent(int fragment) {
-		Log.d("MainActivity", "Setting fragment " + fragment);
+		Log.i("MainActivity", "Setting fragment " + fragment);
 		mDrawerList.setItemChecked(fragment, true);
 		mTitle = tabs[fragment];
 		mDrawerLayout.closeDrawer(mDrawerList);
 		getActionBar().setTitle(mTitle);
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction ft = fragmentManager.beginTransaction();
-		ft.replace(R.id.content_frame, content.get(mTitle));
+		ft.replace(R.id.content_frame, getFragment(fragment));
 		ft.commit();
 		currentFragment = fragment;
 		Log.d("MainActivity", "Current Fragment set to " + fragment);
@@ -131,6 +127,20 @@ public class MainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	public Fragment getFragment(int id) {
+		switch (id) {
+		case 0:
+			return Factory.get().getFragmentCave();
+		case 1:
+			return Factory.get().getFragmentNews();
+		case 2:
+			return Factory.get().getFragmentInfo();
+		case 3:
+			return Factory.get().getFragmentAlcoolemie();
+		}
+		return Factory.get().getFragmentCave();
 	}
 
 }
