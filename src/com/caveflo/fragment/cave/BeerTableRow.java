@@ -27,10 +27,12 @@ public class BeerTableRow extends TableRow implements Serializable {
 	private Context context;
 	private TextView rating, ratingDate, name, degree, type;
 
-	public BeerTableRow(Context context, Beer beer) {
+	public BeerTableRow(Context context) {
 		super(context);
 		this.context = context;
+	}
 
+	public void setBeer(Beer beer) {
 		name = createTextView(Gravity.LEFT);
 		if (beer.isCustom()) {
 			name.setTypeface(null, Typeface.BOLD_ITALIC);

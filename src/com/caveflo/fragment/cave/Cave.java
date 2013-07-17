@@ -116,7 +116,9 @@ public class Cave extends Fragment {
 		List<Beer> beers = Factory.get().getBeerReferential().getBeers();
 		Activity activity = getActivity();
 		for (Beer beer : beers) {
-			beerTableRows.add(new BeerTableRow(activity, beer));
+			BeerTableRow btr = new BeerTableRow(activity);
+			btr.setBeer(beer);
+			beerTableRows.add(btr);
 		}
 		initTypeFilter();
 		initCountryFilter();

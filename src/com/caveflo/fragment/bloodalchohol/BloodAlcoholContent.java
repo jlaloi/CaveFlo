@@ -95,7 +95,8 @@ public class BloodAlcoholContent extends Fragment {
 	}
 
 	private void addDrink(Drink drink) {
-		DrinkTableRow dtr = new DrinkTableRow(getActivity(), drink);
+		DrinkTableRow dtr = new DrinkTableRow(getActivity());
+		dtr.setDrink(drink);
 		drinkTable.addView(dtr);
 		drinkTableRows.add(dtr);
 	}

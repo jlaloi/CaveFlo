@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		Log.i("MainActivity", "Resuming " + currentFragment);
-		getWindowManager().getDefaultDisplay().getRealMetrics(Factory.get().getDisplayMetrics());
+		getWindowManager().getDefaultDisplay().getMetrics(Factory.get().getDisplayMetrics());
 		Factory.get().initiateBeerDataSource(getBaseContext());
 		setContent(currentFragment);
 	}

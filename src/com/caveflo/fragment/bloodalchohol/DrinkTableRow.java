@@ -23,11 +23,14 @@ public class DrinkTableRow extends TableRow {
 	private Context context;
 	private Drink drink;
 
-	public DrinkTableRow(Context context, Drink drink) {
+	public DrinkTableRow(Context context) {
 		super(context);
 		this.context = context;
-		this.drink = drink;
+	}
+
+	public void setDrink(Drink drink) {
 		setPadding(0, 0, 0, 0);
+		this.drink = drink;
 		note = createEditText(InputType.TYPE_CLASS_TEXT);
 		note.setEms(10);
 		quantity = createEditText(InputType.TYPE_CLASS_NUMBER);
@@ -38,7 +41,7 @@ public class DrinkTableRow extends TableRow {
 		hour.setAdapter(hoursAdapter);
 		ImageButton delete = new ImageButton(context);
 		delete.setImageResource(R.drawable.ic_delete);
-		delete.setBackground(null);
+		delete.setBackgroundResource(android.R.color.transparent);
 		delete.setPadding(0, 0, 0, 0);
 		delete.setOnClickListener(new DeleteListner(this));
 		addView(note);
