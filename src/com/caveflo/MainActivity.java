@@ -89,15 +89,14 @@ public class MainActivity extends Activity {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
 		FragmentTransaction ft;
 		switch (item.getItemId()) {
 		case R.id.menu_add_beer:
-			setContent(0);
 			ft = this.getFragmentManager().beginTransaction();
 			CustomBeerPopup.newInstance(null).show(ft, "create");
 			return true;
 		case R.id.menu_refresh:
-			setContent(0);
 			new ASynchUpdate(getBaseContext()).execute();
 			return true;
 		case R.id.menu_impexp:
