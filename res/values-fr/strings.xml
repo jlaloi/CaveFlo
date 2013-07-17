@@ -73,5 +73,7 @@
     <string name="saved_hour">saved_hour</string>
     <string name="drink_beer_added">Bière %1$s ajoutée au calcul d\'alcoolémie!</string>
     <string name="alco_hour">Première boisson à</string>
+    <string name="warning">L\'abus d\'alcool est dangereux pour la santé, à consommer avec modération.</string>
+    <string name="warning_estimation">Attention: ces estimations ne sont données qu\'à titre indicatif. Elles n\'ont aucune valeur juridique!</string>
 
 </resources>

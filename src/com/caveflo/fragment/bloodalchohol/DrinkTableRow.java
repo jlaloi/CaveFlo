@@ -31,7 +31,7 @@ public class DrinkTableRow extends TableRow {
 	public void setDrink(Drink drink) {
 		setPadding(0, 0, 0, 0);
 		this.drink = drink;
-		note = createEditText(InputType.TYPE_CLASS_TEXT);
+		note = createEditText(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
 		note.setEms(10);
 		quantity = createEditText(InputType.TYPE_CLASS_NUMBER);
 		degree = createEditText(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);

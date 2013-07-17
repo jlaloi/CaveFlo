@@ -73,5 +73,7 @@
     <string name="saved_hour">saved_hour</string>
     <string name="drink_beer_added">Beer %1$s added to BAC calculation!</string>
     <string name="alco_hour">First drink at</string>
+    <string name="warning">Alcohol abuse is dangerous for health, consume with moderation.</string>
+    <string name="warning_estimation">Caution: this estimation is for guidance only. They have no legal value!</string>
 
 </resources>

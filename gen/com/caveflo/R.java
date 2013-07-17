@@ -174,6 +174,8 @@ public final class R {
         public static final int userbeerfiletext=0x7f060031;
         public static final int userratingfile=0x7f060030;
         public static final int userratingfiletext=0x7f060032;
+        public static final int warning=0x7f060049;
+        public static final int warning_estimation=0x7f06004a;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;
