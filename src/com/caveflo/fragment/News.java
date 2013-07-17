@@ -28,4 +28,5 @@ public class News extends Fragment {
 		Toast.makeText(getActivity(), getString(R.string.loadingpage, getString(R.string.news_url)), Toast.LENGTH_SHORT).show();
 		webView.loadUrl(getString(R.string.news_url));
 	}
+
 }

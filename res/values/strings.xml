@@ -7,6 +7,7 @@
     <string name="tel">Phone. 02.90.78.02.25</string>
     <string name="menuRefresh">Refresh cellar</string>
     <string name="menuimportexport">Import/Export</string>
+    <string name="menuquit">Close</string>
     <string name="buttonNavigation">Start navigation</string>
     <string name="button_delete">Delete</string>
     <string name="addbeer">Add a beer</string>

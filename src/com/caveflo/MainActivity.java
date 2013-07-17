@@ -103,11 +103,27 @@ public class MainActivity extends Activity {
 			ft = this.getFragmentManager().beginTransaction();
 			ImportExportPopup.newInstance().show(ft, "importexport");
 			return true;
+		case R.id.menu_quit:
+			finish();
+			return true;
 		}
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+
+	}
+
+	public void finish() {
+		Factory.get().getBeerDataSource().close();
+		super.finish();
+	}
+
+	public boolean onMenuOpened(int featureId, Menu menu) {
+		menu.findItem(R.id.menu_add_beer).setVisible(currentFragment == 0);
+		menu.findItem(R.id.menu_impexp).setVisible(currentFragment == 0);
+		menu.findItem(R.id.menu_refresh).setVisible(currentFragment == 0);
+		return super.onMenuOpened(featureId, menu);
 	}
 
 	public boolean onPrepareOptionsMenu(Menu menu) {

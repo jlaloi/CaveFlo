@@ -8,6 +8,7 @@
     <string name="menuRefresh">Rafraîchir la cave</string>
     <string name="menuimportexport">Import/Export</string>
     <string name="buttonNavigation">Lancer la navigation</string>
+    <string name="menuquit">Quitter</string>
     <string name="button_delete">Supprimer</string>
     <string name="addbeer">Ajouter une bière</string>
     <string name="tab_cave">La cave à bières</string>

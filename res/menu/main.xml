@@ -16,6 +16,9 @@
             <item
                 android:id="@+id/menu_impexp"
                 android:title="@string/menuimportexport"/>
+             <item
+                android:id="@+id/menu_quit"
+                android:title="@string/menuquit"/>
         </menu>
     </item>
 
