@@ -69,11 +69,6 @@ public class MainActivity extends Activity {
 		setContent(currentFragment);
 	}
 
-	protected void onDestroy() {
-		super.onDestroy();
-		Factory.get().getBeerDataSource().close();
-	}
-
 	private void setContent(int fragment) {
 		Log.i("MainActivity", "Setting fragment " + fragment);
 		mDrawerList.setItemChecked(fragment, true);
