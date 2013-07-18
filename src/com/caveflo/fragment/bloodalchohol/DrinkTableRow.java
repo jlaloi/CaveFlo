@@ -1,6 +1,10 @@
 package com.caveflo.fragment.bloodalchohol;
 
+import java.util.List;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TableRow;
 
 import com.caveflo.R;
+import com.caveflo.dao.Beer;
 import com.caveflo.dao.Drink;
 import com.caveflo.misc.Factory;
 
@@ -58,6 +63,8 @@ public class DrinkTableRow extends TableRow {
 			quantity.setText(drink.getQuantity() + "");
 		}
 		hour.setSelection(drink.getHour());
+
+		note.setOnLongClickListener(new SelectBeerListner());
 	}
 
 	private EditText createEditText(int inputType) {
@@ -101,4 +108,26 @@ public class DrinkTableRow extends TableRow {
 
 	}
 
+	class SelectBeerListner implements OnLongClickListener {
+		private List<Beer> beers;
+
+		public boolean onLongClick(View v) {
+			beers = Factory.get().getBeerReferential().getBeers();
+			ArrayAdapter<Beer> adapter = new ArrayAdapter<Beer>(getContext(), android.R.layout.select_dialog_singlechoice);
+			adapter.addAll(beers);
+			AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+			builder.setTitle(R.string.addbeer);
+			builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Beer beer = beers.get(which);
+					note.setText(beer.getName());
+					degree.setText(beer.getDegree() + "");
+				}
+			});
+			AlertDialog alert = builder.create();
+			alert.show();
+			return true;
+		}
+
+	}
 }
