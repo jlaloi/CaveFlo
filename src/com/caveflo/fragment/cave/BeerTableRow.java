@@ -51,6 +51,7 @@ public class BeerTableRow extends TableRow implements Serializable {
 		addView(rating);
 		addView(ratingDate);
 
+		setPadding(2, 2, 2, 2);
 		setOnTouchListener(new BiereListener(this));
 	}
 
@@ -77,7 +78,7 @@ public class BeerTableRow extends TableRow implements Serializable {
 	private TextView createTextView(int gravity) {
 		TextView text = new TextView(context);
 		text.setGravity(gravity);
-		text.setPadding(2, 2, 0, 0);
+		text.setPadding(2, 0, 2, 0);
 		text.setSingleLine(true);
 		text.setEllipsize(TruncateAt.END);
 		return text;

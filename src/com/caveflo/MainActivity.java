@@ -114,11 +114,6 @@ public class MainActivity extends Activity {
 
 	}
 
-	public void finish() {
-		Factory.get().getBeerDataSource().close();
-		super.finish();
-	}
-
 	public boolean onMenuOpened(int featureId, Menu menu) {
 		menu.findItem(R.id.menu_add_beer).setVisible(currentFragment == 0);
 		menu.findItem(R.id.menu_impexp).setVisible(currentFragment == 0);
