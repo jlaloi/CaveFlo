@@ -15,7 +15,7 @@
     <string name="tab_info">About</string>
     <string name="tab_news">Last News</string>
     <string name="tab_alco">BAC estimation</string>
-    <string name="update_ko">Error occurred while update the cellar</string>
+    <string name="update_ko">Error occurred while updating the cellar</string>
     <string name="update_ok">Cellar update over</string>
     <string name="update_inprogress">Cellar update in progress</string>
     <string name="filter_all">All</string>
@@ -30,11 +30,11 @@
     <string name="button_validate">Validate</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_calculer">Compute</string>
-    <string name="button_clear">Clarte</string>
+    <string name="button_clear">Clear</string>
     <string name="rate_string">Rating: </string>
     <string name="create_title">Add a beer</string>
     <string name="modify_title">Modify a beer</string>
-    <string name="degree_string">Degre: </string>
+    <string name="degree_string">Degree: </string>
     <string name="dev_url"><i><b>App repository:</b>\nhttps://github.com/jlaloi/CaveFlo</i></string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
