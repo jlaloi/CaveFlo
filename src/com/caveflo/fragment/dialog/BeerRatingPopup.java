@@ -62,7 +62,7 @@ public class BeerRatingPopup extends DialogFragment implements Serializable {
 		} else {
 			final Calendar c = Calendar.getInstance();
 			year = c.get(Calendar.YEAR) % 2000;
-			month = c.get(Calendar.MONTH);
+			month = c.get(Calendar.MONTH) + 1;
 			day = c.get(Calendar.DAY_OF_MONTH);
 		}
 		ratingBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
